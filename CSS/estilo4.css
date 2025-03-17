@@ -1,0 +1,83 @@
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #dcbadb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .carta {
+    width: 600px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  
+  .encabezado {
+    margin-bottom: 30px;
+  }
+  
+  .fecha {
+    text-align: right;
+    font-style: italic;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  
+  .destinatario {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .cuerpo {
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .firma {
+    text-align: right;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+  }
+  
+  .firma p:first-child {
+    font-style: italic;
+    margin-bottom: 5px;
+    font-weight: 900;
+  }
+  
+  firma p:last-child {
+    font-weight: bold;
+  }
+  .parpadeo {
+    font-size: 2em;
+    color: #ff0000; /* Rojo normal */
+    animation: parpadeoRojo 1s infinite alternate;
+  }
+  
+  @keyframes parpadeoRojo {
+    0% {
+      color: #ff0000;
+    }
+    100% {
+      color: #8b0000;
+    }
+  }
+  .parpadeo p{
+    font-size: 20px;
+  }
+  .acas a{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+    text-decoration: none;
+    color: #ff0000; /* Rojo normal */
+    animation: parpadeoRojo 1s infinite alternate;
+  }
