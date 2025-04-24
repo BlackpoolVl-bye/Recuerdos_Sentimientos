@@ -1,6 +1,7 @@
 const audio = document.getElementById('audio');
 const playButton = document.getElementById('playButton');
 
+/*
 playButton.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
@@ -10,3 +11,4 @@ playButton.addEventListener('click', () => {
     playButton.textContent = 'Reproducir';
   }
 });
+*/

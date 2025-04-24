@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('2ff94dfff599bc37a27450a858612763.gif');
+  background-repeat: repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: sans-serif;
+  color: white;
+  background-size: cover;
+  background-size: contain;
+}
+
+#sistema-solar {
+  width: 0vw;
+  height: 0vw;
+  position: relative;
+  margin: 0;
+}
+
+#sol {
+  width: 15vw;
+  height: 15vw;
+  background: radial-gradient(circle, yellow, orange);
+  border-radius: 50%;
+  position: absolute;
+  top: 42.5vw;
+  left: 42.5vw;
+  box-shadow: 0 0 5vw yellow;
+}
+
+.orbita {
+  position: absolute;
+  border-radius: 50%;
+}
+
+#mercurio { width: 22.5vw; height: 22.5vw; top: 38.75vw; left: 38.75vw; }
+#venus { width: 30vw; height: 30vw; top: 35vw; left: 35vw; }
+#tierra { width: 37.5vw; height: 37.5vw; top: 31.25vw; left: 31.25vw; }
+#marte { width: 45vw; height: 45vw; top: 27.5vw; left: 27.5vw; }
+#jupiter { width: 60vw; height: 60vw; top: 20vw; left: 20vw; }
+#saturno { width: 75vw; height: 75vw; top: 12.5vw; left: 12.5vw; }
+#urano { width: 90vw; height: 90vw; top: 5vw; left: 5vw; }
+#neptuno { width: 105vw; height: 105vw; top: -2.5vw; left: -2.5vw; }
+
+.planeta {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  box-shadow: 0 0 1vw white;
+}
+
+.mercurio-planeta { background: radial-gradient(circle, gray, #333); }
+.venus-planeta { background: radial-gradient(circle, orange, #a0522d); }
+.tierra-planeta { background: radial-gradient(circle, blue, green); }
+.marte-planeta { background: radial-gradient(circle, red, #8b0000); }
+.jupiter-planeta { background: radial-gradient(circle, brown, #8b4513); }
+.saturno-planeta { background: radial-gradient(circle, yellow, #daa520); }
+.urano-planeta { background: radial-gradient(circle, cyan, #4682b4); }
+.neptuno-planeta { background: radial-gradient(circle, navy, #000080); }
+
+#sistema-solar {
+  background-image: radial-gradient(2px 2px rgba(255, 255, 255, 0.8), transparent),
+                    radial-gradient(1px 1px rgba(255, 255, 255, 0.6), transparent),
+                    radial-gradient(3px 3px rgba(255, 255, 255, 0.4), transparent);
+  background-size: 10vw 10vw, 5vw 5vw, 15vw 15vw;
+  animation: estrellas 10s linear infinite, parpadeo 2s linear infinite;
+}
+
+#sistema-solar::before,
+#sistema-solar::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#sistema-solar::after {
+  animation-delay: 5s, 1s;
+}
+
+@keyframes estrellas {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: 10vw 10vw, 5vw 5vw, 15vw 15vw; }
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+
+
+
+
+.universo-palabras {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 800px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin-top: 300px;
+}
+
+.universo-palabras p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.universo-palabras p:last-child {
+  margin-bottom: 0;
+}
+
+.universo-palabras::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+  z-index: -1;
+  border-radius: 10px;
+}
