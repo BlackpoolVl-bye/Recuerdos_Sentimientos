@@ -259,3 +259,17 @@ h2{
       color: #8b0000;
     }
   }
+  .fixed-image2 {
+	position: fixed;
+	bottom: 109px;
+	right: 5px;
+	cursor: pointer;
+  }
+  
+  .fixed-image2 img {
+	max-width: 90px;
+	transition: transform 0.3 sease;
+  }
+  .fixed-image2 img:hover{
+	transform: scale(1.2);
+  }
