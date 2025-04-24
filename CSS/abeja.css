@@ -37,9 +37,30 @@ body {
   }
 
   .contenido h1 {
-    color: yellow;
-  }
+    color: #ffff00;
+  text-shadow: 2px 2px 5px rgba(255, 255, 0, 0.5);
+  background-image: linear-gradient(to bottom, #ffffcc, #ffff00); 
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  -webkit-text-fill-color: transparent;
+}
   .abeja{
-    margin-top: 65%;
-
+    position: fixed;
+    bottom: 380px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+  }
+  .flores{
+    position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: auto; 
+  height: 440px; 
+  max-width: 100%;
   }
