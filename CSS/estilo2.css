@@ -17,6 +17,7 @@ body{
 	padding: 4px;
 	transition: 1s;
 	font-size: 14px;
+	font-weight: 900;
 }
 .nave nav a:hover{
 	color: black;

@@ -28,6 +28,7 @@ h1{
 	padding: 4px;
 	transition: 1s;
 	font-size: 14px;
+	font-weight: 900;
 }
 .nave nav a:hover{
 	color: black;
@@ -205,7 +206,7 @@ h2{
 	transform: scale(1.2);
   }
   .paginacion a:nth-child(2) {
-	color: #572364;
+	color: #dcbadb;
 	font-weight: bold;
 	font-size: 23px;
   }

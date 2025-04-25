@@ -33,6 +33,7 @@ html, body {
 	padding: 4px;
 	transition: 1s;
 	font-size: 14px;
+	font-weight: 900;
 }
 .nave nav a:hover{
 	color: black;
@@ -53,7 +54,6 @@ html, body {
 	transition: 1s;
 	text-transform: uppercase;
     font-style:italic;
-    
 }
 .bars ul li a:hover {
 	text-decoration: none;
@@ -294,7 +294,7 @@ h2{
 	}
   }
   .paginacion a:nth-child(1) {
-	color: #572364;
+	color: #dcbadb;
 	font-weight: bold;
 	font-size: 23px;
   }
