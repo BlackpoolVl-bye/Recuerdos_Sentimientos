@@ -51,7 +51,7 @@ body {
     transform: translateX(-50%);
     z-index: 10;
     width: auto;
-    height: auto;
+    height: 45px;
     max-width: 100%;
   }
   .flores{
@@ -61,6 +61,6 @@ body {
   transform: translateX(-50%);
   z-index: 10;
   width: auto; 
-  height: 440px; 
+  height: 298px; 
   max-width: 100%;
   }
