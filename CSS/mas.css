@@ -1,0 +1,40 @@
+.menu {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.menu li {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    background: #af7ead;
+    border-radius: 100px;
+}
+.menu li a{
+    text-decoration: none;
+    list-style-type: none;
+    color: #dcbadb;
+    font-weight: 300;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+img{
+    background-color: #af7ead;
+    position: fixed;
+    bottom: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    max-width: 100%;
+    border-radius: 50px;
+}
+.abajo h1 {
+    position: fixed;
+    bottom: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
