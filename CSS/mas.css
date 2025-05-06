@@ -33,7 +33,7 @@ img{
 }
 .abajo h1 {
     position: fixed;
-    bottom: 5px;
+    bottom: 1px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
