@@ -6,30 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cascada de Te Amo</title>
     <style>
-        body {
+        html, body {
             margin: 0;
             padding: 0;
             overflow: hidden;
+            width: 100%;
+            height: 100%;
             background-color: #000;
-            height: 100vh;
-            width: 100vw;
-            position: relative;
+            position: fixed;
         }
-
+        
         .corazon-fondo {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            width: 300px;
+            height: 300px;
             opacity: 0.3;
             z-index: 0;
-            clip-path: path('M200,100 C250,50 350,50 400,100 C450,150 400,250 350,300 C300,350 200,400 200,400 C200,400 100,350 50,300 C0,250 -50,150 0,100 C50,50 150,50 200,100 Z');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-image: url('esta.jpg');
+            pointer-events: none;
+            border-radius: 50px;
         }
         
         .te-amo {
@@ -50,72 +51,89 @@
 </head>
 <body>
     <div class="corazon-fondo"></div>
+    
     <script>
-       
-        const teAmoElements = [];
-        
+        // Configuración
         const config = {
             spawnRate: 300,
             minSpeed: 2,
             maxSpeed: 5,
             minSize: 20,
-            maxSize: 40 
+            maxSize: 40,
+            maxElements: 100
         };
         
+        let teAmoElements = [];
+        let animationId;
+        let spawnInterval;
+        
         function createTeAmo() {
+            if (teAmoElements.length >= config.maxElements) return;
+            
             const teAmo = document.createElement('div');
             teAmo.className = 'te-amo';
             teAmo.textContent = 'TE AMO';
-            
-            const startX = Math.random() * window.innerWidth;
-            teAmo.style.left = `${startX}px`;
+            teAmo.style.left = `${Math.random() * window.innerWidth}px`;
             teAmo.style.top = '-50px';
-            
-            const size = config.minSize + Math.random() * (config.maxSize - config.minSize);
-            teAmo.style.fontSize = `${size}px`;
-            
-            const speed = config.minSpeed + Math.random() * (config.maxSpeed - config.minSpeed);
+            teAmo.style.fontSize = `${config.minSize + Math.random() * (config.maxSize - config.minSize)}px`;
             
             document.body.appendChild(teAmo);
             
             teAmoElements.push({
                 element: teAmo,
-                speed: speed,
+                speed: config.minSpeed + Math.random() * (config.maxSpeed - config.minSpeed),
                 currentY: -50
             });
         }
         
         function animate() {
-            for (let i = teAmoElements.length - 1; i >= 0; i--) {
-                const item = teAmoElements[i];
+            const newElements = [];
+            
+            for (const item of teAmoElements) {
                 item.currentY += item.speed;
                 item.element.style.top = `${item.currentY}px`;
                 
-                if (item.currentY > window.innerHeight) {
+                if (item.currentY <= window.innerHeight) {
+                    newElements.push(item);
+                } else {
                     item.element.remove();
-                    teAmoElements.splice(i, 1);
                 }
             }
             
-            requestAnimationFrame(animate);
+            teAmoElements = newElements;
+            animationId = requestAnimationFrame(animate);
         }
         
-        animate();
-        
-        setInterval(createTeAmo, config.spawnRate);
-        
-        for (let i = 0; i < 15; i++) {
-            setTimeout(createTeAmo, i * 100);
+        function startAnimation() {
+            animate();
+            spawnInterval = setInterval(createTeAmo, config.spawnRate);
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(createTeAmo, i * 100);
+            }
         }
         
-        window.addEventListener('resize', () => {
-            teAmoElements.forEach(item => {
-                const currentX = parseFloat(item.element.style.left);
-                if (currentX > window.innerWidth) {
-                    item.element.style.left = `${window.innerWidth - 50}px`;
+        function handleResize() {
+            document.querySelector('.corazon-fondo').style.transform = 'translate(-50%, -50%)';
+            
+            teAmoElements = teAmoElements.filter(item => {
+                if (parseFloat(item.element.style.left) > window.innerWidth) {
+                    item.element.remove();
+                    return false;
                 }
+                return true;
             });
-        });
+        }
+        
+        function cleanUp() {
+            clearInterval(spawnInterval);
+            cancelAnimationFrame(animationId);
+        }
+        
+        // Iniciar la animación
+        startAnimation();
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('beforeunload', cleanUp);
     </script>
 </body>
 </html>
