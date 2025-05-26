@@ -38,3 +38,32 @@ img{
     transform: translateX(-50%);
     z-index: 10;
 }
+.ta a{
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+            padding: 8px 20px;
+            border-radius: 12px;
+            animation: textoRojo 4s linear infinite;
+            background: rgba(247, 0, 0, 0.322);
+            box-shadow: 0 5px 20px rgba(149, 117, 205, 0.15);
+            border: 1px solid rgba(179, 157, 219, 0.3);
+            transition: all 0.3s ease;
+
+            
+        }
+        
+        @keyframes textoRojo {
+            0% { color: #ff0000; }     /* Rojo brillante */
+            20% { color: #cc0000; }    /* Rojo intenso */
+            40% { color: #990000; }    /* Rojo oscuro */
+            60% { color: #ff3333; }    /* Rojo claro */
+            80% { color: #cc3333; }    /* Rojo terroso */
+            100% { color: #ff0000; }  /* Vuelve al inicio */
+        }
+        
+        /* Opcional: Efecto al pasar el mouse */
+        .ta:hover {
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
