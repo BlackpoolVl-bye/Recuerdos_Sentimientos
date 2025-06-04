@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/Logo/ICONO.png" type="image/x-icon">
+    <title>PREGUNTAS</title>
+    <style>
+        body {
+            background: #af7ead;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .quiz-container {
+            background: rgba(255,255,255,0.92);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 90vw;
+            text-align: center;
+            position: relative;
+        }
+        .quiz-title {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 18px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+        .pregunta {
+            font-size: 1.2em;
+            color: #333;
+            margin: 18px 0 12px 0;
+        }
+        .opciones button {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #ffb6c1;
+            color: #333;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .opciones button:hover {
+            background: #ff69b4;
+            color: #fff;
+        }
+        .resultado {
+            font-size: 1.3em;
+            color: #43c6ac;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .corazon-animado {
+            font-size: 2.5em;
+            animation: latido 1s infinite;
+            display: block;
+            margin-bottom: 10px;
+        }
+        @keyframes latido {
+            0%, 100% { transform: scale(1);}
+            20% { transform: scale(1.2);}
+            40% { transform: scale(0.95);}
+            60% { transform: scale(1.1);}
+            80% { transform: scale(0.98);}
+        }
+        @media (max-width: 500px) {
+            .quiz-container { padding: 18px 5px; }
+            .quiz-title { font-size: 1.3em; }
+            .pregunta { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <span class="corazon-animado">💖</span>
+        <div class="quiz-title">¿Cuánto sabes de nosotros?</div>
+        <div id="pregunta" class="pregunta"></div>
+        <div id="opciones" class="opciones"></div>
+        <div id="resultado" class="resultado"></div>
+    </div>
+    <script>
+        const quiz = [
+            {
+                pregunta: "¿En qué fecha empezamos nuestra relación?",
+                opciones: ["23 de julio de 2024", "14 de febrero de 2024", "1 de enero de 2024"],
+                respuesta: 0
+            },
+            {
+                pregunta: "¿Cuál fue nuestro primer apodo cariñoso?",
+                opciones: ["Rayito", "Princesa", "Osita"],
+                respuesta: 2
+            },
+            {
+                pregunta: "¿Cuál de las canciones te dedique el 14 de Febrero?",
+                opciones: ["Te Amo y Más - Diego Luna", "Catorce - Sebastian Romero", "Veo en ti la luz - Enredados"],
+                respuesta: 1
+            },
+            {
+                pregunta: "¿Dónde fue nuestro primer beso?",
+                opciones: ["En la india", "En el cine", "En el liceo"],
+                respuesta: 0
+            },
+            {
+                pregunta: "¿Qué peluche es nuestro favorito?",
+                opciones: ["Rayito", "Osi", "Conejito"],
+                respuesta: 0
+            }
+        ];
+
+        let actual = 0;
+        let correctas = 0;
+
+        function mostrarPregunta() {
+            if (actual < quiz.length) {
+                document.getElementById('pregunta').innerText = quiz[actual].pregunta;
+                const opcionesDiv = document.getElementById('opciones');
+                opcionesDiv.innerHTML = "";
+                quiz[actual].opciones.forEach((op, idx) => {
+                    const btn = document.createElement('button');
+                    btn.innerText = op;
+                    btn.onclick = () => responder(idx);
+                    opcionesDiv.appendChild(btn);
+                });
+                document.getElementById('resultado').innerText = "";
+            } else {
+                mostrarResultadoFinal();
+            }
+        }
+
+        function responder(idx) {
+            if (idx === quiz[actual].respuesta) {
+                correctas++;
+                document.getElementById('resultado').innerText = "¡Correcto! 😍";
+            } else {
+                document.getElementById('resultado').innerText = "¡Ups! Era otra opción 😅";
+            }
+            setTimeout(() => {
+                actual++;
+                mostrarPregunta();
+            }, 1200);
+        }
+
+        function mostrarResultadoFinal() {
+            document.getElementById('pregunta').innerText = "¡Juego terminado!";
+            document.getElementById('opciones').innerHTML = "";
+            let mensaje = "";
+            if (correctas === quiz.length) {
+                mensaje = "¡Eres la mejor novia del mundo! 💖";
+            } else if (correctas >= quiz.length - 1) {
+                mensaje = "¡Casi perfecto! Te amo muchísimo 😘";
+            } else {
+                mensaje = "¡Lo importante es que nos amamos! 💞";
+            }
+            document.getElementById('resultado').innerText = `Respuestas correctas: ${correctas}/${quiz.length}\n${mensaje}`;
+        }
+
+        mostrarPregunta();
+    </script>
+</body>
+</html>
