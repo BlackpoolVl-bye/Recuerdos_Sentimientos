@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/Logo/ICONO.png" type="image/x-icon">
+    <title>CUENTA REGRESIVA</title>
+    <style>
+        body {
+            background: #af7ead;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: #dcbadb;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+            padding: 30px 20px;
+            max-width: 350px;
+            width: 90vw;
+            text-align: center;
+        }
+        h1 {
+            color: #e4318a;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .corazon {
+            font-size: 2.5em;
+            animation: latido 1s infinite;
+            display: block;
+            margin-bottom: 10px;
+        }
+        @keyframes latido {
+            0%, 100% { transform: scale(1);}
+            20% { transform: scale(1.2);}
+            40% { transform: scale(0.95);}
+            60% { transform: scale(1.1);}
+            80% { transform: scale(0.98);}
+        }
+        .countdown {
+            font-size: 1.5em;
+            color: #333;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+        .mensaje-final {
+            color: #43c6ac;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        @media (max-width: 500px) {
+            .container { padding: 18px 5px; }
+            h1 { font-size: 1.3em; }
+            .countdown { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="corazon">❤️</span>
+        <h1>¡Falta poco para nuestro primer año juntos!</h1>
+        <div id="countdown" class="countdown"></div>
+        <div id="mensaje-final" class="mensaje-final" style="display:none;">
+            ¡Feliz primer aniversario, mi amor! Gracias por este año tan maravilloso a tu lado. Te amo con todo mi corazón. 💖
+        </div>
+    </div>
+    <script>
+        const fechaObjetivo = new Date("2025-07-23T00:00:00").getTime();
+        const countdown = document.getElementById("countdown");
+        const mensajeFinal = document.getElementById("mensaje-final");
+
+        function actualizarCuentaRegresiva() {
+            const ahora = new Date().getTime();
+            const distancia = fechaObjetivo - ahora;
+
+            if (distancia <= 0) {
+                countdown.style.display = "none";
+                mensajeFinal.style.display = "block";
+                clearInterval(intervalo);
+                return;
+            }
+
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            countdown.innerHTML = 
+                `<b>${dias}</b> días, <b>${horas}</b> horas, <b>${minutos}</b> minutos y <b>${segundos}</b> segundos`;
+        }
+
+        actualizarCuentaRegresiva();
+        const intervalo = setInterval(actualizarCuentaRegresiva, 1000);
+    </script>
+</body>
+</html>

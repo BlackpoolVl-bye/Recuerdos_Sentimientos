@@ -1,0 +1,49 @@
+body {
+    background-image: url('/Recursos/GIF/espacio.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30vh; 
+}
+video {
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+.texto-gif {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
+}
+        .arcoiris {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(270deg, #ff0080, #ff8c00, #40e0d0, #8a2be2, #ff0080);
+            background-size: 1000% 1000%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: arcoiris 5s linear infinite;
+            text-align: center;
+            padding: 10px 30px;
+        }
+        @keyframes arcoiris {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }

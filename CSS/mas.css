@@ -24,7 +24,7 @@
 img{
     background-color: #af7ead;
     position: fixed;
-    bottom: 90px;
+    bottom: 115px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
