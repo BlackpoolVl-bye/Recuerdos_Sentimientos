@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poema para ti</title>
+    <style>
+        body {
+            background: #af7ead;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .poema-container {
+            background: #dcbadb;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 90vw;
+            text-align: center;
+            position: relative;
+        }
+        .titulo-poema {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 18px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+        .linea-poema {
+            opacity: 0;
+            font-size: 1.2em;
+            color: #333;
+            margin: 12px 0;
+            transition: opacity 0.7s;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .linea-poema.visible {
+            opacity: 1;
+        }
+        .corazon-animado {
+            font-size: 2.5em;
+            animation: latido 1s infinite;
+            display: block;
+            margin-bottom: 10px;
+        }
+        @keyframes latido {
+            0%, 100% { transform: scale(1);}
+            20% { transform: scale(1.2);}
+            40% { transform: scale(0.95);}
+            60% { transform: scale(1.1);}
+            80% { transform: scale(0.98);}
+        }
+        @media (max-width: 500px) {
+            .poema-container { padding: 18px 5px; }
+            .titulo-poema { font-size: 1.3em; }
+            .linea-poema { font-size: 1em; }
+        }
+        .corazon-flotante {
+            position: absolute;
+            color: #ff69b4;
+            opacity: 0.7;
+            font-size: 1.5em;
+            animation: flotar 4s linear infinite;
+        }
+        @keyframes flotar {
+            0% { bottom: 0; opacity: 0.7; }
+            80% { opacity: 0.7; }
+            100% { bottom: 100%; opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="poema-container">
+        <span class="corazon-animado">❤️</span>
+        <div class="titulo-poema">Un poema para ti</div>
+        <div id="poema">
+            <div class="linea-poema">Desde que llegaste, mi mundo cambió de color,</div>
+            <div class="linea-poema">cada día contigo es un verso nuevo de amor.</div>
+            <div class="linea-poema">Tus sonrisas son la luz que ilumina mi camino,</div>
+            <div class="linea-poema">y tus abrazos, el refugio donde siempre me siento seguro.</div>
+            <div class="linea-poema">Eres mi sueño cumplido, mi alegría y mi paz,</div>
+            <div class="linea-poema">la razón por la que mi corazón siempre quiere un poco más.</div>
+            <div class="linea-poema">Gracias por ser mi todo, mi presente y mi futuro,</div>
+            <div class="linea-poema">te amo más de lo que puedo decir, y eso es lo más seguro.</div>
+        </div>
+    </div>
+    <script>
+        const lineas = document.querySelectorAll('.linea-poema');
+        let i = 0;
+        function mostrarLinea() {
+            if (i < lineas.length) {
+                lineas[i].classList.add('visible');
+                i++;
+                setTimeout(mostrarLinea, 1700);
+            }
+        }
+        mostrarLinea();
+
+        function crearCorazon() {
+            const container = document.querySelector('.poema-container');
+            const corazon = document.createElement('span');
+            corazon.className = 'corazon-flotante';
+            corazon.innerText = '💖';
+            corazon.style.left = Math.random() * 90 + '%';
+            corazon.style.fontSize = (1 + Math.random() * 1.5) + 'em';
+            corazon.style.animationDuration = (3 + Math.random() * 2) + 's';
+            container.appendChild(corazon);
+            setTimeout(() => container.removeChild(corazon), 4000);
+        }
+        setInterval(crearCorazon, 1200);
+    </script>
+</body>
+</html>
