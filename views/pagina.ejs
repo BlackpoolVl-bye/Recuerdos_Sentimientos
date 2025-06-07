@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= pagina.titulo %></title>
+</head>
+<body>
+  <h1><%= pagina.titulo %></h1>
+  <div><%- pagina.contenido.replace(/\n/g, '<br>') %></div>
+  <a href="/views/listar.ejs">Volver al listado</a>
+</body>
+</html>

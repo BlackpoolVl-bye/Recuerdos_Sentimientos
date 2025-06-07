@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Nueva Página</title>
+</head>
+<body>
+  <h1>Crear Nueva Página</h1>
+  <form action="/pagina/nueva" method="POST">
+    <div>
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" required>
+    </div>
+    <div>
+      <label for="contenido">Contenido:</label>
+      <textarea id="contenido" name="contenido" rows="10" required></textarea>
+    </div>
+    <div>
+      <label for="url">URL:</label>
+      <input type="text" id="url" name="url" required>
+    </div>
+    <div>
+      <label for="estado">Estado:</label>
+      <select id="estado" name="estado">
+        <option value="borrador">Borrador</option>
+        <option value="publicado">Publicado</option>
+      </select>
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+</body>
+</html>

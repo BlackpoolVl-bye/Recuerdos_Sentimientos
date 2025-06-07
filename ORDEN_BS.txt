@@ -1,0 +1,17 @@
+/proyecto-web/
+  ├── node_modules/
+  ├── config/
+  │   └── database.js
+  ├── controllers/
+  │   └── paginaController.js
+  ├── models/
+  │   └── paginaModel.js
+  ├── routes/
+  │   └── paginas.js
+  ├── views/
+  │   ├── pagina.ejs
+  │   ├── listar.ejs
+  │   └── formulario.ejs
+  ├── app.js
+  ├── package.json
+  └── .env

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Páginas</title>
+</head>
+<body>
+  <h1>Páginas Publicadas</h1>
+  <a href="/pagina/nueva">Crear Nueva Página</a>
+  
+  <ul>
+    <% paginas.forEach(pagina => { %>
+      <li>
+        <a href="/pagina/<%= pagina.url %>"><%= pagina.titulo %></a>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
