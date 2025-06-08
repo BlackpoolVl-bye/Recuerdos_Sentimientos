@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>llevamos juntitos</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #af7ead 0%, #ffb6b9 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .cronometro-container {
+            background: rgba(255,255,255,0.97);
+            border-radius: 25px;
+            box-shadow: 0 6px 32px rgba(175,126,173,0.18);
+            padding: 36px 24px 30px 24px;
+            max-width: 370px;
+            width: 92vw;
+            text-align: center;
+            margin-top: 30px;
+            position: relative;
+            animation: aparecer 1s;
+        }
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .titulo-cronometro {
+            color: #af7ead;
+            font-size: 2em;
+            margin-bottom: 18px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+        .tiempo {
+            font-size: 1.5em;
+            color: #ff69b4;
+            margin: 18px 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .mensaje {
+            color: #af7ead;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        @media (max-width: 500px) {
+            .cronometro-container { padding: 14px 3vw 10px 3vw; }
+            .titulo-cronometro { font-size: 1.2em; }
+            .tiempo { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cronometro-container">
+        <div class="titulo-cronometro">Llevamos juntos... ⏳💜</div>
+        <div id="tiempo" class="tiempo"></div>
+        <div class="mensaje">
+            Desde el primer momento hasta ahora,<br>
+            cada segundo a tu lado ha sido maravilloso.
+        </div>
+    </div>
+    <script>
+        const fechaInicio = new Date("2024-07-23T00:00:00");
+
+        function actualizarCronometro() {
+            const ahora = new Date();
+            let diff = ahora - fechaInicio;
+
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            diff -= dias * (1000 * 60 * 60 * 24);
+            const horas = Math.floor(diff / (1000 * 60 * 60));
+            diff -= horas * (1000 * 60 * 60);
+            const minutos = Math.floor(diff / (1000 * 60));
+            diff -= minutos * (1000 * 60);
+            const segundos = Math.floor(diff / 1000);
+
+            document.getElementById('tiempo').innerHTML =
+                `<span>${dias}</span> días, <span>${horas}</span> horas, <span>${minutos}</span> minutos y <span>${segundos}</span> segundos`;
+        }
+
+        actualizarCronometro();
+        setInterval(actualizarCronometro, 1000);
+    </script>
+</body>
+</html>

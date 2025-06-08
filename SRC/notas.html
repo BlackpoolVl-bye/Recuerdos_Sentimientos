@@ -3,100 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libro de visitas</title>
-    <script src="/SDK/module.js"></script>
-    <style>
-        body {
-            background: #af7ead;
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-        .libro-container {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-            padding: 30px 20px 20px 20px;
-            max-width: 400px;
-            width: 90vw;
-            text-align: center;
-            margin-top: 30px;
-        }
-        .titulo-libro {
-            color: #ff69b4;
-            font-size: 2em;
-            margin-bottom: 18px;
-            font-family: 'Pacifico', cursive, Arial, sans-serif;
-            letter-spacing: 1px;
-        }
-        .entrada-form {
-            margin-bottom: 18px;
-        }
-        .entrada-form input, .entrada-form textarea {
-            width: 90%;
-            padding: 8px;
-            margin: 6px 0;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 1em;
-        }
-        .entrada-form button {
-            background: #ff69b4;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 18px;
-            font-size: 1em;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-        .entrada-form button:hover {
-            background: #af7ead;
-        }
-        .mensajes {
-            text-align: left;
-            margin-top: 18px;
-            max-height: 250px;
-            overflow-y: auto;
-        }
-        .mensaje {
-            background: #f8e1ff;
-            border-radius: 10px;
-            padding: 10px 12px;
-            margin-bottom: 10px;
-            font-size: 1em;
-        }
-        .mensaje .autor {
-            font-weight: bold;
-            color: #af7ead;
-        }
-        .mensaje .fecha {
-            font-size: 0.85em;
-            color: #888;
-            float: right;
-        }
-        @media (max-width: 500px) {
-            .libro-container { padding: 18px 5px 10px 5px; }
-            .titulo-libro { font-size: 1.3em; }
-            .mensaje { font-size: 0.95em; }
-        }
-    </style>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <title>Notas</title>
+    <link rel="stylesheet" href="/CSS/notas.css">
 </head>
 <body>
-    <div class="libro-container">
-        <div class="titulo-libro">Nuestro libro de visitas 💬</div>
-        <form class="entrada-form" onsubmit="agregarMensaje(event)">
+    <div class="notas-container">
+        <div class="titulo-notas">Nuestras Notas 💜</div>
+        <form class="nota-form" onsubmit="agregarNota(event)">
             <input type="text" id="autor" placeholder="Tu nombre o apodo" required maxlength="20"><br>
-            <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." required maxlength="200"></textarea><br>
-            <button type="submit">Agregar mensaje</button>
+            <textarea id="nota" placeholder="Escribe una nota bonita aquí..." required maxlength="200"></textarea><br>
+            <button type="submit">Agregar nota</button>
         </form>
-        <div class="mensajes" id="mensajes"></div>
+        <div class="notas-lista" id="notas-lista"></div>
     </div>
+    <script src="/JavaScript/notas.js"></script>
 </body>
 </html>

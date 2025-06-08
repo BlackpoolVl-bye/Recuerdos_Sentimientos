@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresas</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #af7ead 0%, #ffb6b9 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        .caja-sorpresa-container {
+            background: rgba(255,255,255,0.97);
+            border-radius: 25px;
+            box-shadow: 0 6px 32px rgba(175,126,173,0.18);
+            padding: 36px 24px 30px 24px;
+            max-width: 370px;
+            width: 92vw;
+            text-align: center;
+            margin-top: 30px;
+            position: relative;
+            animation: aparecer 1s;
+        }
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .titulo-sorpresa {
+            color: #af7ead;
+            font-size: 2em;
+            margin-bottom: 18px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+        .btn-sorpresa {
+            background: linear-gradient(135deg, #ff69b4 0%, #af7ead 100%);
+            color: #fff;
+            border: none;
+            border-radius: 18px;
+            padding: 16px 38px;
+            font-size: 1.2em;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(175,126,173,0.15);
+            transition: background 0.2s, transform 0.2s;
+            margin-bottom: 18px;
+        }
+        .btn-sorpresa:hover {
+            background: linear-gradient(135deg, #af7ead 0%, #ff69b4 100%);
+            transform: scale(1.05);
+        }
+        .sorpresa {
+            margin-top: 22px;
+            min-height: 80px;
+            font-size: 1.15em;
+            color: #af7ead;
+            animation: aparecer 0.7s;
+            word-break: break-word;
+        }
+        .sorpresa img, .sorpresa video {
+            max-width: 220px;
+            border-radius: 14px;
+            margin-top: 12px;
+            box-shadow: 0 2px 8px rgba(175,126,173,0.10);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .corazon-flotante {
+            position: fixed;
+            color: #ff69b4;
+            opacity: 0.7;
+            font-size: 1.5em;
+            pointer-events: none;
+            animation: flotar 4s linear forwards;
+            z-index: 100;
+        }
+        @keyframes flotar {
+            0% { transform: translateY(0) scale(1);}
+            80% { opacity: 0.7;}
+            100% { transform: translateY(-80vh) scale(1.5); opacity: 0;}
+        }
+        @media (max-width: 500px) {
+            .caja-sorpresa-container { padding: 14px 3vw 10px 3vw; }
+            .titulo-sorpresa { font-size: 1.2em; }
+            .btn-sorpresa { font-size: 1em; padding: 12px 18px; }
+            .sorpresa { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="caja-sorpresa-container">
+        <div class="titulo-sorpresa">Caja de Sorpresas 🎁</div>
+        <button class="btn-sorpresa" onclick="mostrarSorpresa()">¡Abrir Sorpresa!</button>
+        <div id="sorpresa" class="sorpresa"></div>
+    </div>
+    <script>
+        const sorpresas = [
+    "Eres la razón por la que sonrío cada día. 💖",
+    "Tu amor es mi mayor tesoro.",
+    "Gracias por existir y por hacerme tan feliz.",
+    "Contigo, todos los días son mágicos.",
+    "Eres mi sueño hecho realidad.",
+    "No hay nada que me haga más feliz que estar a tu lado.",
+    "Tu risa es mi melodía favorita.",
+    "Eres mi lugar seguro en este mundo.",
+    "Cada momento contigo es un regalo.",
+    "Te amo más de lo que las palabras pueden expresar.",
+    "Eres mi mejor amiga y mi gran amor.",
+    "Siempre elijo amarte, hoy y todos los días.",
+    "Eres mi sol en los días nublados.",
+    "Gracias por ser mi compañera de vida.",
+    "A tu lado, todo es posible.",
+    "Eres mi inspiración y mi alegría.",
+    "No cambiaría ni un segundo de mi vida contigo.",
+    "Eres mi paz y mi aventura.",
+    "Te amo por todo lo que eres y por todo lo que soy contigo.",
+    "Eres mi razón para creer en el amor verdadero.",
+    "Cada día contigo es mi día favorito.",
+    "Eres la persona más especial que he conocido.",
+    "Gracias por tu paciencia, tu ternura y tu amor.",
+    "Eres mi confidente, mi apoyo y mi felicidad.",
+    "No importa lo que pase, siempre estaré para ti.",
+    "Eres mi presente y mi futuro.",
+    "A tu lado, la vida es más bonita.",
+    "Eres mi mejor historia.",
+    "Te amo más allá de las estrellas.",
+    "Siempre serás mi persona favorita. 💜"
+        ];
+
+        function mostrarSorpresa() {
+            const sorpresa = sorpresas[Math.floor(Math.random() * sorpresas.length)];
+            document.getElementById('sorpresa').innerHTML = sorpresa;
+        }
+        // Corazones flotantes animados
+        function crearCorazon() {
+            const corazon = document.createElement('span');
+            corazon.className = 'corazon-flotante';
+            corazon.innerText = '💖';
+            corazon.style.left = Math.random() * 95 + 'vw';
+            corazon.style.bottom = '-30px';
+            corazon.style.fontSize = (1 + Math.random() * 1.5) + 'em';
+            document.body.appendChild(corazon);
+            setTimeout(() => document.body.removeChild(corazon), 4000);
+        }
+        setInterval(crearCorazon, 1200);
+    </script>
+</body>
+</html>

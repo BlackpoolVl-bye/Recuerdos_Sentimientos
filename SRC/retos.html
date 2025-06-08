@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retos para nosotros</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #af7ead 0%, #ffb6b9 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .reto-container {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(175,126,173,0.12);
+            padding: 28px 16px 18px 16px;
+            max-width: 370px;
+            width: 92vw;
+            text-align: center;
+            margin: 40px auto 0 auto;
+            animation: aparecer 1s;
+        }
+        .titulo-reto {
+            color: #ff69b4;
+            font-size: 1.7em;
+            margin-bottom: 14px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+        .btn-reto {
+            background: linear-gradient(135deg, #af7ead 0%, #ff69b4 100%);
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            padding: 12px 28px;
+            font-size: 1.1em;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(175,126,173,0.15);
+            transition: background 0.2s, transform 0.2s;
+            margin-bottom: 14px;
+        }
+        .btn-reto:hover {
+            background: linear-gradient(135deg, #ff69b4 0%, #af7ead 100%);
+            transform: scale(1.05);
+        }
+        .reto {
+            margin-top: 18px;
+            min-height: 40px;
+            font-size: 1.15em;
+            color: #af7ead;
+            animation: aparecer 0.7s;
+        }
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @media (max-width: 500px) {
+            .reto-container { padding: 14px 3vw 10px 3vw; }
+            .titulo-reto { font-size: 1.1em; }
+            .btn-reto { font-size: 1em; padding: 10px 16px; }
+            .reto { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="reto-container">
+        <div class="titulo-reto">Reto del día 💌</div>
+        <button class="btn-reto" onclick="mostrarReto()">¡Dame un reto!</button>
+        <div id="reto" class="reto"></div>
+    </div>
+    <script>
+        const retos = [
+            "Hoy mándame una foto graciosa tuya.",
+            "Escríbeme una carta corta y déjala en una nota de voz.",
+            "Dime tres cosas que te gustan de mí.",
+            "Hazme una pregunta que nunca me hayas hecho.",
+            "Dedícame una canción por WhatsApp.",
+            "Envíame un meme que te recuerde a nosotros.",
+            "Haz un dibujo (aunque sea sencillo) y mándamelo.",
+            "Cuéntame un secreto tuyo.",
+            "Graba un video diciendo algo bonito para mí.",
+            "Hazme una promesa para esta semana.",
+            "Dime una meta que quieras cumplir conmigo.",
+            "Cuéntame tu recuerdo favorito de nosotros.",
+            "Hazme una lista de 5 cosas que te hacen feliz.",
+            "Invítame a salir.",
+            "Escríbeme un poema, aunque sea corto.",
+            "Hazme una pregunta divertida.",
+            "Dime cómo te imaginas nuestro futuro.",
+            "Mándame un audio diciendo 'te amo' de la forma más tierna.",
+            "Hazme una confesión romántica.",
+            "Dime qué superpoder te gustaría tener si estuviéramos juntos en una aventura.",
+            "Hazme una declaración de amor en otro idioma.",
+            "Cuéntame un sueño loco que hayas tenido conmigo.",
+            "Haz una lista de apodos cariñosos para mí.",
+            "Dime qué lugar del mundo te gustaría visitar conmigo.",
+            "Hazme una invitación a ver una película juntos.",
+            "Dime una frase que te gustaría que te dijera cada mañana.",
+            "Hazme una pregunta sobre nuestra historia.",
+            "Dime qué canción te gustaría que fuera nuestro himno.",
+            "Hazme una propuesta de cita ideal.",
+            "Dime cómo sería un día perfecto a tu lado."
+        ];
+
+        function mostrarReto() {
+            const reto = retos[Math.floor(Math.random() * retos.length)];
+            document.getElementById('reto').innerText = reto;
+        }
+    </script>
+</body>
+</html>

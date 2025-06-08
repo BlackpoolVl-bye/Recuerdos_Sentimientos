@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle de nosotros</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #af7ead 0%, #ffb6b9 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .puzzle-container {
+            background: rgba(255,255,255,0.97);
+            border-radius: 25px;
+            box-shadow: 0 6px 32px rgba(175,126,173,0.18);
+            padding: 30px 10px 20px 10px;
+            max-width: 350px;
+            width: 95vw;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .titulo-puzzle {
+            color: #af7ead;
+            font-size: 1.5em;
+            margin-bottom: 18px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+        }
+        .puzzle {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 2px;
+            justify-content: center;
+            margin: 0 auto 18px auto;
+            user-select: none;
+        }
+        .pieza {
+            width: 80px;
+            height: 80px;
+            background-size: 240px 240px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(175,126,173,0.10);
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .pieza.vacia {
+            background: #f8e1ff;
+            cursor: default;
+            box-shadow: none;
+        }
+        .mensaje-puzzle {
+            color: #ff69b4;
+            font-size: 1.1em;
+            min-height: 30px;
+            margin-top: 10px;
+        }
+        @media (max-width: 500px) {
+            .puzzle { grid-template-columns: repeat(3, 22vw); grid-template-rows: repeat(3, 22vw);}
+            .pieza { width: 22vw; height: 22vw; min-width: 60px; min-height: 60px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="puzzle-container">
+        <div class="titulo-puzzle">¡Arma nuestro puzzle cielo!</div>
+        <div id="puzzle" class="puzzle"></div>
+        <div id="mensaje-puzzle" class="mensaje-puzzle"></div>
+    </div>
+    <script>
+        const foto = "/Recursos/Sorpresas/Dia_pizza.jpg"; // <-- pon aquí la ruta de tu imagen
+
+        const filas = 3, columnas = 3;
+        let piezas = [];
+        let vacia = {fila: filas-1, col: columnas-1};
+
+        function crearPiezas() {
+            piezas = [];
+            for(let f=0; f<filas; f++) {
+                for(let c=0; c<columnas; c++) {
+                    piezas.push({fila: f, col: c});
+                }
+            }
+
+            piezas.pop();
+            piezas.push(null);
+        }
+
+        function mezclarPiezas() {
+            for(let i=0; i<100; i++) {
+                let movibles = obtenerMovibles();
+                let mov = movibles[Math.floor(Math.random()*movibles.length)];
+                moverPieza(mov.fila, mov.col, false);
+            }
+        }
+
+        function obtenerMovibles() {
+            let movs = [];
+            let {fila, col} = vacia;
+            [[0,1],[0,-1],[1,0],[-1,0]].forEach(([df,dc])=>{
+                let nf = fila+df, nc = col+dc;
+                if(nf>=0 && nf<filas && nc>=0 && nc<columnas) movs.push({fila:nf, col:nc});
+            });
+            return movs;
+        }
+
+        function renderizarPuzzle() {
+            const puzzleDiv = document.getElementById('puzzle');
+            puzzleDiv.innerHTML = '';
+            for(let f=0; f<filas; f++) {
+                for(let c=0; c<columnas; c++) {
+                    let idx = f*columnas+c;
+                    let pieza = piezas[idx];
+                    let div = document.createElement('div');
+                    div.className = 'pieza' + (pieza ? '' : ' vacia');
+                    if(pieza) {
+                        div.style.backgroundImage = `url('${foto}')`;
+                        div.style.backgroundPosition = `-${pieza.col*80}px -${pieza.fila*80}px`;
+                        div.onclick = ()=>intentarMover(f,c);
+                    }
+                    puzzleDiv.appendChild(div);
+                }
+            }
+        }
+
+        function intentarMover(f,c) {
+            let {fila, col} = vacia;
+            if((Math.abs(f-fila)+Math.abs(c-col))===1) {
+                moverPieza(f,c,true);
+                if(esResuelto()) {
+                    document.getElementById('mensaje-puzzle').innerText = "¡Felicidades! Eres la pieza que completa mi vida 💖";
+                } else {
+                    document.getElementById('mensaje-puzzle').innerText = "";
+                }
+            }
+        }
+
+        function moverPieza(f,c,render=true) {
+            let vacIdx = vacia.fila*columnas+vacia.col;
+            let movIdx = f*columnas+c;
+            piezas[vacIdx] = piezas[movIdx];
+            piezas[movIdx] = null;
+            vacia = {fila: f, col: c};
+            if(render) renderizarPuzzle();
+        }
+
+        function esResuelto() {
+            for(let i=0; i<piezas.length-1; i++) {
+                let f = Math.floor(i/columnas), c = i%columnas;
+                let pieza = piezas[i];
+                if(!pieza || pieza.fila!==f || pieza.col!==c) return false;
+            }
+            return true;
+        }
+
+        // Inicializar puzzle
+        crearPiezas();
+        mezclarPiezas();
+        renderizarPuzzle();
+    </script>
+</body>
+</html>

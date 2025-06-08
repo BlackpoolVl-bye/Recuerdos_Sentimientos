@@ -1,0 +1,86 @@
+body {
+            background: #af7ead;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .notas-container {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+            padding: 30px 20px 20px 20px;
+            max-width: 400px;
+            width: 90vw;
+            text-align: center;
+            margin-top: 30px;
+            position: relative;
+        }
+        .titulo-notas {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 18px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+        .nota-form {
+            margin-bottom: 18px;
+        }
+        .nota-form input, .nota-form textarea {
+            width: 90%;
+            padding: 8px;
+            margin: 6px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+        .nota-form button {
+            background: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 18px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.3s;
+        }
+        .nota-form button:hover {
+            background: #af7ead;
+        }
+        .notas-lista {
+            text-align: left;
+            margin-top: 18px;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .nota {
+            background: #f8e1ff;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            animation: aparecer 0.7s;
+            box-shadow: 0 2px 8px rgba(175,126,173,0.07);
+        }
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .nota .autor {
+            font-weight: bold;
+            color: #af7ead;
+        }
+        .nota .fecha {
+            font-size: 0.85em;
+            color: #888;
+            float: right;
+        }
+        @media (max-width: 500px) {
+            .notas-container { padding: 18px 5px 10px 5px; }
+            .titulo-notas { font-size: 1.3em; }
+            .nota { font-size: 0.95em; }
+        }

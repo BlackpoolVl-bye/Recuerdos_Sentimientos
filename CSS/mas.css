@@ -38,32 +38,54 @@ img{
     transform: translateX(-50%);
     z-index: 10;
 }
-.ta a{
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-decoration: none;
-            letter-spacing: 1px;
-            padding: 8px 20px;
-            border-radius: 12px;
-            animation: textoRojo 4s linear infinite;
-            background: rgba(247, 0, 0, 0.322);
-            box-shadow: 0 5px 20px rgba(149, 117, 205, 0.15);
-            border: 1px solid rgba(179, 157, 219, 0.3);
-            transition: all 0.3s ease;
+.ta {
+    background: linear-gradient(135deg, #ff7e7e 0%, #ffb6b6 100%);
+    border-radius: 15px;
+    padding: 12px 0;
+    margin: 18px auto;
+    width: 160px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(255,126,126,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.ta a {
+    color: #a80000;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+.ta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(255,126,126,0.25);
+}
+.ta a:hover {
+    color: #6b0000;
+}
 
-            
-        }
-        
-        @keyframes textoRojo {
-            0% { color: #ff0000; }     /* Rojo brillante */
-            20% { color: #cc0000; }    /* Rojo intenso */
-            40% { color: #990000; }    /* Rojo oscuro */
-            60% { color: #ff3333; }    /* Rojo claro */
-            80% { color: #cc3333; }    /* Rojo terroso */
-            100% { color: #ff0000; }  /* Vuelve al inicio */
-        }
-        
-        /* Opcional: Efecto al pasar el mouse */
-        .ta:hover {
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        }
+.ta-verde {
+    background: linear-gradient(135deg, #43c6ac 0%, #b0f2c2 100%);
+    border-radius: 15px;
+    padding: 12px 0;
+    margin: 18px auto;
+    width: 160px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(67,198,172,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.ta-verde a {
+    color: #226644;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+.ta-verde:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(67,198,172,0.25);
+}
+.ta-verde a:hover {
+    color: #0b3d2e;
+}
