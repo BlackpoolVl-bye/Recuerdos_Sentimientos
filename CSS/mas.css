@@ -170,3 +170,53 @@ img{
     .fecha-animada { font-size: 1.2em; }
     .fecha-texto { font-size: 1em; }
 }
+.ta-galaxia {
+    background: linear-gradient(120deg, #1a2980 0%, #26d0ce 40%, #7f53ac 70%, #647dee 100%);
+    border-radius: 15px;
+    padding: 12px 0;
+    margin: 18px auto;
+    width: 170px;
+    text-align: center;
+    box-shadow: 0 4px 24px 0 rgba(100,125,222,0.25), 0 0 40px 0 #fff3;
+    position: relative;
+    overflow: hidden;
+    animation: aparecerFecha 1.2s;
+}
+.ta-galaxia::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: repeating-radial-gradient(circle at 30% 30%, #fff8 0 1px, transparent 1px 100%);
+    pointer-events: none;
+    z-index: 1;
+    animation: galaxiaEstrellas 6s linear infinite;
+}
+@keyframes galaxiaEstrellas {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 60px 60px, 120px 120px; }
+}
+.ta-galaxia a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.15em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s, text-shadow 0.2s;
+    text-shadow: 0 0 12px #fff, 0 0 24px #7f53ac;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    animation: galaxiaBrillo 2.5s infinite alternate, latido 2s infinite;
+}
+@keyframes galaxiaBrillo {
+    from { text-shadow: 0 0 8px #fff, 0 0 16px #7f53ac; }
+    to { text-shadow: 0 0 24px #fff, 0 0 32px #26d0ce; }
+}
+.ta-galaxia:hover {
+    transform: scale(1.08) rotate(-1deg);
+    box-shadow: 0 8px 32px 0 #7f53ac88, 0 0 60px 0 #fff5;
+}
+.ta-galaxia a:hover {
+    color: #ffe082;
+    text-shadow: 0 0 32px #ffe082, 0 0 24px #fff;
+}
