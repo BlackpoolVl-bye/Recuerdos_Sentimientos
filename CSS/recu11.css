@@ -1,0 +1,143 @@
+/* NAV mejorado con iconos visibles y estilo profesional */
+.nave nav {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #af7ead22;
+    padding: 16px 28px;
+    margin: 28px auto 20px auto;
+    max-width: 600px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    animation: fadeInUp 1.2s;
+}
+.nave nav a {
+    color: #af7ead;
+    font-weight: bold;
+    font-size: 1.13em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    border-radius: 14px;
+    transition: 
+        background 0.2s, 
+        color 0.2s, 
+        box-shadow 0.2s, 
+        transform 0.2s;
+    position: relative;
+}
+.nave nav a i {
+    font-size: 1.4em;
+    color: #ff69b4;
+    text-shadow: 0 0 10px #ffb6b9, 0 0 2px #fff;
+    transition: color 0.2s, text-shadow 0.2s;
+    display: inline-block;
+}
+.nave nav a:hover, .nave nav a:focus {
+    background: linear-gradient(135deg, #ffb6b9 0%, #af7ead 100%);
+    color: #fff;
+    box-shadow: 0 4px 24px #ffb6b9aa;
+    transform: scale(1.08) rotate(-2deg);
+}
+.nave nav a:hover i, .nave nav a:focus i {
+    color: #fff;
+    text-shadow: 0 0 24px #fff, 0 0 12px #ff69b4;
+    animation: brillo 1.2s infinite alternate;
+}
+@keyframes brillo {
+    from { filter: drop-shadow(0 0 2px #fff);}
+    to { filter: drop-shadow(0 0 16px #fff);}
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@media (max-width: 600px) {
+    .nave nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px 0;
+        max-width: 98vw;
+    }
+    .nave nav a {
+        justify-content: center;
+        font-size: 1em;
+        padding: 10px 0;
+    }
+    .nave nav a i {
+        font-size: 1.2em;
+    }
+}
+
+
+
+
+/* Efecto de imágenes alternando de lado */
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 24px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 22px;
+    box-shadow: 0 4px 24px #af7ead22;
+    padding: 18px 12px 12px 12px;
+    margin: 22px auto;
+    max-width: 700px;
+    text-align: left;
+    position: relative;
+    animation: fadeInUp 1.2s;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.image-container.even {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+.image-container img {
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #ffb6b944;
+    width: 220px;
+    max-width: 90vw;
+    height: auto;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+}
+.image-container:hover img {
+    transform: scale(1.04) rotate(-2deg);
+}
+.image-text {
+    background: linear-gradient(0deg, rgba(175,126,173,0.15) 80%, rgba(255,255,255,0.05) 100%);
+    color: #af7ead;
+    padding: 18px 12px 10px 12px;
+    border-radius: 16px;
+    font-size: 1em;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 2px 12px #af7ead22;
+    margin: 0 0 0 10px;
+    max-width: 340px;
+}
+.image-container.even .image-text {
+    margin: 0 10px 0 0;
+}
+@media (max-width: 700px) {
+    .image-container, .image-container.even {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 10px;
+        max-width: 98vw;
+        padding: 8px 2vw;
+    }
+    .image-container img {
+        width: 90vw;
+        max-width: 98vw;
+    }
+    .image-text {
+        margin: 0;
+        max-width: 98vw;
+    }
+}

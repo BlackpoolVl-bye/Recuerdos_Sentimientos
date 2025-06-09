@@ -6,100 +6,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Logo/ICONO.png" type="image/x-icon">
     <link rel="stylesheet" href="/CSS/estilo2.css">
+    <link rel="stylesheet" href="/CSS/video.css">
     <script src="/JavaScript/java.js"></script>
     <title>VIDEO</title>
+    <style>
+        .container {
+            background: rgba(255,255,255,0.65);
+            border-radius: 22px;
+            box-shadow: 0 4px 24px #af7ead22;
+            padding: 24px 18px 18px 18px;
+            margin: 32px auto 18px auto;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeInUp 1.2s;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .container:hover {
+            box-shadow: 0 8px 32px #ffb6b9aa;
+            transform: scale(1.03) rotate(-1deg);
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-container video {
+            border-radius: 18px;
+            box-shadow: 0 2px 16px #af7ead44;
+            border: 3px solid #ffe9f3;
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+        .video-container video:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 8px 32px #ffb6b9cc;
+            border-color: #ffb6b9;
+        }
+        h4 {
+            background: rgba(255,255,255,0.85);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px #af7ead22;
+            color: #af7ead;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            font-size: 1.08em;
+            letter-spacing: 0.5px;
+            padding: 16px 18px;
+            margin: 18px auto 10px auto;
+            max-width: 420px;
+            text-align: center;
+            animation: fadeInUp 1.2s;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @media (max-width: 600px) {
+            .container, .separador2 {
+                max-width: 98vw;
+                padding: 8px 2vw;
+            }
+            .video-container video {
+                max-width: 98vw;
+            }
+            h4 {
+                font-size: 1em;
+                padding: 12px 6px;
+                max-width: 98vw;
+            }
+        }
+    </style>
 </head>
-
+<center>
 <body>
-    <center>
-        <div class="nave">
-            <nav>
-                <a href="/index.html">INICIO</a>
-                <a href="recuerdos.html">RECUERDOS</a>
-                <a href="video.html">VIDEOS</a>
-                <a href="mas.html">MAS</a>
-            </nav>
-        </div>
-    </center>
-    <h4>Estos son recuerdos de oro que tengo de ti y de nosotros juntos.... Me gustaria dejarlos inmortalizados aca en
-        esta pagina para ti</h4>
+    <div class="nave">
+        <nav>
+            <a href="/index.html"><i class="fas fa-home"></i> INICIO</a>
+            <a href="/SRC/recuerdos.html"><i class="fas fa-images"></i> RECUERDOS</a>
+            <a href="/SRC/video.html"><i class="fas fa-video"></i> VIDEOS</a>
+            <a href="/SRC/mas.html"><i class="fas fa-heart"></i> MAS</a>
+        </nav>
+    </div>
+    <h4>Estos son recuerdos de oro que tengo de ti y de nosotros juntos... Me gustaría dejarlos inmortalizados acá en esta página para ti.</h4>
     <div class="separador2"></div>
-    <br>
-    <center>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/cargada.mp4" width="286" height="600" controls></video>
-            </div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/cargada.mp4" controls></video>
         </div>
-        <h4>Este video es uno de esos que me encantan... Nos sentiamos muy bien JAJAJAJA, Te amo mi princesa hermosa❤️
-        </h4>
-        <div class="separador2"></div>
-        <br>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/VID-20250122-WA0078.mp4" width="286" height="600" controls></video>
-            </div>
-        </div>
-        <h4>Le ronpiste el labio a tu esposa!!!!, yo encantado de marcar esos hermosos y deliciosos labios mi cosita
-            hermosa❤️</h4>
-        <div class="separador2"></div>
-        <br>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/VID-20250208-WA0137 (1).mp4" width="286" height="600" controls></video>
-            </div>
-        </div>
-        <h4>ESAS PIERNOTASSSSSSSS LAS AMOOOOO, Me encanta esa evidencia mi cosita hermosa. Realmente te amo mi vida...
-            de verdad lo hago</h4>
-        <div class="separador2"></div>
-        <br>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/Sherk.mp4" width="286" height="600" controls></video>
-            </div>
-        </div>
-        <h4>El dia del baile de Sherk, fue muy divertido aunque tu esposo hermoso la cago y no se termino de apreder el
-            baile... NUNCA LO PRACTICO :)</h4>
+    </div>
+    <h4>Este video es uno de esos que me encantan... Nos sentíamos muy bien JAJAJAJA, Te amo mi princesa hermosa ❤️</h4>
     <div class="separador2"></div>
-        <br>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/uniforrojo.mp4" width="286" height="600" controls></video>
-            </div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/VID-20250122-WA0078.mp4" controls></video>
         </div>
-        <h4>Gorditos y bonitos muchachos</h4>
+    </div>
+    <h4>Le rompiste el labio a tu esposa!!!!, yo encantado de marcar esos hermosos y deliciosos labios mi cosita hermosa ❤️</h4>
     <div class="separador2"></div>
-        <br>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/css esposp.mp4" width="286" height="600" controls></video>
-            </div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/VID-20250208-WA0137 (1).mp4" controls></video>
         </div>
-        <h4>24/04/25... Un dia muy bonito, esperando a tu mama en la universidad JAJAJA</h4>
+    </div>
+    <h4>ESAS PIERNOTASSSSSSSS LAS AMOOOOO, Me encanta esa evidencia mi cosita hermosa. Realmente te amo mi vida... de verdad lo hago</h4>
     <div class="separador2"></div>
-        <br>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/pico.mp4" width="286" height="600" controls></video>
-            </div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/Sherk.mp4" controls></video>
         </div>
-        <h4>Un dia muy lindo juntos, verdad?... fue muy hermoso mi amor... y ese pico... magico</h4>
+    </div>
+    <h4>El día del baile de Shrek, fue muy divertido aunque tu esposo hermoso la cagó y no se terminó de aprender el baile... NUNCA LO PRACTICÓ :)</h4>
     <div class="separador2"></div>
-        <br>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/agresion.mp4" width="286" height="600" controls></video>
-            </div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/uniforrojo.mp4" controls></video>
         </div>
-        <h4>Escuchamos pero no juzgamos, mi esposa me pega y me trata como saco de boxeo</h4>
-        <div class="separador2"></div>
-        <br>
-        <div class="container">
-            <div class="video-container">
-                <video src="/Recursos/Video/agre2.mp4" width="286" height="600" controls></video>
-            </div>
+    </div>
+    <h4>Gorditos y bonitos muchachos</h4>
+    <div class="separador2"></div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/css esposp.mp4" controls></video>
         </div>
-        <h4>MASSSSS PRUEBAS PARA DENUNCIARTE MI AMOR</h4>
+    </div>
+    <h4>24/04/25... Un día muy bonito, esperando a tu mamá en la universidad JAJAJA</h4>
+    <div class="separador2"></div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/pico.mp4" controls></video>
+        </div>
+    </div>
+    <h4>Un día muy lindo juntos, ¿verdad?... fue muy hermoso mi amor... y ese pico... mágico</h4>
+    <div class="separador2"></div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/agresion.mp4" controls></video>
+        </div>
+    </div>
+    <h4>Escuchamos pero no juzgamos, mi esposa me pega y me trata como saco de boxeo</h4>
+    <div class="separador2"></div>
+    <div class="container">
+        <div class="video-container">
+            <video src="/Recursos/Video/agre2.mp4" controls></video>
+        </div>
+    </div>
+    <h4>MASSSSS PRUEBAS PARA DENUNCIARTE MI AMOR</h4>
     </center>
 </body>
 </html>

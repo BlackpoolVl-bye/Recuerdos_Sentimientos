@@ -7,11 +7,191 @@
   <link rel="shortcut icon" href="CARTA/img/favicon.png" type="image/x-icon">
   <title>GALAXIA</title>
   <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: radial-gradient(ellipse at 50% 30%, #2d1b4d 0%, #0a0520 100%);
+      overflow-x: hidden;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    /* Estrellas animadas */
+    .stars {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      left: 0; top: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.7; }
+      to { opacity: 1; }
+    }
+    /* Sistema solar centrado y animado */
+    #sistema-solar {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      margin: 60px auto 30px auto;
+      z-index: 2;
+      background: rgba(255,255,255,0.01);
+      border-radius: 50%;
+      box-shadow: 0 0 80px 10px #af7ead55, 0 0 0 2px #fff2 inset;
+      overflow: visible;
+      animation: fadeInUp 1.2s;
+    }
+    #sol {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px; height: 80px;
+      background: radial-gradient(circle, #ffe082 60%, #ffb300 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 60px 20px #ffe08299, 0 0 0 8px #fff4;
+      z-index: 2;
+      border: 3px solid #fff7;
+      animation: solBrilla 2.5s infinite alternate;
+    }
+    @keyframes solBrilla {
+      from { box-shadow: 0 0 60px 20px #ffe08299, 0 0 0 8px #fff4; }
+      to { box-shadow: 0 0 90px 30px #ffe082cc, 0 0 0 12px #fff7; }
+    }
+    .orbita {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1.5px dashed #af7ead44;
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* Órbitas de cada planeta */
+    #mercurio.orbita { width: 110px; height: 110px; animation: orbitaMercurio 4s linear infinite;}
+    #venus.orbita    { width: 150px; height: 150px; animation: orbitaVenus 7s linear infinite;}
+    #tierra.orbita   { width: 200px; height: 200px; animation: orbitaTierra 10s linear infinite;}
+    #marte.orbita    { width: 250px; height: 250px; animation: orbitaMarte 13s linear infinite;}
+    #jupiter.orbita  { width: 300px; height: 300px; animation: orbitaJupiter 17s linear infinite;}
+    #saturno.orbita  { width: 340px; height: 340px; animation: orbitaSaturno 21s linear infinite;}
+    #urano.orbita    { width: 370px; height: 370px; animation: orbitaUrano 25s linear infinite;}
+    #neptuno.orbita  { width: 400px; height: 400px; animation: orbitaNeptuno 30s linear infinite;}
+    /* Animaciones de órbita */
+    @keyframes orbitaMercurio { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes orbitaVenus    { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes orbitaTierra   { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes orbitaMarte    { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes orbitaJupiter  { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes orbitaSaturno  { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes orbitaUrano    { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes orbitaNeptuno  { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    /* Planetas */
+    .planeta {
+      position: absolute;
+      top: 50%; left: 100%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      box-shadow: 0 0 16px 2px #fff6;
+      border: 2px solid #fff7;
+    }
+    .mercurio-planeta { width: 14px; height: 14px; background: #b0b0b0; }
+    .venus-planeta    { width: 18px; height: 18px; background: #e6c07b; }
+    .tierra-planeta   { width: 22px; height: 22px; background: linear-gradient(135deg, #43c6ac 60%, #3b5998 100%);}
+    .marte-planeta    { width: 18px; height: 18px; background: #e57373; }
+    .jupiter-planeta  { width: 32px; height: 32px; background: #ffe082; }
+    .saturno-planeta  { width: 28px; height: 28px; background: #dcbadb; box-shadow: 0 0 0 6px #af7ead55;}
+    .urano-planeta    { width: 20px; height: 20px; background: #b0f2c2; }
+    .neptuno-planeta  { width: 20px; height: 20px; background: #7f53ac; }
+    /* Responsive */
+    @media (max-width: 600px) {
+      #sistema-solar {
+        width: 98vw;
+        height: 60vw;
+        min-width: 240px;
+        min-height: 240px;
+        max-width: 98vw;
+        max-height: 98vw;
+      }
+      .orbita {
+        min-width: 60px !important;
+        min-height: 60px !important;
+      }
+    }
+    /* Tarjeta glassmorphism para el poema */
+    .universo-palabras {
+      margin: 40px auto 30px auto;
+      max-width: 540px;
+      background: rgba(44, 27, 77, 0.85);
+      border-radius: 28px;
+      box-shadow: 0 8px 32px #af7ead44, 0 0 0 2px #fff2 inset;
+      padding: 38px 28px 32px 28px;
+      color: #ffe9f3;
+      font-size: 1.18em;
+      font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.2s;
+      border: 2px solid #af7ead55;
+      text-align: left;
+    }
+    .universo-palabras p {
+      margin-bottom: 18px;
+      margin-top: 0;
+      text-shadow: 0 2px 8px #af7ead55, 0 0 2px #fff2;
+      position: relative;
+      padding-left: 18px;
+    }
+    .universo-palabras p::before {
+      content: "\f005";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: #ffe082;
+      margin-right: 10px;
+      font-size: 1em;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.7;
+      animation: brilloEstrella 2s infinite alternate;
+    }
+    @keyframes brilloEstrella {
+      from { text-shadow: 0 0 6px #ffe082; }
+      to   { text-shadow: 0 0 18px #ffe082, 0 0 8px #fff;}
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    /* Título romántico */
+    .titulo-galaxia {
+      text-align: center;
+      font-family: 'Pacifico', cursive, Arial, sans-serif;
+      color: #ffe082;
+      font-size: 2.2em;
+      margin-top: 30px;
+      margin-bottom: 0;
+      letter-spacing: 2px;
+      text-shadow: 0 0 18px #ffe082, 0 0 8px #fff;
+      animation: fadeInUp 1.2s;
+    }
+  </style>
 </head>
 <body>
-  <center>
+  <div class="stars"></div>
+  <h1 class="titulo-galaxia">
+    <i class="fas fa-star"></i> Nuestro Universo de Amor <i class="fas fa-star"></i>
+  </h1>
   <div id="sistema-solar">
-  </center>
     <div id="sol"></div>
     <div id="mercurio" class="orbita">
       <div class="planeta mercurio-planeta"></div>
@@ -38,9 +218,6 @@
       <div class="planeta neptuno-planeta"></div>
     </div>
   </div>
-  <script src="java.js"></script>
-  <br>
-  <center>
   <div class="universo-palabras">
     <p>En la inmensidad del cosmos, donde la luz se entrelaza con la oscuridad,
       y las estrellas titilan como diamantes en un manto de terciopelo,
@@ -62,19 +239,33 @@
       dos almas gemelas que se atraen con fuerza gravitacional.
       Nuestro amor, una supernova que estalla en mil pedazos de luz,
       iluminando el universo con su brillo inigualable.</p>
-      <p>En la inmensidad de la galaxia, donde el tiempo y el espacio se diluyen,
-        nuestro amor trasciende las barreras, se expande sin límites.
-        Somos polvo de estrellas, viajeros incansables del cosmos,
-        explorando juntos los secretos que el universo nos ofrece.</p>
-        <p>Que nuestro amor sea eterno, como la inmensidad del universo,
-          un faro de luz que guíe nuestro camino en la oscuridad.
-          Que cada beso sea un viaje a través de las galaxias,
-          y cada abrazo, un encuentro con la magia del cosmos.</p>
-          <p>Eres mi universo, mi galaxia, mi todo,
-            la mujer que amo con cada fibra de mi ser.
-            Juntos, conquistaremos las estrellas, navegaremos por los agujeros negros,
-            y construiremos un amor que perdurará por toda la eternidad.</p>
+    <p>En la inmensidad de la galaxia, donde el tiempo y el espacio se diluyen,
+      nuestro amor trasciende las barreras, se expande sin límites.
+      Somos polvo de estrellas, viajeros incansables del cosmos,
+      explorando juntos los secretos que el universo nos ofrece.</p>
+    <p>Que nuestro amor sea eterno, como la inmensidad del universo,
+      un faro de luz que guíe nuestro camino en la oscuridad.
+      Que cada beso sea un viaje a través de las galaxias,
+      y cada abrazo, un encuentro con la magia del cosmos.</p>
+    <p>Eres mi universo, mi galaxia, mi todo,
+      la mujer que amo con cada fibra de mi ser.
+      Juntos, conquistaremos las estrellas, navegaremos por los agujeros negros,
+      y construiremos un amor que perdurará por toda la eternidad.</p>
   </div>
-</center>
+  <script>
+    // Estrellas animadas en el fondo
+    const stars = document.querySelector('.stars');
+    for (let i = 0; i < 120; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.top = `${Math.random() * 100}vh`;
+      star.style.animationDuration = `${1.5 + Math.random()}s`;
+      stars.appendChild(star);
+    }
+  </script>
 </body>
 </html>

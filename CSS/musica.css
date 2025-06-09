@@ -1,0 +1,140 @@
+.nave nav {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #af7ead22;
+    padding: 16px 28px;
+    margin: 28px auto 20px auto;
+    max-width: 600px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    animation: fadeInUp 1.2s;
+}
+.nave nav a {
+    color: #af7ead;
+    font-weight: bold;
+    font-size: 1.13em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    border-radius: 14px;
+    transition: 
+        background 0.2s, 
+        color 0.2s, 
+        box-shadow 0.2s, 
+        transform 0.2s;
+    position: relative;
+}
+.nave nav a i {
+    font-size: 1.4em;
+    color: #ff69b4;
+    text-shadow: 0 0 10px #ffb6b9, 0 0 2px #fff;
+    transition: color 0.2s, text-shadow 0.2s;
+    display: inline-block;
+}
+.nave nav a:hover, .nave nav a:focus {
+    background: linear-gradient(135deg, #ffb6b9 0%, #af7ead 100%);
+    color: #fff;
+    box-shadow: 0 4px 24px #ffb6b9aa;
+    transform: scale(1.08) rotate(-2deg);
+}
+.nave nav a:hover i, .nave nav a:focus i {
+    color: #fff;
+    text-shadow: 0 0 24px #fff, 0 0 12px #ff69b4;
+    animation: brillo 1.2s infinite alternate;
+}
+@keyframes brillo {
+    from { filter: drop-shadow(0 0 2px #fff);}
+    to { filter: drop-shadow(0 0 16px #fff);}
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@media (max-width: 600px) {
+    .nave nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px 0;
+        max-width: 98vw;
+    }
+    .nave nav a {
+        justify-content: center;
+        font-size: 1em;
+        padding: 10px 0;
+    }
+    .nave nav a i {
+        font-size: 1.2em;
+    }
+}
+.container {
+            background: rgba(255,255,255,0.65);
+            border-radius: 22px;
+            box-shadow: 0 4px 24px #af7ead22;
+            padding: 24px 18px 18px 18px;
+            margin: 32px auto 18px auto;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeInUp 1.2s;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .container:hover {
+            box-shadow: 0 8px 32px #ffb6b9aa;
+            transform: scale(1.03) rotate(-1deg);
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-container video {
+            border-radius: 18px;
+            box-shadow: 0 2px 16px #af7ead44;
+            border: 3px solid #ffe9f3;
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+        .video-container video:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 8px 32px #ffb6b9cc;
+            border-color: #ffb6b9;
+        }
+        h4 {
+            background: rgba(255,255,255,0.85);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px #af7ead22;
+            color: #af7ead;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            font-size: 1.08em;
+            letter-spacing: 0.5px;
+            padding: 16px 18px;
+            margin: 18px auto 10px auto;
+            max-width: 420px;
+            text-align: center;
+            animation: fadeInUp 1.2s;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @media (max-width: 600px) {
+            .container, .separador2 {
+                max-width: 98vw;
+                padding: 8px 2vw;
+            }
+            .video-container video {
+                max-width: 98vw;
+            }
+            h4 {
+                font-size: 1em;
+                padding: 12px 6px;
+                max-width: 98vw;
+            }
+        }
