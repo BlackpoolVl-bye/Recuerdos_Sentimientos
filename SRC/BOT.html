@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bot</title>
+    <link rel="shortcut icon" href="/Logo/ICONO.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico&display=swap">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #dcbadb 0%, #af7ead 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .bot-container {
+            background: rgba(255,255,255,0.85);
+            border-radius: 28px;
+            box-shadow: 0 8px 32px #af7ead44, 0 0 0 2px #fff2 inset;
+            padding: 38px 32px 32px 32px;
+            text-align: center;
+            max-width: 370px;
+            animation: fadeInUp 1.2s;
+        }
+        .bot-title {
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            color: #af7ead;
+            font-size: 2em;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 16px #dcbadb, 0 0 8px #fff;
+        }
+        .bot-desc {
+            color: #7d5c8c;
+            font-size: 1.08em;
+            margin-bottom: 28px;
+            background: rgba(220,186,219,0.18);
+            border-radius: 14px;
+            padding: 10px 12px;
+            box-shadow: 0 2px 8px #af7ead22;
+        }
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #af7ead 0%, #dcbadb 100%);
+            color: #fff;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            font-size: 1.3em;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #af7ead55;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .telegram-btn:hover, .telegram-btn:focus {
+            background: linear-gradient(135deg, #dcbadb 0%, #af7ead 100%);
+            color: #fff;
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 8px 32px #af7ead99;
+        }
+        .telegram-btn img {
+            width: 38px;
+            height: 38px;
+            filter: drop-shadow(0 2px 8px #fff8);
+        }
+        .corazon {
+            font-size: 2em;
+            color: #ffb6b9;
+            animation: latido 1.2s infinite;
+            margin: 0 6px;
+        }
+        @keyframes latido {
+            0%, 100% { transform: scale(1);}
+            20% { transform: scale(1.18);}
+            40% { transform: scale(0.95);}
+            60% { transform: scale(1.10);}
+            80% { transform: scale(0.98);}
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @media (max-width: 600px) {
+            .bot-container { padding: 18px 4vw; max-width: 98vw;}
+            .bot-title { font-size: 1.2em;}
+            .telegram-btn { font-size: 1em; padding: 12px 10px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="bot-container">
+        <div class="bot-title">
+            <span class="corazon">❤️</span>
+            ¡Puedes usar el bot!
+            <span class="corazon">❤️</span>
+        </div>
+        <div class="bot-desc">
+            Esposa, hice un bot para nuestra pagina.... espero te guste realmente...<br>
+            ¡Haz clic en el botón y habla con el bot... para empezar es ( /start )!
+        </div>
+        <a class="telegram-btn" href="https://t.me/BlackpoolVl_bot" target="_blank">
+            <img src="https://telegram.org/img/t_logo.png" alt="Telegram">
+            Hablar con el bot
+        </a>
+        <div style="margin-top:18px; color:#af7ead; font-size:1em;">
+            <span style="font-family:'Pacifico',cursive;">¡Te esperan mensajes llenos de amor mi vida ❤️</span>
+        </div>
+    </div>
+</body>
+</html>
