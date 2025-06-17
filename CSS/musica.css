@@ -1,3 +1,130 @@
+/* Fondo romántico y suave */
+body {
+    background: linear-gradient(135deg, #dcbadb 0%, #af7ead 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #5a3d5c;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navegación */
+.nave nav {
+    background: rgba(255,255,255,0.85);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #af7ead33;
+    padding: 10px 0 10px 0;
+    margin: 18px 0 24px 0;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+.nave nav a {
+    color: #af7ead;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 18px;
+    border-radius: 10px;
+    transition: background 0.2s, color 0.2s;
+}
+.nave nav a:hover {
+    background: #af7ead;
+    color: #fff;
+}
+
+/* Título y mensaje */
+h4 {
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    color: #af7ead;
+    font-size: 1.3em;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    text-align: center;
+    text-shadow: 0 2px 16px #dcbadb, 0 0 8px #fff;
+    background: rgba(255,255,255,0.7);
+    border-radius: 14px;
+    padding: 10px 18px;
+    display: inline-block;
+    box-shadow: 0 2px 8px #af7ead22;
+}
+
+/* Contenedor de cada video */
+.container {
+    background: rgba(255,255,255,0.92);
+    border-radius: 22px;
+    box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
+    padding: 22px 18px 18px 18px;
+    margin: 18px auto 18px auto;
+    max-width: 340px;
+    position: relative;
+    animation: fadeInUp 1.2s;
+}
+
+/* Video */
+.video-container video {
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #af7ead55;
+    border: 3px solid #fff;
+    background: #fff;
+    width: 100%;
+    max-width: 286px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    animation: flotar 2.5s infinite alternate;
+}
+
+/* Nombre de la canción */
+.text-container p {
+    font-size: 1.12em;
+    color: #7d5c8c;
+    margin: 10px 0 0 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 1px;
+    background: rgba(220,186,219,0.13);
+    border-radius: 10px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 8px #af7ead22;
+    text-align: center;
+}
+.text-container n {
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    color: #af7ead;
+    font-size: 1.1em;
+}
+
+/* Separador */
+.separador2 {
+    height: 18px;
+    border-bottom: 2px dashed #af7ead55;
+    margin: 24px 0;
+    opacity: 0.7;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@keyframes flotar {
+    0% { transform: translateY(0);}
+    100% { transform: translateY(-10px);}
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        max-width: 98vw;
+        padding: 6vw 2vw 6vw 2vw;
+    }
+    .video-container video {
+        max-width: 98vw;
+    }
+    h4 { font-size: 1em; padding: 8px 6px;}
+    .text-container p { font-size: 1em; padding: 6px 4px;}
+}
+
+
 .nave nav {
     display: flex;
     justify-content: center;

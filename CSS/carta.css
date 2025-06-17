@@ -1,0 +1,142 @@
+/* Fondo romántico y elegante */
+body {
+    background: linear-gradient(135deg, #ffe9f3 0%, #af7ead 100%);
+    font-family: 'Playfair Display', 'Segoe UI', Arial, serif;
+    color: #5a3d5c;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Carta central */
+.carta {
+    max-width: 650px;
+    margin: 48px auto 32px auto;
+    background: rgba(255,255,255,0.97);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
+    padding: 44px 36px 32px 36px;
+    position: relative;
+    animation: fadeInUp 1.2s;
+    border: 2px solid #af7ead33;
+}
+
+/* Encabezado */
+.encabezado {
+    text-align: left;
+    margin-bottom: 24px;
+}
+.fecha {
+    font-size: 1.1em;
+    color: #af7ead;
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+}
+.destinatario {
+    font-size: 1.25em;
+    color: #7d5c8c;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Cuerpo de la carta */
+.cuerpo {
+    margin-bottom: 32px;
+}
+.cuerpo p {
+    font-size: 1.18em;
+    line-height: 1.7;
+    background: rgba(220,186,219,0.13);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin: 18px 0 18px 0;
+    box-shadow: 0 2px 8px #af7ead22;
+    color: #5a3d5c;
+    text-align: justify;
+    font-family: 'Playfair Display', serif;
+    animation: fadeInUp 1.2s;
+}
+
+/* Frase especial */
+.sangre {
+    margin: 28px 0 0 0;
+    text-align: center;
+}
+.parpadeo p {
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    color: #ff5eae;
+    font-size: 1.25em;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 12px #fff, 0 0 24px #af7ead;
+    animation: parpadeo 1.2s infinite alternate;
+    margin: 0;
+    padding: 8px 0;
+}
+@keyframes parpadeo {
+    0% { opacity: 1;}
+    100% { opacity: 0.6;}
+}
+
+/* Firma */
+.firma {
+    margin-top: 32px;
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+}
+.firma p {
+    margin: 0 0 8px 0;
+    font-size: 1.08em;
+    color: #7d5c8c;
+}
+.firma .acas {
+    margin-top: 18px;
+    text-align: center;
+}
+.firma .acas h3 {
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    color: #af7ead;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    margin-top: 0;
+    letter-spacing: 1px;
+}
+.firma .acas a {
+    display: inline-block;
+    background: linear-gradient(135deg, #af7ead 0%, #dcbadb 100%);
+    color: #fff;
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    font-size: 1.1em;
+    padding: 12px 32px;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #af7ead55;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+}
+.firma .acas a:hover, .firma .acas a:focus {
+    background: linear-gradient(135deg, #dcbadb 0%, #af7ead 100%);
+    color: #fff;
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 8px 32px #af7ead99;
+}
+
+/* Animaciones generales */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .carta {
+        max-width: 98vw;
+        padding: 8vw 2vw 8vw 2vw;
+    }
+    .cuerpo p { font-size: 1em; padding: 10px 6px;}
+    .firma .acas a { font-size: 1em; padding: 10px 18px;}
+}

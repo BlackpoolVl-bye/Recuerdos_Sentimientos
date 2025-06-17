@@ -1,0 +1,108 @@
+/* Fondo romántico y suave */
+body {
+    background: linear-gradient(135deg, #ffe9f3 0%, #af7ead 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #5a3d5c;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.confe {
+    max-width: 700px;
+    margin: 36px auto 24px auto;
+    background: rgba(255,255,255,0.95);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
+    padding: 38px 28px 28px 28px;
+    position: relative;
+    animation: fadeInUp 1.2s;
+}
+
+/* Título principal */
+.confe h2 {
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    color: #af7ead;
+    font-size: 2.1em;
+    margin-top: 0;
+    margin-bottom: 18px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 16px #dcbadb, 0 0 8px #fff;
+    text-align: center;
+    font-weight: normal;
+    animation: fadeInDown 1.2s;
+}
+
+/* Imagen central */
+.confe img {
+    border-radius: 50%;
+    box-shadow: 0 4px 24px #af7ead55;
+    margin-bottom: 18px;
+    border: 3px solid #fff;
+    background: #fff;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    animation: flotar 2.5s infinite alternate;
+}
+
+/* Títulos de promesas */
+.confe h1 {
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    color: #7d5c8c;
+    font-size: 1.4em;
+    margin-top: 32px;
+    margin-bottom: 10px;
+    letter-spacing: 1.2px;
+    text-shadow: 0 2px 16px #dcbadb, 0 0 8px #fff;
+    text-align: center;
+    animation: fadeInDown 1.2s;
+}
+
+/* Texto de promesas */
+.confe p {
+    font-size: 1.13em;
+    line-height: 1.7;
+    background: rgba(220,186,219,0.13);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin: 12px 0 24px 0;
+    box-shadow: 0 2px 8px #af7ead22;
+    color: #5a3d5c;
+    animation: fadeInUp 1.2s;
+    text-align: justify;
+}
+
+/* Separadores */
+.separador2 {
+    height: 18px;
+    border-bottom: 2px dashed #af7ead55;
+    margin: 24px 0;
+    opacity: 0.7;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@keyframes flotar {
+    0% { transform: translateY(0);}
+    100% { transform: translateY(-12px);}
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .confe {
+        max-width: 98vw;
+        padding: 12vw 2vw 8vw 2vw;
+    }
+    .confe h2 { font-size: 1.2em; }
+    .confe h1 { font-size: 1em; }
+    .confe p { font-size: 1em; padding: 10px 6px;}
+    .confe img { width: 90px; height: 90px;}
+}
