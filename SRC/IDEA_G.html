@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia Interactiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #af7ead 0%, #ffb6b9 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        .portada, .capitulo, .final {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+            animation: aparecer 1s;
+        }
+        .visible { display: flex; }
+        .titulo-portada {
+            color: #af7ead;
+            font-size: 2.2em;
+            margin-bottom: 18px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+        }
+        .boton {
+            background: linear-gradient(135deg, #ff69b4 0%, #af7ead 100%);
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            padding: 14px 32px;
+            font-size: 1.2em;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 18px;
+            box-shadow: 0 2px 8px rgba(175,126,173,0.15);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .boton:hover { background: linear-gradient(135deg, #af7ead 0%, #ff69b4 100%); }
+        .capitulo-titulo {
+            color: #ff69b4;
+            font-size: 1.7em;
+            margin-bottom: 10px;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+        }
+        .capitulo-contenido {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(175,126,173,0.12);
+            padding: 24px 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <!-- Portada -->
+    <section class="portada visible" id="portada">
+        <div class="titulo-portada">Nuestra Historia 💑</div>
+        <img src="/IMG/tu_foto_juntos.jpg" alt="Nosotros" style="width:160px;border-radius:50%;box-shadow:0 2px 8px #af7ead44;">
+        <div style="margin-top:18px;color:#af7ead;font-size:1.1em;">
+            <b>[Tus nombres]</b><br>
+            <span>Un viaje lleno de amor, recuerdos y sueños</span>
+        </div>
+        <button class="boton" onclick="mostrarCapitulo(0)">Empezar el viaje</button>
+    </section>
+
+    <!-- Capítulos (puedes duplicar y personalizar) -->
+    <section class="capitulo" id="capitulo0">
+        <div class="capitulo-titulo">Cómo nos conocimos</div>
+        <div class="capitulo-contenido">
+            <p>Cuenta aquí cómo se conocieron, agrega una foto, video o carta.</p>
+            <img src="/IMG/primer_momento.jpg" alt="Primer momento" style="width:100%;border-radius:12px;">
+            <p style="color:#af7ead;">"Nunca olvidaré ese día..."</p>
+        </div>
+        <button class="boton" onclick="mostrarCapitulo(1)">Siguiente capítulo</button>
+    </section>
+    <section class="capitulo" id="capitulo1">
+        <div class="capitulo-titulo">Primer cita</div>
+        <div class="capitulo-contenido">
+            <p>Describe la primera cita, agrega fotos, música, etc.</p>
+        </div>
+        <button class="boton" onclick="mostrarCapitulo(2)">Siguiente capítulo</button>
+    </section>
+    <!-- ...agrega más capítulos aquí... -->
+
+    <!-- Final -->
+    <section class="final" id="final">
+        <div class="titulo-portada">Gracias por ser mi historia favorita 💖</div>
+        <div style="font-size:1.2em;color:#ff69b4;">¡Te amo!</div>
+    </section>
+
+    <script>
+        function mostrarCapitulo(n) {
+            document.querySelectorAll('.portada, .capitulo, .final').forEach(s=>s.classList.remove('visible'));
+            const cap = document.getElementById('capitulo'+n);
+            if(cap) cap.classList.add('visible');
+            else document.getElementById('final').classList.add('visible');
+        }
+    </script>
+</body>
+</html>
