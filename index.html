@@ -11,6 +11,77 @@
     <title>Recuerdos_Sentimientos</title>
 </head>
 <body>
+<!-- Agrega esto justo antes de </body> en tu index.html -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const fechaObjetivo = new Date(2025, 6, 23);
+    const hoy = new Date();
+    const diferencia = Math.ceil((fechaObjetivo - hoy) / (1000 * 60 * 60 * 24));
+
+    if (diferencia > 0) {
+        Swal.fire({
+            title: '❤️ Faltan ' + diferencia + ' días ❤️',
+            html: '<div style="font-size:1.3em;color:#af7ead;font-family:\'Pacifico\',cursive,Arial,sans-serif;">para nuestro día especial<br><b>23 / 07 / 2025</b></div>',
+            background: 'linear-gradient(135deg, #ffe9f3 0%, #af7ead 100%)',
+            color: '#5a3d5c',
+            confirmButtonColor: '#af7ead',
+            confirmButtonText: 'ACEPTAR',
+            customClass: {
+                popup: 'swal2-border-radius'
+            },
+            didClose: () => {
+                lluviaCorazones3sLento();
+            }
+        });
+    }
+
+    // Lluvia de corazones uno por uno durante 3 segundos, un poco más lento
+    function lluviaCorazones3sLento() {
+        let lanzados = 0;
+        const total = 24; // 8 corazones por segundo aprox
+        const intervalo = setInterval(() => {
+            lanzarCorazonLento();
+            lanzados++;
+            if (lanzados >= total) clearInterval(intervalo);
+        }, 125); // Cada 125ms, un poco más lento
+
+        // Detener la lluvia a los 3 segundos por si acaso
+        setTimeout(() => clearInterval(intervalo), 3000);
+    }
+
+    function lanzarCorazonLento() {
+        const corazon = document.createElement('div');
+        corazon.textContent = '❤️';
+        corazon.style.position = 'fixed';
+        corazon.style.left = (Math.random() * 100) + 'vw';
+        corazon.style.bottom = '-40px';
+        corazon.style.fontSize = (Math.random() * 32 + 24) + 'px';
+        corazon.style.opacity = Math.random() * 0.5 + 0.5;
+        corazon.style.zIndex = 9999;
+        corazon.style.pointerEvents = 'none';
+        corazon.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
+
+        document.body.appendChild(corazon);
+
+        // Movimiento esparcido y animación de "lluvia"
+        const desplazamiento = (Math.random() - 0.5) * 30; // -15vw a +15vw
+        setTimeout(() => {
+            corazon.style.transform = `translateY(-110vh) translateX(${desplazamiento}vw) rotate(${Math.random() > 0.5 ? '-' : ''}${Math.random()*60}deg)`;
+            corazon.style.opacity = 0;
+        }, 30);
+
+        setTimeout(() => {
+            corazon.remove();
+        }, 1800 + Math.random()*200);
+    }
+</script>
+<style>
+.swal2-border-radius {
+    border-radius: 32px !important;
+    box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
+    border: 2px dashed #af7ead33;
+}
+</style>
     <div class="nave">
         <nav>
             <a href="index.html"><i class="fas fa-home"></i> INICIO</a>

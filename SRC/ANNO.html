@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regalo Secreto</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #af7ead 0%, #dcbadb 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .login-box {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #af7ead44;
+            padding: 36px 28px;
+            text-align: center;
+            max-width: 340px;
+        }
+        .login-box input {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1.5px solid #af7ead;
+            width: 90%;
+            font-size: 1em;
+        }
+        .login-box button {
+            background: linear-gradient(135deg, #af7ead 0%, #dcbadb 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 28px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .login-box button:hover {
+            background: linear-gradient(135deg, #dcbadb 0%, #af7ead 100%);
+        }
+        .mensaje {
+            color: #af7ead;
+            margin-top: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+    <h2>Regalo de 1 año juntos</h2>
+    <input type="text" id="usuario" placeholder="Usuario"><br>
+    <input type="password" id="contrasena" placeholder="Contraseña"><br>
+    <button onclick="verificar()">Entrar</button>
+    <div class="mensaje" id="mensaje"></div>
+    <div class="pista" style="margin-top:22px;font-size:0.98em;color:#7d5c8c;background:rgba(220,186,219,0.13);border-radius:10px;padding:10px 14px;">
+        <b>Pista de usuario:</b><br>
+
+        <span style="font-family:monospace;letter-spacing:2px;">
+            .-. --- ... .- -. --. . .-..
+        </span>
+        <br>
+        <b>Pista de contraseña:</b> <br>
+        <span style="font-family:monospace;letter-spacing:2px;">
+            ..--- ...-- ----- --... ..--- ..... 
+        </span>
+    </div>
+</div>
+    <script>
+    function verificar() {
+        const user = document.getElementById('usuario').value.trim();
+        const pass = document.getElementById('contrasena').value.trim();
+        if(user === "rosangel" && pass === "230725") {
+            document.getElementById('mensaje').innerHTML = "¡Bienvenida! 🎉<br><a href='lol.html' style='color:#fff;background:#af7ead;padding:8px 18px;border-radius:10px;text-decoration:none;display:inline-block;margin-top:10px;'>Ver regalo</a>";
+        } else {
+            document.getElementById('mensaje').textContent = "Usuario o contraseña incorrectos";
+        }
+    }
+    </script>
+</body>
+</html>

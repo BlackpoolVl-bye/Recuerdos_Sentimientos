@@ -20,6 +20,10 @@
     </div>
         </div>
         <center>
+            <div class="secreto-titulo">SECRETO... Se revela en:</div>
+    <a id="boton-contador" href="/SRC/ANNO.html" class="boton-contador" style="display:inline-block;margin:18px 0 10px 0;padding:16px 38px;font-size:1.5em;background:linear-gradient(135deg,#af7ead 0%,#dcbadb 100%);color:#fff;border-radius:18px;text-decoration:none;box-shadow:0 2px 16px #af7ead44;transition:background 0.2s,transform 0.2s;">
+        000:00:00:00
+    </a>   
             <div class="fecha-especial-container">
         <div class="fecha-animada">
             <span class="corazon-izq">❤️</span>
@@ -30,11 +34,12 @@
             <span class="fecha-numero">2024</span>
             <span class="corazon-der">❤️</span>
         </div>
-        <div class="fecha-texto">El dia que empezo nuestra historia✨</div>
+        <div class="fecha-texto">El dia que empezo nuestra historia</div>
     </div>
             <div class="ta">
             <a href="/Recursos/te amo/index.html">TI AMO</a>
             </div>
+
             <div class="ta-bot-romantico">
     <a href="/SRC/BOT.html">BOT</a>
 </div>
@@ -64,5 +69,31 @@
     <a href="/SRC/galaxiamas.html">GALAXIA</a>
 </div>
 
+<script>
+    const fechaObjetivo = new Date(2025, 6, 23, 0, 0, 0);
+    const botonContador = document.getElementById("boton-contador");
+
+    function actualizarBotonContador() {
+        const ahora = new Date();
+        const diferencia = fechaObjetivo - ahora;
+
+        if (diferencia > 0) {
+            const dias = String(Math.floor(diferencia / (1000 * 60 * 60 * 24))).padStart(3, '0');
+            const horas = String(Math.floor((diferencia / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+            const minutos = String(Math.floor((diferencia / (1000 * 60)) % 60)).padStart(2, '0');
+            const segundos = String(Math.floor((diferencia / 1000) % 60)).padStart(2, '0');
+            botonContador.textContent = `${dias}:${horas}:${minutos}:${segundos}`;
+            botonContador.style.pointerEvents = "none";
+            botonContador.style.opacity = "0.7";
+        } else {
+            botonContador.textContent = "YA PUEDES VER...";
+            botonContador.style.pointerEvents = "auto";
+            botonContador.style.opacity = "1";
+        }
+    }
+
+    actualizarBotonContador();
+    setInterval(actualizarBotonContador, 1000);
+</script>
 </body>
 </html>

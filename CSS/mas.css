@@ -213,6 +213,7 @@ img{
     margin-top: 6px;
     font-family: 'Segoe UI', Arial, sans-serif;
     animation: aparecerTexto 1.5s;
+    font-weight: 900;
 }
 @keyframes aparecerTexto {
     from { opacity: 0; transform: translateY(20px);}
@@ -387,4 +388,99 @@ img{
 .ta-bot-romantico a:hover {
     color: #ffe082;
     text-shadow: 0 0 32px #ffe082, 0 0 24px #fff;
+}
+
+.contador-anno {
+            background: linear-gradient(135deg, #af7ead 0%, #dcbadb 100%);
+            color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px #af7ead44;
+            padding: 18px 24px;
+            margin: 24px auto 18px auto;
+            max-width: 400px;
+            text-align: center;
+            font-size: 1.3em;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            animation: fadeInUp 1.2s;
+        }
+        .credenciales-secretas {
+            margin-top: 18px;
+            background: #fff;
+            color: #af7ead;
+            border-radius: 12px;
+            padding: 16px 10px;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px #af7ead22;
+            display: inline-block;
+            animation: fadeInUp 1.2s;
+        }
+        /* Agrega esto en tu archivo mas.css o dentro de <style> en mas.html */
+
+/* Estilo para el bloque SECRETO */
+.secreto-titulo {
+    font-size: 2em;
+    color: #fff;
+    background: linear-gradient(135deg, #af7ead 0%, #dcbadb 100%);
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    margin-top: 22px;
+    margin-bottom: 12px;
+    letter-spacing: 3px;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #af7ead44;
+    display: inline-block;
+    padding: 10px 38px;
+    text-shadow: 0 2px 8px #af7ead88, 0 0 8px #fff;
+    border: 2px dashed #fff3;
+    position: relative;
+    z-index: 2;
+}
+
+/* Agrega esto en tu archivo mas.css o dentro de <style> en mas.html */
+
+/* Contador animado y moderno */
+.boton-contador {
+    display: inline-block;
+    margin: 18px 0 10px 0;
+    padding: 20px 56px;
+    font-size: 2.2em;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ffb6b9 0%, #af7ead 100%);
+    color: #fff;
+    border-radius: 32px;
+    text-decoration: none;
+    box-shadow: 0 4px 24px #af7ead55, 0 0 0 8px #fff2 inset;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s, filter 0.2s;
+    letter-spacing: 2px;
+    border: none;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1.2s;
+}
+
+.boton-contador[style*="pointer-events: none"] {
+    filter: grayscale(0.3) blur(0.5px);
+    cursor: not-allowed;
+    background: linear-gradient(135deg, #af7ead 0%, #dcbadb 100%);
+    box-shadow: 0 2px 16px #af7ead44;
+}
+
+.boton-contador[style*="pointer-events: auto"] {
+    background: linear-gradient(135deg, #af7ead 0%, #ffb6b9 100%);
+    box-shadow: 0 8px 32px #af7ead99, 0 0 0 12px #fff2 inset;
+    filter: none;
+    cursor: pointer;
+    animation: resplandor 1.2s infinite alternate;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@keyframes resplandor {
+    0% { box-shadow: 0 0 24px #ffb6b9cc, 0 0 0 8px #fff2 inset;}
+    100% { box-shadow: 0 0 48px #af7eadcc, 0 0 0 16px #fff2 inset;}
 }

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti mi amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffe9f3 0%, #af7ead 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        .carta {
+            max-width: 600px;
+            margin: 60px auto 0 auto;
+            background: rgba(255,255,255,0.97);
+            border-radius: 32px;
+            box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
+            padding: 44px 36px 32px 36px;
+            position: relative;
+            animation: fadeInUp 1.2s;
+        }
+        .titulo {
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            color: #af7ead;
+            font-size: 2.2em;
+            margin-bottom: 18px;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 16px #dcbadb, 0 0 8px #fff;
+            animation: aparecer 1.2s;
+        }
+        .corazones {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .corazon {
+            display: inline-block;
+            font-size: 2.2em;
+            color: #ff69b4;
+            animation: latir 1.2s infinite alternate;
+            margin: 0 6px;
+        }
+        .cuerpo {
+            font-size: 1.18em;
+            line-height: 1.7;
+            background: rgba(220,186,219,0.13);
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin: 18px 0 18px 0;
+            box-shadow: 0 2px 8px #af7ead22;
+            color: #5a3d5c;
+            text-align: justify;
+            font-family: 'Montserrat', Arial, sans-serif;
+            animation: fadeInUp 1.8s;
+        }
+        .firma {
+            margin-top: 32px;
+            text-align: right;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            color: #af7ead;
+            font-size: 1.3em;
+            animation: aparecer 2s;
+        }
+        .confeti {
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 10;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes aparecer {
+            from { opacity: 0;}
+            to { opacity: 1;}
+        }
+        @keyframes latir {
+            0% { transform: scale(1);}
+            100% { transform: scale(1.25);}
+        }
+    </style>
+</head>
+<body>
+    <canvas class="confeti"></canvas>
+    <div class="carta">
+        <div class="titulo">Para ti, mi amor</div>
+        <div class="corazones">
+            <span class="corazon" style="animation-delay:0s;">❤️</span>
+            <span class="corazon" style="animation-delay:0.3s;">❤️</span>
+            <span class="corazon" style="animation-delay:0.6s;">❤️</span>
+            <span class="corazon" style="animation-delay:0.9s;">❤️</span>
+        </div>
+        <div class="cuerpo">
+            <p>
+                Hoy celebramos un año de amor, de aventuras, de risas y de sueños juntos.<br><br>
+                Gracias por ser mi compañera, mi mejor amiga y mi inspiración cada día. Eres la persona más maravillosa que he conocido, y cada momento a tu lado es un regalo que atesoro con todo mi corazón.<br><br>
+                Ti amo por tu dulzura, tu fuerza, tu ternura y tu forma única de ver el mundo. Gracias por tu paciencia, por tu apoyo y por tu amor incondicional.<br><br>
+                Prometo seguir construyendo recuerdos hermosos contigo, cuidarte, apoyarte y amarte más allá de cualquier distancia o dificultad.<br><br>
+                ¡Feliz primer año juntos, mi vida! Eres y siempre serás mi historia favorita. ❤️
+            </p>
+        </div>
+        <div class="firma">
+            Con todo mi amor,<br>
+            Tu Osito
+        </div>
+    </div>
+    <script>
+    // Confeti animado
+    const canvas = document.querySelector('.confeti');
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth, H = window.innerHeight;
+    canvas.width = W; canvas.height = H;
+    let particles = [];
+    for(let i=0;i<120;i++){
+        particles.push({
+            x: Math.random()*W,
+            y: Math.random()*H - H,
+            r: Math.random()*8+4,
+            d: Math.random()*Math.PI*2,
+            color: `hsl(${Math.random()*360},80%,70%)`,
+            tilt: Math.random()*10-5,
+            tiltAngle: 0,
+            tiltAngleInc: Math.random()*0.07+0.05
+        });
+    }
+    function drawConfetti(){
+        ctx.clearRect(0,0,W,H);
+        for(let i=0;i<particles.length;i++){
+            let p = particles[i];
+            ctx.beginPath();
+            ctx.lineWidth = p.r;
+            ctx.strokeStyle = p.color;
+            ctx.moveTo(p.x + p.tilt + p.r/3, p.y);
+            ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r);
+            ctx.stroke();
+        }
+        updateConfetti();
+        requestAnimationFrame(drawConfetti);
+    }
+    function updateConfetti(){
+        for(let i=0;i<particles.length;i++){
+            let p = particles[i];
+            p.y += Math.cos(p.d) + 2 + p.r/5;
+            p.x += Math.sin(p.d);
+            p.tiltAngle += p.tiltAngleInc;
+            p.tilt = Math.sin(p.tiltAngle) * 15;
+            if(p.y > H){
+                p.x = Math.random()*W;
+                p.y = -10;
+            }
+        }
+    }
+    window.addEventListener('resize',()=>{
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W; canvas.height = H;
+    });
+    drawConfetti();
+    </script>
+</body>
+</html>
