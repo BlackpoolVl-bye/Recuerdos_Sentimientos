@@ -19,43 +19,20 @@
         }
         .spotify-container {
             display: flex;
-            width: 900px;
-            height: 600px;
+            width: 400px;
+            min-height: 600px;
             background: #181818;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        .video-container {
-            flex: 1;
-            background: #000;
-            position: relative;
-        }
-        #video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .video-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            padding: 20px;
-            color: white;
-        }
-        .player-container {
-            width: 350px;
-            padding: 30px;
-            display: flex;
             flex-direction: column;
-            background: #282828;
         }
         .player-header {
             display: flex;
             align-items: center;
             margin-bottom: 30px;
+            margin-top: 30px;
+            justify-content: center;
         }
         .spotify-logo {
             width: 40px;
@@ -70,18 +47,23 @@
         .cover {
             position: relative;
             margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
         }
         #cover-img {
-            width: 100%;
-            border-radius: 8px;
+            width: 220px;
+            height: 220px;
+            border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s;
+            object-fit: cover;
         }
         .cover:hover #cover-img {
             transform: scale(1.02);
         }
         .info {
             margin-bottom: 25px;
+            text-align: center;
         }
         .info h2 {
             margin: 0 0 5px 0;
@@ -228,89 +210,94 @@
 </head>
 <body>
     <div class="spotify-container">
-        <div class="video-container">
-            <video id="video" loop></video>
-            <div class="video-overlay">
-                <h3 id="video-title">Canción</h3>
-                <p id="video-artist">Artista</p>
+        <div class="player-header">
+            <svg class="spotify-logo" viewBox="0 0 24 24" fill="#1DB954">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            <h2>SportifyLove</h2>
+        </div>
+        <div class="cover">
+            <img id="cover-img" src="" alt="Portada">
+        </div>
+        <div class="info">
+            <h2 id="song-title">Canción</h2>
+            <p id="artist">Artista</p>
+        </div>
+        <div class="progress-container">
+            <input type="range" id="progress-bar" value="0">
+            <div class="time">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
             </div>
         </div>
-        <div class="player-container">
-            <div class="player-header">
-                <svg class="spotify-logo" viewBox="0 0 24 24" fill="#1DB954">
-                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-                </svg>
-                <h2>SportifyLove</h2>
-            </div>
-            <div class="cover">
-                <img id="cover-img" src="" alt="Portada">
-            </div>
-            <div class="info">
-                <h2 id="song-title">Canción</h2>
-                <p id="artist">Artista</p>
-            </div>
-            <div class="progress-container">
-                <input type="range" id="progress-bar" value="0">
-                <div class="time">
-                    <span id="current-time">0:00</span>
-                    <span id="duration">0:00</span>
-                </div>
-            </div>
-            <div class="controls">
-                <button id="prev-btn">⏮</button>
-                <button id="play-btn">▶</button>
-                <button id="next-btn">⏭</button>
-            </div>
-            <div class="playlist" id="playlist">
-                <!-- Las canciones se agregarán aquí dinámicamente -->
-            </div>
-            <audio id="audio"></audio>
+        <div class="controls">
+            <button id="prev-btn">⏮</button>
+            <button id="play-btn">▶</button>
+            <button id="next-btn">⏭</button>
         </div>
+        <div class="playlist" id="playlist">
+            <!-- Las canciones se agregarán aquí dinámicamente -->
+        </div>
+        <audio id="audio"></audio>
     </div>
     <div id="toast-next" class="toast-next"></div>
     <script>
         const songs = [
-    {
-        title: "Love For You",
-        artist: "Loveli Loli & ovg!",
-        cover: "/Recursos/Sportify/loveyo.jpg", // imagen de portada (opcional)
-        audio: "",
-        video: "/Recursos/Musica/loveli lori & ovg! - Love For You Sub. Español.mp4",
-        duration: "4:22"
-    },
-    {
-        title: "Veo en ti la luz",
-        artist: "Enredados",
-        cover: "/Recursos/Sportify/enredados.jpg",
-        audio: "/Recursos/Musica/enredados - Veo en ti la luz.mp3",
-        video: "",
-        duration: "3:45"
-    },
-    {
-        title: "Piel Canela",
-        artist: "CUCO",
-        cover: "/Recursos/Sportify/cuco.jpg",
-        audio: "/Recursos/Musica/piel canela Cuco (sub español).mp4",
-        video: "",
-        duration: "2:58"
-    },
-    {
-        title: "Haruka Mirai",
-        artist: "Black Clover",
-        cover: "/Recursos/Sportify/blackclover.jpg",
-        audio: "/Recursos/Musica/Haruka Mirai OP.1 Black Clover Subtitulado Al Español..mp4",
-        video: "",
-        duration: "3:30"
-    }
-];
+            {
+                title: "Love For You",
+                artist: "Loveli Loli & ovg!",
+                cover: "../Recursos/Sportify/loveyo.jpg",
+                audio: "../Recursos/Musica/love.mp3",
+                duration: "4:22"
+            },
+            {
+                title: "Veo en ti la luz",
+                artist: "Enredados",
+                cover: "../Recursos/Sportify/enredados.jpg",
+                audio: "../Recursos/Musica/veo.mp3",
+                duration: "3:45"
+            },
+            {
+                title: "Piel Canela",
+                artist: "CUCO",
+                cover: "../Recursos/Sportify/cuco.jpg",
+                audio: "../Recursos/Musica/piel.mp3",
+                duration: "2:58"
+            },
+            {
+                title: "Earned It",
+                artist: "The Weeknd",
+                cover: "../Recursos/Sportify/the.jpg",
+                audio: "../Recursos/Musica/the.mp3",
+                duration: "4:36"
+            },
+            {
+                title: "Catorce",
+                artist: "Sebastian Romero",
+                cover: "../Recursos/Sportify/sebas.jpg",
+                audio: "../Recursos/Musica/musi.mp3",
+                duration: "3:45"
+            },
+            {
+                title: "Te amo y más",
+                artist: "Diego Luna",
+                cover: "../Recursos/Sportify/te.jpg",
+                audio: "../Recursos/Musica/te.mp3",
+                duration: "2:36"
+            },
+            {
+                title: "Haruka Mirai",
+                artist: "Black Clover",
+                cover: "../Recursos/Sportify/blackclover.jpg",
+                audio: "../Recursos/Musica/Black.mp3",
+                duration: "3:30"
+            }
+        ];
 
         const audio = document.getElementById("audio");
-        const video = document.getElementById("video");
         const coverImg = document.getElementById("cover-img");
         const songTitle = document.getElementById("song-title");
         const artist = document.getElementById("artist");
-        const videoTitle = document.getElementById("video-title");
-        const videoArtist = document.getElementById("video-artist");
         const progressBar = document.getElementById("progress-bar");
         const currentTimeEl = document.getElementById("current-time");
         const durationEl = document.getElementById("duration");
@@ -363,12 +350,8 @@
         function loadSong(song) {
             songTitle.textContent = song.title;
             artist.textContent = song.artist;
-            videoTitle.textContent = song.title;
-            videoArtist.textContent = song.artist;
             coverImg.src = song.cover;
             audio.src = song.audio;
-            video.src = song.video;
-            video.load();
             audio.onloadedmetadata = function() {
                 durationEl.textContent = formatTime(audio.duration);
             };
@@ -377,15 +360,10 @@
         // Reproducir canción
         function playSong() {
             const playPromise = audio.play();
-            const videoPromise = video.play();
-            if (playPromise !== undefined && videoPromise !== undefined) {
+            if (playPromise !== undefined) {
                 playPromise.then(_ => {
-                    videoPromise.then(_ => {
-                        isPlaying = true;
-                        playBtn.textContent = "⏸";
-                    }).catch(error => {
-                        console.log("Video playback prevented:", error);
-                    });
+                    isPlaying = true;
+                    playBtn.textContent = "⏸";
                 }).catch(error => {
                     console.log("Audio playback prevented:", error);
                 });
@@ -395,7 +373,6 @@
         // Pausar canción
         function pauseSong() {
             audio.pause();
-            video.pause();
             isPlaying = false;
             playBtn.textContent = "▶";
         }
@@ -438,9 +415,6 @@
             const { currentTime, duration } = audio;
             progressBar.value = duration ? (currentTime / duration) * 100 : 0;
             currentTimeEl.textContent = formatTime(currentTime);
-            if (Math.abs(video.currentTime - currentTime) > 0.1) {
-                video.currentTime = currentTime;
-            }
         }
 
         // Formatear tiempo (mm:ss)
@@ -466,21 +440,11 @@
             const duration = audio.duration;
             if (duration) {
                 audio.currentTime = (progressBar.value / 100) * duration;
-                video.currentTime = (progressBar.value / 100) * duration;
             }
         });
 
         audio.addEventListener("timeupdate", updateProgressBar);
         audio.addEventListener("ended", nextSong);
-
-        audio.addEventListener("play", () => {
-            video.currentTime = audio.currentTime;
-            video.play().catch(e => console.log("Video play error:", e));
-        });
-
-        audio.addEventListener("pause", () => {
-            video.pause();
-        });
 
         // Inicializar
         initPlaylist();
