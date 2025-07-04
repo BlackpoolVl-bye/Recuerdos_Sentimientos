@@ -7,191 +7,231 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
     <style>
         body {
-            background: #121212;
-            color: white;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: #fff;
             font-family: 'Montserrat', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
         }
         .spotify-container {
-            display: flex;
-            width: 400px;
-            min-height: 600px;
-            background: #181818;
-            border-radius: 15px;
+            width: 380px;
+            min-height: 650px;
+            background: rgba(34,34,34,0.98);
+            border-radius: 28px;
+            box-shadow: 0 12px 40px #000a, 0 2px 8px #1db95433;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
             flex-direction: column;
+            position: relative;
+            border: 2px solid #1db95433;
         }
         .player-header {
             display: flex;
             align-items: center;
-            margin-bottom: 30px;
-            margin-top: 30px;
             justify-content: center;
+            margin: 32px 0 18px 0;
         }
         .spotify-logo {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             margin-right: 10px;
+            filter: drop-shadow(0 0 8px #1db95488);
         }
         .player-header h2 {
             margin: 0;
-            font-size: 18px;
+            font-size: 22px;
             color: #1DB954;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 2px 8px #1db95433;
         }
         .cover {
-            position: relative;
-            margin-bottom: 25px;
             display: flex;
             justify-content: center;
+            margin-bottom: 18px;
         }
         #cover-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s;
+            width: 210px;
+            height: 210px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #1db95433, 0 2px 8px #000a;
             object-fit: cover;
+            border: 3px solid #1db95455;
+            background: #222;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .cover:hover #cover-img {
-            transform: scale(1.02);
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 12px 40px #1db95455, 0 2px 8px #000a;
         }
         .info {
-            margin-bottom: 25px;
+            margin-bottom: 18px;
             text-align: center;
         }
         .info h2 {
-            margin: 0 0 5px 0;
-            font-size: 24px;
-            font-weight: 600;
+            margin: 0 0 6px 0;
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #1db95422;
         }
         .info p {
             margin: 0;
             color: #b3b3b3;
             font-size: 16px;
+            font-weight: 500;
         }
         .progress-container {
-            margin: 20px 0;
+            margin: 18px 0 0 0;
+            padding: 0 18px;
         }
         #progress-bar {
             width: 100%;
-            height: 4px;
-            background: #535353;
-            border-radius: 2px;
+            height: 6px;
+            background: #232526;
+            border-radius: 3px;
             cursor: pointer;
-            margin-bottom: 5px;
+            margin-bottom: 7px;
+            accent-color: #1DB954;
         }
         #progress-bar::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             background: #1DB954;
             border-radius: 50%;
+            box-shadow: 0 2px 8px #1db95488;
+        }
+        #progress-bar::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #1DB954;
+            border-radius: 50%;
+            border: none;
         }
         .time {
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
+            font-size: 13px;
             color: #b3b3b3;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
         .controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 25px;
-            margin: 25px 0;
+            gap: 32px;
+            margin: 28px 0 10px 0;
         }
         .controls button {
             background: none;
             border: none;
-            color: white;
+            color: #fff;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: color 0.2s, transform 0.2s;
+            font-size: 22px;
+            padding: 0;
         }
         .controls button:hover {
             color: #1DB954;
-        }
-        #prev-btn, #next-btn {
-            font-size: 20px;
+            transform: scale(1.18);
         }
         #play-btn {
-            background: #1DB954;
-            width: 50px;
-            height: 50px;
+            background: linear-gradient(135deg, #1DB954 60%, #1ed760 100%);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
+            font-size: 28px;
+            color: #fff;
+            box-shadow: 0 4px 16px #1db95455;
+            border: 2px solid #fff2;
+            transition: background 0.2s, transform 0.2s;
         }
         #play-btn:hover {
-            transform: scale(1.05);
-            background: #1ed760;
+            background: linear-gradient(135deg, #1ed760 60%, #1DB954 100%);
+            transform: scale(1.08);
         }
         .playlist {
             flex: 1;
             overflow-y: auto;
-            margin-top: 20px;
+            margin: 18px 0 0 0;
+            padding: 0 10px 10px 10px;
             scrollbar-width: thin;
-            scrollbar-color: #535353 #282828;
+            scrollbar-color: #1DB954 #232526;
+            max-height: 210px;
         }
         .playlist::-webkit-scrollbar {
-            width: 6px;
-        }
-        .playlist::-webkit-scrollbar-track {
-            background: #282828;
+            width: 7px;
         }
         .playlist::-webkit-scrollbar-thumb {
-            background-color: #535353;
-            border-radius: 3px;
+            background: #1DB954;
+            border-radius: 4px;
+        }
+        .playlist::-webkit-scrollbar-track {
+            background: #232526;
         }
         .song-item {
             display: flex;
             align-items: center;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 10px 8px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.18s, transform 0.18s;
+            margin-bottom: 4px;
+            background: transparent;
         }
         .song-item:hover {
-            background: #333;
+            background: #1db95422;
+            transform: scale(1.01);
         }
         .song-item.active {
-            background: #3e3e3e;
+            background: linear-gradient(90deg, #1DB95433 0%, #232526 100%);
+            box-shadow: 0 2px 8px #1db95422;
         }
         .song-item img {
-            width: 40px;
-            height: 40px;
-            border-radius: 4px;
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
             margin-right: 15px;
+            box-shadow: 0 2px 8px #0004;
+            object-fit: cover;
         }
         .song-item-info {
             flex: 1;
         }
         .song-item-info h4 {
             margin: 0 0 3px 0;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
         }
         .song-item-info p {
             margin: 0;
-            font-size: 12px;
+            font-size: 13px;
             color: #b3b3b3;
+            font-weight: 500;
         }
         .song-duration {
-            font-size: 12px;
+            font-size: 13px;
             color: #b3b3b3;
+            font-weight: 600;
+            margin-left: 8px;
         }
         .toast-next {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: #1DB954;
+            background: linear-gradient(135deg, #1DB954 60%, #1ed760 100%);
             color: #fff;
             padding: 18px 32px;
             border-radius: 24px;
@@ -205,6 +245,25 @@
         }
         .toast-next.show {
             opacity: 1;
+        }
+        @media (max-width: 500px) {
+            .spotify-container {
+                width: 98vw;
+                min-height: 98vw;
+                border-radius: 12px;
+                padding-bottom: 10vw;
+            }
+            #cover-img {
+                width: 60vw;
+                height: 60vw;
+                min-width: 120px;
+                min-height: 120px;
+                max-width: 90vw;
+                max-height: 90vw;
+            }
+            .playlist {
+                max-height: 38vw;
+            }
         }
     </style>
 </head>
@@ -236,7 +295,7 @@
             <button id="next-btn">⏭</button>
         </div>
         <div class="playlist" id="playlist">
-            <!-- Las canciones se agregarán aquí dinámicamente -->
+
         </div>
         <audio id="audio"></audio>
     </div>
@@ -449,6 +508,40 @@
         // Inicializar
         initPlaylist();
         loadSong(songs[currentSongIndex]);
+        
+        function loadSong(song) {
+    songTitle.textContent = song.title;
+    artist.textContent = song.artist;
+    coverImg.src = song.cover;
+    audio.src = song.audio;
+    playBtn.disabled = true;
+    playBtn.innerHTML = '<span class="loader-circle"></span>';
+    audio.onloadedmetadata = function() {
+        durationEl.textContent = formatTime(audio.duration);
+        playBtn.disabled = false;
+        playBtn.textContent = isPlaying ? "⏸" : "▶";
+    };
+}
+
+const style = document.createElement('style');
+style.innerHTML = `
+.loader-circle {
+    border: 3px solid #1db95444;
+    border-top: 3px solid #1DB954;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+`;
+document.head.appendChild(style);
     </script>
 </body>
 </html>
