@@ -3,6 +3,19 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background: #dcbadb;
 }
+h1, h2, h4 {
+    background: linear-gradient(90deg, #af7ead 70%, #c57197 100%);
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 18px;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 2px 12px #af7ead33;
+    margin: 18px auto;
+    display: inline-block;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
 h1{
     background-color: #af7ead;
     color: #dcbadb;

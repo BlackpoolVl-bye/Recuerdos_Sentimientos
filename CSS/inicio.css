@@ -3,6 +3,19 @@ body {
             margin: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
         }
+        h1, h2, h4 {
+    background: linear-gradient(90deg, #af7ead 70%, #c57197 100%);
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 18px;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 2px 12px #af7ead33;
+    margin: 18px auto;
+    display: inline-block;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
         .nave nav {
             background: rgba(255,255,255,0.85);
             border-radius: 18px;
@@ -216,3 +229,34 @@ body {
                 gap: 6px;
             }
         }
+        .menu {
+    background: linear-gradient(135deg, #fff6fa 60%, #af7ead 100%);
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #af7ead22;
+    padding: 14px 0 14px 0;
+    max-width: 400px;
+    margin: 18px auto;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    animation: fadeInUp 1.2s;
+}
+.menu li a {
+    color: #af7ead;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    border-radius: 14px;
+}
+.menu li a:hover {
+    color: #fff;
+    background: #e07bb7;
+}
