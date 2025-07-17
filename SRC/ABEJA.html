@@ -6,29 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Logo/ICONO.png" type="image/x-icon">
     <link rel="stylesheet" href="/CSS/abeja.css">
+    <script src="/JavaScript/abeja.js"></script>
     <title>ABEJA</title>
 </head>
 
 <body>
-    <div class="video-fondo">
-        <video autoplay loop muted playsinline>
-            <source src="/Recursos/Video/mnnn.mp4" type="video/mp4">
-        </video>
-        <div class="contenido">
-            <h1>ERES LA FLOR DE MI VIDA</h1>
-            <p>Y YO LA ABEJITA QUE NECESITA DE TU POLEN PARA SOBREVIVIR</p>
-        </div>
+<div class="video-fondo">
+    <video autoplay loop muted playsinline>
+        <source src="/Recursos/Video/mnnn.mp4" type="video/mp4">
+    </video>
+    <div class="contenido">
+        <h1>ERES LA FLOR DE MI VIDA</h1>
+        <p>Y YO LA ABEJITA QUE NECESITA DE TU POLEN PARA SOBREVIVIR</p>
     </div>
-    <div class="abeja">
-        <center>
-    <img src="/Recursos/MT_ABEJA/Abeja23.gif" width="180" height="180">
 </div>
-<div class="flores">
-    <center>
-    <img src="/Recursos/MT_ABEJA/rosas juntas.png" height="350">
-</center>
-</div>
-</center>
-</body>
 
+<div class="mariposa mariposa1"></div>
+<div class="mariposa mariposa2"></div>
+<div class="mariposa mariposa3"></div>
+
+
+<div class="petalo-float petalo1"></div>
+<div class="petalo-float petalo2"></div>
+<div class="petalo-float petalo3"></div>
+<div class="petalo-float petalo4"></div>
+<div class="petalo-float petalo5"></div>
+<div class="petalo-float petalo6"></div>
+<div class="petalo-float petalo7"></div>
+<div class="petalo-float petalo8"></div>
+<div class="petalo-float petalo9"></div>
+<div class="petalo-float petalo10"></div>
+
+<div class="abeja">
+    <img src="/Recursos/MT_ABEJA/Abeja23.gif" width="120" height="120" alt="abeja">
+</div>
+
+<div class="flores">
+  <div class="rosa-con-aura">
+    <div class="aura"></div>
+    <div class="rosa-mejorada">
+      <div class="petalo petalo-a"></div>
+      <div class="petalo petalo-b"></div>
+      <div class="petalo petalo-c"></div>
+      <div class="petalo petalo-d"></div>
+      <div class="petalo petalo-e"></div>
+      <div class="centro-rosa"></div>
+      <div class="tallo-rosa"></div>
+      <div class="hoja-rosa hoja-izq"></div>
+      <div class="hoja-rosa hoja-der"></div>
+    </div>
+  </div>
+</div>
+
+<div id="loader-bg">
+  <div class="loader-content">
+    <div class="loader-circle"></div>
+    <div class="loader-text-bg">
+      <span class="loader-text">Cargando...</span>
+    </div>
+  </div>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.getElementById('loader-bg').classList.add('hide');
+        setTimeout(function() {
+            document.getElementById('loader-bg').style.display = 'none';
+        }, 700);
+    }, 2000);
+});
+</script>
+</body>
 </html>
