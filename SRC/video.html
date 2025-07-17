@@ -154,5 +154,66 @@
     </div>
     <h4>MASSSSS PRUEBAS PARA DENUNCIARTE MI AMOR</h4>
     </center>
+    <div id="loader-bg">
+  <div class="loader-content">
+    <div class="loader-circle"></div>
+    <div class="loader-text-bg">
+      <span class="loader-text">Cargando...</span>
+    </div>
+  </div>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.getElementById('loader-bg').classList.add('hide');
+        setTimeout(function() {
+            document.getElementById('loader-bg').style.display = 'none';
+        }, 700);
+    }, 2000);
+});
+</script>
+<style>
+    #loader-bg {
+    position: fixed;
+    z-index: 99999;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(135deg, #af7ead 60%, #e07bb7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s;
+}
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+.loader-circle {
+    border: 6px solid #fff6fa55;
+    border-top: 6px solid #fff;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 16px #fff6fa55;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+.loader-text {
+    color: #fff;
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    font-size: 1.5em;
+    text-shadow: 0 2px 12px #af7ead88;
+    letter-spacing: 1px;
+}
+#loader-bg.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+</style>
 </body>
 </html>
