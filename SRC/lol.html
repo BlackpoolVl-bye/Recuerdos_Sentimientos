@@ -109,8 +109,47 @@
             Tu Osito
         </div>
     </div>
+    </div>
+        <div style="display:flex;justify-content:center;margin-top:38px;">
+            <button class="boton-animado" onclick="window.location.href='ross.html'">
+                ❤️ 1er año juntos ❤️
+            </button>
+        </div>
+    </div>
+    <style>
+    .boton-animado {
+        background: linear-gradient(90deg, #af7ead 0%, #b63971 100%);
+        color: black;
+        font-family: 'Pacifico', cursive, Arial, sans-serif;
+        font-size: 1.18em;
+        font-weight: bold;
+        border: none;
+        border-radius: 18px;
+        padding: 16px 44px;
+        box-shadow: 0 4px 18px #af7ead44, 0 1px 0 #fff;
+        cursor: pointer;
+        transition: background 0.4s, transform 0.2s, box-shadow 0.2s, color 0.3s;
+        outline: none;
+        animation: pulseColor 2.2s infinite alternate, jump 2.8s infinite;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+    .boton-animado:hover {
+        background: linear-gradient(90deg, #ffe9f3 0%, #af7ead 100%);
+        color: #af7ead;
+        transform: scale(1.09) rotate(-2deg);
+        box-shadow: 0 8px 32px #af7ead55;
+    }
+    @keyframes pulseColor {
+        0% { box-shadow: 0 0 0 0 #af7ead44; background-position: 0% 50%; }
+        100% { box-shadow: 0 0 24px 8px #ffe9f355; background-position: 100% 50%; }
+    }
+    @keyframes jump {
+        0%, 100% { transform: translateY(0);}
+        50% { transform: translateY(-8px);}
+    }
+    </style>
     <script>
-    // Confeti animado
     const canvas = document.querySelector('.confeti');
     const ctx = canvas.getContext('2d');
     let W = window.innerWidth, H = window.innerHeight;

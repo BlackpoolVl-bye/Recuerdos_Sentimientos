@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para ti, mi amor</title>
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fbeffb 0%, #e1c6e1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .carta {
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px #b48bb355;
+      padding: 40px 36px 32px 36px;
+      max-width: 420px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-family: 'Segoe Script', 'Brush Script MT', cursive;
+      animation: aparecer 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    @keyframes aparecer {
+      0% { transform: scale(0.7) translateY(80px); opacity: 0; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .titulo {
+      font-size: 2.2em;
+      color: #b71c5c;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px #fff, 0 1px 0 #e1c6e1;
+    }
+    .mensaje {
+      font-size: 1.25em;
+      color: #7d5c8c;
+      margin-bottom: 28px;
+      line-height: 1.6;
+      text-shadow: 0 1px 0 #fff;
+    }
+    .firma {
+      margin-top: 24px;
+      font-size: 1.1em;
+      color: #b71c5c;
+      letter-spacing: 1px;
+    }
+    /* Corazones flotando */
+    .corazon {
+      position: absolute;
+      font-size: 2em;
+      opacity: 0.7;
+      pointer-events: none;
+      animation: flotar 6s linear infinite;
+    }
+    @keyframes flotar {
+      0% {
+        transform: translateY(0) scale(1) rotate(-10deg);
+        opacity: 0.7;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.3) rotate(20deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="carta">
+    <div class="titulo">Ti amo ❤️</div>
+    <div class="mensaje">
+      Gracias por llenar mi vida de alegría, ternura y amor.<br>
+      Eres mi persona favorita, mi mejor amiga y mi gran amor.<br>
+      <span style="color:#af7ead;">¡Feliz primer año juntos!</span><br>
+      Espero seguir creando recuerdos hermosos a tu lado.<br>
+      <span style="font-size:1.3em;">Siempre tuyo,</span>
+    </div>
+    <div class="firma">
+      <span>Tu Osito 🐻</span>
+    </div>
+  </div>
+  <script>
+    // Corazones flotando
+    function crearCorazon() {
+      const corazon = document.createElement('div');
+      corazon.className = 'corazon';
+      corazon.textContent = '💗';
+      corazon.style.left = Math.random() * 100 + 'vw';
+      corazon.style.bottom = '-40px';
+      corazon.style.fontSize = (Math.random() * 24 + 24) + 'px';
+      corazon.style.animationDuration = (Math.random() * 2 + 5) + 's';
+      document.body.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 7000);
+    }
+    setInterval(crearCorazon, 600);
+    // Crea algunos corazones al cargar
+    for(let i=0;i<8;i++) setTimeout(crearCorazon, i*400);
+  </script>
+</body>
+</html>
