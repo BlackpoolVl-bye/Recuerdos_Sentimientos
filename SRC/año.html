@@ -65,39 +65,39 @@
 <body>
     <div class="container">
         <span class="corazon">❤️</span>
-        <h1>¡Falta poco para nuestro primer año juntos!</h1>
+        <h1>Esto falta para nuestro 2do año juntos</h1>
         <div id="countdown" class="countdown"></div>
         <div id="mensaje-final" class="mensaje-final" style="display:none;">
-            ¡Feliz primer aniversario, mi amor! Gracias por este año tan maravilloso a tu lado. Te amo con todo mi corazón. 💖
+            ¡Feliz segundo aniversario, mi amor! Gracias por este nuevo año tan maravilloso a tu lado. Te amo con todo mi corazón. 💖
         </div>
     </div>
     <script>
-        const fechaObjetivo = new Date("2025-07-23T00:00:00").getTime();
-        const countdown = document.getElementById("countdown");
-        const mensajeFinal = document.getElementById("mensaje-final");
+        const fechaObjetivo = new Date("2026-07-23T00:00:00").getTime(); // Cambiado para el nuevo año juntos
+const countdown = document.getElementById("countdown");
+const mensajeFinal = document.getElementById("mensaje-final");
 
-        function actualizarCuentaRegresiva() {
-            const ahora = new Date().getTime();
-            const distancia = fechaObjetivo - ahora;
+function actualizarCuentaRegresiva() {
+    const ahora = new Date().getTime();
+    const distancia = fechaObjetivo - ahora;
 
-            if (distancia <= 0) {
-                countdown.style.display = "none";
-                mensajeFinal.style.display = "block";
-                clearInterval(intervalo);
-                return;
-            }
+    if (distancia <= 0) {
+        countdown.style.display = "none";
+        mensajeFinal.style.display = "block";
+        clearInterval(intervalo);
+        return;
+    }
 
-            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-            countdown.innerHTML = 
-                `<b>${dias}</b> días, <b>${horas}</b> horas, <b>${minutos}</b> minutos y <b>${segundos}</b> segundos`;
-        }
+    countdown.innerHTML = 
+        `<b>${dias}</b> días, <b>${horas}</b> horas, <b>${minutos}</b> minutos y <b>${segundos}</b> segundos`;
+}
 
-        actualizarCuentaRegresiva();
-        const intervalo = setInterval(actualizarCuentaRegresiva, 1000);
+actualizarCuentaRegresiva();
+const intervalo = setInterval(actualizarCuentaRegresiva, 1000);
     </script>
 </body>
 </html>

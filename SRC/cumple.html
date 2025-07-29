@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¡Feliz Cumpleaños, mi amor!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe9f3 0%, #b63971 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin: 0;
+    }
+    .tarjeta-cumple {
+      background: rgba(255,255,255,0.93);
+      border-radius: 28px;
+      box-shadow: 0 8px 32px #b48bb355;
+      padding: 44px 38px 36px 38px;
+      max-width: 440px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-family: 'Pacifico', cursive, Arial, sans-serif;
+      animation: aparecer 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    @keyframes aparecer {
+      0% { transform: scale(0.7) translateY(80px); opacity: 0; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .titulo-cumple {
+      font-size: 2.3em;
+      color: #b63971;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px #fff, 0 1px 0 #ffe9f3;
+      animation: brilla 2.5s infinite alternate;
+    }
+    @keyframes brilla {
+      0% { text-shadow: 0 2px 8px #fff, 0 1px 0 #ffe9f3; }
+      100% { text-shadow: 0 2px 18px #ffe9f3, 0 1px 0 #fff; }
+    }
+    .mensaje-cumple {
+      font-size: 1.25em;
+      color: #7d5c8c;
+      margin-bottom: 28px;
+      line-height: 1.7;
+      text-shadow: 0 1px 0 #fff;
+    }
+    .firma-cumple {
+      margin-top: 24px;
+      font-size: 1.1em;
+      color: #b63971;
+      letter-spacing: 1px;
+    }
+    .boton-sorpresa {
+      background: linear-gradient(90deg, #af7ead 0%, #ffe9f3 100%);
+      color: #fff;
+      font-family: 'Pacifico', cursive, Arial, sans-serif;
+      font-size: 1.1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 18px;
+      padding: 12px 32px;
+      box-shadow: 0 4px 18px #af7ead44, 0 1px 0 #fff;
+      cursor: pointer;
+      transition: background 0.4s, transform 0.2s, box-shadow 0.2s;
+      outline: none;
+      animation: pulseColor 2.2s infinite alternate, jump 2.8s infinite;
+      letter-spacing: 1px;
+      margin-top: 18px;
+    }
+    .boton-sorpresa:hover {
+      background: linear-gradient(90deg, #ffe9f3 0%, #af7ead 100%);
+      color: #af7ead;
+      transform: scale(1.09) rotate(-2deg);
+      box-shadow: 0 8px 32px #af7ead55;
+    }
+    @keyframes pulseColor {
+      0% { box-shadow: 0 0 0 0 #af7ead44; background-position: 0% 50%; }
+      100% { box-shadow: 0 0 24px 8px #ffe9f355; background-position: 100% 50%; }
+    }
+    @keyframes jump {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-8px);}
+    }
+    /* Globos */
+    .globo {
+      position: fixed;
+      bottom: -120px;
+      z-index: 0;
+      opacity: 0.85;
+      animation: flotarGlobo 7s linear forwards;
+      pointer-events: none;
+    }
+    @keyframes flotarGlobo {
+      0% { transform: translateY(0) scale(1);}
+      100% { transform: translateY(-110vh) scale(1.1);}
+    }
+    /* Confeti */
+    .confeti {
+      position: fixed;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <canvas class="confeti"></canvas>
+  <div class="tarjeta-cumple">
+    <div class="titulo-cumple">¡Feliz cumpleaños, mi vida! 🎂</div>
+    <div class="mensaje-cumple">
+      Hoy celebramos el día en que nació la persona más maravillosa del mundo.<br>
+      Gracias por existir, por tu dulzura, tu alegría y tu amor infinito.<br>
+      Deseo que cada uno de tus sueños se haga realidad y que la vida te regale momentos tan hermosos como tú.<br>
+      <span style="color:#b63971;font-size:1.1em;">¡Te amo más de lo que las palabras pueden decir!</span>
+    </div>
+    <div class="firma-cumple">
+      Con todo mi corazón,<br>
+      Tu Osito 🐻
+    </div>
+    <button class="boton-sorpresa" onclick="mostrarSorpresa()">
+      🎁 Sorpresa especial
+    </button>
+  </div>
+  <script>
+    // Globos animados
+    function lanzarGlobo() {
+      const colores = ['#ff70a6','#ff9770','#f9d923','#70d6ff','#b63971','#af7ead','#ffe9f3','#3a86ff'];
+      const globo = document.createElement('div');
+      globo.className = 'globo';
+      globo.style.left = (Math.random()*90+2)+'vw';
+      globo.style.animationDuration = (Math.random()*2+6)+'s';
+      globo.style.opacity = Math.random()*0.4+0.6;
+      globo.innerHTML = `<svg width="38" height="70" viewBox="0 0 38 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="19" cy="28" rx="18" ry="28" fill="${colores[Math.floor(Math.random()*colores.length)]}" />
+        <rect x="16" y="56" width="6" height="12" rx="3" fill="#b48bb3"/>
+        <path d="M19 68 Q17 72 21 70" stroke="#b63971" stroke-width="2" fill="none"/>
+      </svg>`;
+      document.body.appendChild(globo);
+      setTimeout(()=>globo.remove(), 8000);
+    }
+    setInterval(lanzarGlobo, 600);
+    for(let i=0;i<8;i++) setTimeout(lanzarGlobo, i*400);
+
+    // Confeti animado
+    const canvas = document.querySelector('.confeti');
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth, H = window.innerHeight;
+    canvas.width = W; canvas.height = H;
+    let particles = [];
+    for(let i=0;i<120;i++){
+        particles.push({
+            x: Math.random()*W,
+            y: Math.random()*H - H,
+            r: Math.random()*8+4,
+            d: Math.random()*Math.PI*2,
+            color: `hsl(${Math.random()*360},80%,70%)`,
+            tiltAngleInc: Math.random()*0.07+0.05
+        });
+    }
+    function drawConfetti(){
+        ctx.clearRect(0,0,W,H);
+        for(let i=0;i<particles.length;i++){
+            let p = particles[i];
+            ctx.beginPath();
+            ctx.ellipse(p.x, p.y, p.r, p.r*0.6, p.d, 0, 2*Math.PI);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = 0.85;
+            ctx.fill();
+        }
+        updateConfetti();
+    }
+    function updateConfetti(){
+        for(let i=0;i<particles.length;i++){
+            let p = particles[i];
+            p.y += Math.cos(p.d)+2+p.r/5;
+            p.x += Math.sin(p.d)*2;
+            p.d += p.tiltAngleInc;
+            if(p.y > H){
+                p.y = -10;
+                p.x = Math.random()*W;
+            }
+        }
+    }
+    setInterval(drawConfetti, 24);
+    window.addEventListener('resize', ()=>{
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W; canvas.height = H;
+    });
+
+    // Sorpresa especial
+    function mostrarSorpresa() {
+      const mensajes = [
+        "¡Hoy solo deseo que seas inmensamente feliz! 🎉",
+        "Eres la razón de muchas de mis sonrisas. ¡Feliz cumpleaños, amor! 💖",
+        "Gracias por existir y por ser tú. ¡Te amo infinito! 🌟",
+        "¡Que la vida te regale tantos momentos hermosos como tú me regalas a mí! 🎂"
+      ];
+      const idx = Math.floor(Math.random()*mensajes.length);
+      alert(mensajes[idx]);
+    }
+  </script>
+
+</body>
+</html>

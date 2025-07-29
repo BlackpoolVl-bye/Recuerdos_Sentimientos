@@ -20,10 +20,6 @@
     </div>
         </div>
         <center>
-            <div class="secreto-titulo">EL SECRETO... Se revela en:</div>
-    <a id="boton-contador" href="/SRC/ANNO.html" class="boton-contador" style="display:inline-block;margin:18px 0 10px 0;padding:16px 38px;font-size:1.5em;background:linear-gradient(135deg,#af7ead 0%,#dcbadb 100%);color:#fff;border-radius:18px;text-decoration:none;box-shadow:0 2px 16px #af7ead44;transition:background 0.2s,transform 0.2s;">
-        000:00:00:00
-    </a>   
             <div class="fecha-especial-container">
         <div class="fecha-animada">
             <span class="corazon-izq">❤️</span>
@@ -36,6 +32,12 @@
         </div>
         <div class="fecha-texto">El dia que empezo nuestra historia</div>
     </div>
+    <a id="boton-contador" href="/SRC/ANNO.html" class="boton-contador" style="display:inline-block;margin:18px 0 10px 0;padding:16px 38px;font-size:1.5em;background:linear-gradient(135deg,#af7ead 0%,#dcbadb 100%);color:#fff;border-radius:18px;text-decoration:none;box-shadow:0 2px 16px #af7ead44;transition:background 0.2s,transform 0.2s;">
+        000:00:00:00
+    </a>   
+    <a id="boton-contador-2026" href="/SRC/ANNO.html" class="boton-contador" style="display:inline-block;margin:18px 0 10px 0;padding:16px 38px;font-size:1.5em;background:linear-gradient(135deg,#af7ead 0%,#dcbadb 100%);color:#fff;border-radius:18px;text-decoration:none;box-shadow:0 2px 16px #af7ead44;transition:background 0.2s,transform 0.2s;">
+    000:00:00:00
+</a>
             <div class="ta">
             <a href="/Recursos/te amo/index.html">TI AMO</a>
             </div>
@@ -86,7 +88,7 @@
             botonContador.style.pointerEvents = "none";
             botonContador.style.opacity = "0.7";
         } else {
-            botonContador.textContent = "YA PUEDES VER...";
+            botonContador.textContent = "1ER AÑO JUNTOS";
             botonContador.style.pointerEvents = "auto";
             botonContador.style.opacity = "1";
         }
@@ -156,5 +158,38 @@ window.addEventListener('DOMContentLoaded', function() {
     pointer-events: none;
 }
 </style>
+<script>
+const fechaObjetivo2026 = new Date(2026, 6, 23, 0, 0, 0); // Mes 6 = Julio
+const botonContador2026 = document.getElementById("boton-contador-2026");
+let redirigido2026 = false;
+
+function actualizarBotonContador2026() {
+    const ahora = new Date();
+    const diferencia = fechaObjetivo2026 - ahora;
+
+    if (diferencia > 0) {
+        const dias = String(Math.floor(diferencia / (1000 * 60 * 60 * 24))).padStart(3, '0');
+        const horas = String(Math.floor((diferencia / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        const minutos = String(Math.floor((diferencia / (1000 * 60)) % 60)).padStart(2, '0');
+        const segundos = String(Math.floor((diferencia / 1000) % 60)).padStart(2, '0');
+        botonContador2026.textContent = `${dias}:${horas}:${minutos}:${segundos}`;
+        botonContador2026.style.pointerEvents = "none";
+        botonContador2026.style.opacity = "0.7";
+    } else {
+        botonContador2026.textContent = "2DO AÑO JUNTOS";
+        botonContador2026.style.pointerEvents = "auto";
+        botonContador2026.style.opacity = "1";
+        if (!redirigido2026) {
+            redirigido2026 = true;
+            setTimeout(function() {
+                window.location.href = "/SRC/ANNO2026.html"; //aca link pendejo
+            }, 2000);
+        }
+    }
+}
+
+actualizarBotonContador2026();
+setInterval(actualizarBotonContador2026, 1000);
+</script>
 </body>
 </html>

@@ -73,6 +73,67 @@
         }, 1800 + Math.random()*200);
     }
 </script>
+<script>
+const fechaCumple = new Date(2025, 7, 6); // Mes 7 = Agosto (0-indexed)
+const hoyCumple = new Date();
+const diferenciaCumple = Math.ceil((fechaCumple - hoyCumple) / (1000 * 60 * 60 * 24));
+
+if (diferenciaCumple > 0) {
+    Swal.fire({
+        title: ' 💗Faltan ' + diferenciaCumple + ' días💗',
+        html: '<div style="font-size:1.3em;color:#b63971;font-family:\'Pacifico\',cursive,Arial,sans-serif;">Para un dia tan importante<br>Mi osita<br><b>06 / 08 / 2025</b></div>',
+        background: 'linear-gradient(135deg, #ffe9f3 0%, #b63971 100%)',
+        color: '#5a3d5c',
+        confirmButtonColor: '#b63971',
+        confirmButtonText: 'ACEPTAR',
+        customClass: {
+            popup: 'swal2-border-radius'
+        },
+        didClose: () => {
+            lluviaConfetiCumple();
+        }
+    });
+}
+
+function lluviaConfetiCumple() {
+    let lanzados = 0;
+    const total = 30;
+    const intervalo = setInterval(() => {
+        lanzarConfeti();
+        lanzados++;
+        if (lanzados >= total) clearInterval(intervalo);
+    }, 80);
+
+    setTimeout(() => clearInterval(intervalo), 3000);
+}
+
+function lanzarConfeti() {
+    const colores = ['#f9d923', '#f93943', '#3ec300', '#3a86ff', '#ff70a6', '#ff9770', '#70d6ff', '#b63971'];
+    const confeti = document.createElement('div');
+    confeti.textContent = '🎉';
+    confeti.style.position = 'fixed';
+    confeti.style.left = (Math.random() * 100) + 'vw';
+    confeti.style.bottom = '-40px';
+    confeti.style.fontSize = (Math.random() * 32 + 24) + 'px';
+    confeti.style.opacity = Math.random() * 0.5 + 0.5;
+    confeti.style.zIndex = 9999;
+    confeti.style.pointerEvents = 'none';
+    confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
+    confeti.style.color = colores[Math.floor(Math.random() * colores.length)];
+
+    document.body.appendChild(confeti);
+
+    const desplazamiento = (Math.random() - 0.5) * 30;
+    setTimeout(() => {
+        confeti.style.transform = `translateY(-110vh) translateX(${desplazamiento}vw) rotate(${Math.random() > 0.5 ? '-' : ''}${Math.random()*60}deg)`;
+        confeti.style.opacity = 0;
+    }, 30);
+
+    setTimeout(() => {
+        confeti.remove();
+    }, 1800 + Math.random()*200);
+}
+</script>
 <style>
 .swal2-border-radius {
     border-radius: 32px !important;
@@ -105,6 +166,124 @@
         <h2>Te la dediqué una vez... Pero acá la tienes nuevamente en tus manos princesa hermosa... Recuerda que te amo con todo mi corazón mi vida</h2>
     </div>
     <center>
+
+
+<div style="display:flex;justify-content:center;margin:32px 0;">
+    <a id="boton-cumple" class="boton-cumple" href="SRC/cumple.html" onclick="return false;">
+        <span id="contador-cumple">00:00:00</span>
+    </a>
+</div>
+<style>
+.boton-cumple {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(90deg, #b63971 0%, #ffe9f3 100%);
+    color: black;
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    font-size: 1.18em;
+    font-weight: bold;
+    border: none;
+    border-radius: 18px;
+    padding: 14px 38px;
+    box-shadow: 0 4px 18px #b6397144, 0 1px 0 #fff;
+    cursor: pointer;
+    transition: background 0.4s, transform 0.2s, box-shadow 0.2s, color 0.3s;
+    outline: none;
+    animation: pulseColorCumple 2.2s infinite alternate, jumpCumple 2.8s infinite;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px #fff, 0 1px 0 #ffe9f3;
+    position: relative;
+    overflow: hidden;
+    min-width: 180px;
+    justify-content: center;
+}
+.boton-cumple:hover {
+    background: linear-gradient(90deg, #ffe9f3 0%, #b63971 100%);
+    color: #b63971;
+    transform: scale(1.09) rotate(-2deg);
+    box-shadow: 0 8px 32px #b6397155;
+}
+@keyframes pulseColorCumple {
+    0% { box-shadow: 0 0 0 0 #b6397144; background-position: 0% 50%; }
+    100% { box-shadow: 0 0 24px 8px #ffe9f355; background-position: 100% 50%; }
+}
+@keyframes jumpCumple {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-8px);}
+}
+.icono-cumple {
+    font-size: 1.5em;
+    filter: drop-shadow(0 0 4px #ffe9f3);
+    animation: glowIconoCumple 2.5s infinite alternate;
+}
+@keyframes glowIconoCumple {
+    0% { filter: drop-shadow(0 0 4px #ffe9f3);}
+    100% { filter: drop-shadow(0 0 12px #b63971);}
+}
+#contador-cumple {
+    font-size: 1.25em;
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    letter-spacing: 2px;
+    min-width: 110px;
+    display: inline-block;
+}
+</style>
+<script>
+const fechaCumpleBtn = new Date(2025, 7, 6, 0, 0, 0); // 06/08/2025 (mes 7 = agosto)
+const botonCumple = document.getElementById("boton-cumple");
+const contadorCumple = document.getElementById("contador-cumple");
+
+function actualizarContadorCumple() {
+    const ahora = new Date();
+    let diferencia = fechaCumpleBtn - ahora;
+    if (diferencia > 0) {
+        const horas = String(Math.floor((diferencia / (1000 * 60 * 60)))).padStart(2, '0');
+        const minutos = String(Math.floor((diferencia / (1000 * 60)) % 60)).padStart(2, '0');
+        const segundos = String(Math.floor((diferencia / 1000) % 60)).padStart(2, '0');
+        contadorCumple.textContent = `${horas}:${minutos}:${segundos}`;
+        botonCumple.style.pointerEvents = "none";
+        botonCumple.title = "Faltan horas y minutos para su cumpleaños";
+    } else {
+        contadorCumple.textContent = "¡ES SU CUMPLE! 🎉";
+        botonCumple.style.pointerEvents = "auto";
+        botonCumple.title = "¡Haz click para ver la sorpresa!";
+        botonCumple.href = "SRC/cumple.html";
+        botonCumple.onclick = null;
+        // Efecto de confeti al llegar la fecha
+        lanzarConfetiCumpleBtn();
+    }
+}
+actualizarContadorCumple();
+let intervaloCumple = setInterval(actualizarContadorCumple, 1000);
+
+// Confeti animado al llegar la fecha
+function lanzarConfetiCumpleBtn() {
+    for(let i=0;i<30;i++) {
+        setTimeout(()=>{
+            const confeti = document.createElement('div');
+            confeti.textContent = '🎉';
+            confeti.style.position = 'fixed';
+            confeti.style.left = (Math.random()*100)+'vw';
+            confeti.style.top = '-40px';
+            confeti.style.fontSize = (Math.random()*24+24)+'px';
+            confeti.style.opacity = Math.random()*0.5+0.5;
+            confeti.style.zIndex = 9999;
+            confeti.style.pointerEvents = 'none';
+            confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
+            document.body.appendChild(confeti);
+            setTimeout(()=>{
+                confeti.style.transform = `translateY(110vh) rotate(${Math.random()*360}deg)`;
+                confeti.style.opacity = 0;
+            },30);
+            setTimeout(()=>confeti.remove(),1800+Math.random()*200);
+        }, i*60);
+    }
+}
+</script> 
+
+    <div class="separador2"></div>
     <a href="CARTA/index.html">
         <h2 style="text-align:center;">HAZ CLICK ACA MI AMOR<br>CON TODO MI AMOR PARA TI</h2>
     </a>
@@ -191,10 +370,10 @@
     <li><a href="SRC/llevamos.html"><i class="fas fa-hourglass-half"></i> LLEVAMOS</a></li>
     <li><a href="SRC/retos.html"><i class="fas fa-fire"></i> RETOS</a></li>
     <li><a href="SRC/puzzle.html"><i class="fas fa-puzzle-piece"></i> PUZZLE</a></li>
-    <li><a href="SRC/galaxiamas.html"><i class="fas fa-star"></i> GALAXIA</a></li>
+    <li><a href="SRC/galaxiamas.html"><i class="fas fa-star"></i> J+R</a></li>
     <li><a href="SRC/BOT.html"><i class="fas fa-robot"></i> BOT ROMÁNTICO</a></li>
-    <li><a href="SRC/CORA.html"><i class="fas fa-heartbeat"></i> CARTA CORAZÓN</a></li>
-    <li><a href="SRC/corazon.html"><i class="fas fa-heart"></i> CORAZÓN ANIMADO</a></li>
+    <li><a href="SRC/CORA.html"><i class="fas fa-heartbeat"></i> CARTA ESPECIAL</a></li>
+    <li><a href="SRC/corazon.html"><i class="fas fa-heart"></i> ME SIENTO</a></li>
     <li><a href="SRC/ABEJA.html"><i class="fas fa-bug"></i> ABEJITA</a></li>
 </ul>
 </center>
@@ -257,6 +436,72 @@ window.addEventListener('DOMContentLoaded', function() {
 #loader-bg.hide {
     opacity: 0;
     pointer-events: none;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="version-indicador">
+    v7.4.01.1
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.version-indicador {
+    position: fixed;
+    left: 8px;
+    bottom: 4px;
+    background: rgba(30, 30, 30, 0.85);
+    color: #fff;
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    font-size: 0.82em;
+    letter-spacing: 1px;
+    padding: 3px 10px 3px 8px;
+    border-radius: 12px 16px 12px 6px;
+    box-shadow: 0 1px 6px #0003, 0 1px 0 #fff1 inset;
+    opacity: 0.85;
+    z-index: 99999;
+    transition: opacity 0.3s;
+    user-select: none;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.version-indicador::before {
+    content: "🪄";
+    font-size: 1em;
+    margin-right: 2px;
+    filter: drop-shadow(0 0 2px #ffe9f3);
+    animation: versionGlow 2.5s infinite alternate;
+}
+@keyframes versionGlow {
+    0% { filter: drop-shadow(0 0 2px #ffe9f3); }
+    100% { filter: drop-shadow(0 0 8px #af7ead);
+    }
 }
 </style>
 </body>

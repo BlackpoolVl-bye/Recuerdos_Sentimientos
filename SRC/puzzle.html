@@ -73,95 +73,149 @@
         <div id="mensaje-puzzle" class="mensaje-puzzle"></div>
     </div>
     <script>
-        const foto = "/Recursos/Sorpresas/Dia_pizza.jpg";
+const foto = "/Recursos/Sorpresas/Dia_pizza.jpg";
+const filas = 3, columnas = 3;
+let piezas = [];
+let vacia = {fila: filas-1, col: columnas-1};
+let resuelto = false;
 
-        const filas = 3, columnas = 3;
-        let piezas = [];
-        let vacia = {fila: filas-1, col: columnas-1};
+function crearPiezas() {
+    piezas = [];
+    for(let f=0; f<filas; f++) {
+        for(let c=0; c<columnas; c++) {
+            piezas.push({fila: f, col: c});
+        }
+    }
+    piezas.pop();
+    piezas.push(null);
+    vacia = {fila: filas-1, col: columnas-1};
+}
 
-        function crearPiezas() {
-            piezas = [];
-            for(let f=0; f<filas; f++) {
-                for(let c=0; c<columnas; c++) {
-                    piezas.push({fila: f, col: c});
-                }
+function mezclarPiezas() {
+    let movimientos = 0;
+    do {
+        for(let i=0; i<120; i++) {
+            let movibles = obtenerMovibles();
+            let mov = movibles[Math.floor(Math.random()*movibles.length)];
+            moverPieza(mov.fila, mov.col, false);
+        }
+        movimientos++;
+    } while(esResuelto() && movimientos < 10); // Evita que quede resuelto
+}
+
+function obtenerMovibles() {
+    let movs = [];
+    let {fila, col} = vacia;
+    [[0,1],[0,-1],[1,0],[-1,0]].forEach(([df,dc])=>{
+        let nf = fila+df, nc = col+dc;
+        if(nf>=0 && nf<filas && nc>=0 && nc<columnas) movs.push({fila:nf, col:nc});
+    });
+    return movs;
+}
+
+function renderizarPuzzle() {
+    const puzzleDiv = document.getElementById('puzzle');
+    puzzleDiv.innerHTML = '';
+    for(let f=0; f<filas; f++) {
+        for(let c=0; c<columnas; c++) {
+            let idx = f*columnas+c;
+            let pieza = piezas[idx];
+            let div = document.createElement('div');
+            div.className = 'pieza' + (pieza ? '' : ' vacia');
+            div.style.transition = 'transform 0.18s';
+            if(pieza) {
+                div.style.backgroundImage = `url('${foto}')`;
+                div.style.backgroundPosition = `-${pieza.col*80}px -${pieza.fila*80}px`;
+                div.onclick = ()=>intentarMover(f,c);
             }
-
-            piezas.pop();
-            piezas.push(null);
+            puzzleDiv.appendChild(div);
         }
+    }
+}
 
-        function mezclarPiezas() {
-            for(let i=0; i<100; i++) {
-                let movibles = obtenerMovibles();
-                let mov = movibles[Math.floor(Math.random()*movibles.length)];
-                moverPieza(mov.fila, mov.col, false);
-            }
+function intentarMover(f,c) {
+    if(resuelto) return;
+    let {fila, col} = vacia;
+    if((Math.abs(f-fila)+Math.abs(c-col))===1) {
+        moverPieza(f,c,true);
+        if(esResuelto()) {
+            resuelto = true;
+            document.getElementById('mensaje-puzzle').innerText = "¡Felicidades! Eres la pieza que completa mi vida 💖";
+            setTimeout(()=>confetiPuzzle(), 400);
+        } else {
+            document.getElementById('mensaje-puzzle').innerText = "";
         }
+    }
+}
 
-        function obtenerMovibles() {
-            let movs = [];
-            let {fila, col} = vacia;
-            [[0,1],[0,-1],[1,0],[-1,0]].forEach(([df,dc])=>{
-                let nf = fila+df, nc = col+dc;
-                if(nf>=0 && nf<filas && nc>=0 && nc<columnas) movs.push({fila:nf, col:nc});
-            });
-            return movs;
-        }
+function moverPieza(f,c,render=true) {
+    let vacIdx = vacia.fila*columnas+vacia.col;
+    let movIdx = f*columnas+c;
+    piezas[vacIdx] = piezas[movIdx];
+    piezas[movIdx] = null;
+    vacia = {fila: f, col: c};
+    if(render) renderizarPuzzle();
+}
 
-        function renderizarPuzzle() {
-            const puzzleDiv = document.getElementById('puzzle');
-            puzzleDiv.innerHTML = '';
-            for(let f=0; f<filas; f++) {
-                for(let c=0; c<columnas; c++) {
-                    let idx = f*columnas+c;
-                    let pieza = piezas[idx];
-                    let div = document.createElement('div');
-                    div.className = 'pieza' + (pieza ? '' : ' vacia');
-                    if(pieza) {
-                        div.style.backgroundImage = `url('${foto}')`;
-                        div.style.backgroundPosition = `-${pieza.col*80}px -${pieza.fila*80}px`;
-                        div.onclick = ()=>intentarMover(f,c);
-                    }
-                    puzzleDiv.appendChild(div);
-                }
-            }
-        }
+function esResuelto() {
+    for(let i=0; i<piezas.length-1; i++) {
+        let f = Math.floor(i/columnas), c = i%columnas;
+        let pieza = piezas[i];
+        if(!pieza || pieza.fila!==f || pieza.col!==c) return false;
+    }
+    return true;
+}
 
-        function intentarMover(f,c) {
-            let {fila, col} = vacia;
-            if((Math.abs(f-fila)+Math.abs(c-col))===1) {
-                moverPieza(f,c,true);
-                if(esResuelto()) {
-                    document.getElementById('mensaje-puzzle').innerText = "¡Felicidades! Eres la pieza que completa mi vida 💖";
-                } else {
-                    document.getElementById('mensaje-puzzle').innerText = "";
-                }
-            }
-        }
+// Confeti al ganar
+function confetiPuzzle() {
+    for(let i=0;i<30;i++) {
+        setTimeout(()=>{
+            const confeti = document.createElement('div');
+            confeti.textContent = '🎉';
+            confeti.style.position = 'fixed';
+            confeti.style.left = (Math.random()*100)+'vw';
+            confeti.style.top = '-40px';
+            confeti.style.fontSize = (Math.random()*24+24)+'px';
+            confeti.style.opacity = Math.random()*0.5+0.5;
+            confeti.style.zIndex = 9999;
+            confeti.style.pointerEvents = 'none';
+            confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
+            document.body.appendChild(confeti);
+            setTimeout(()=>{
+                confeti.style.transform = `translateY(110vh) rotate(${Math.random()*360}deg)`;
+                confeti.style.opacity = 0;
+            },30);
+            setTimeout(()=>confeti.remove(),1800+Math.random()*200);
+        }, i*60);
+    }
+}
 
-        function moverPieza(f,c,render=true) {
-            let vacIdx = vacia.fila*columnas+vacia.col;
-            let movIdx = f*columnas+c;
-            piezas[vacIdx] = piezas[movIdx];
-            piezas[movIdx] = null;
-            vacia = {fila: f, col: c};
-            if(render) renderizarPuzzle();
-        }
+// Botón reiniciar
+const mensajeDiv = document.getElementById('mensaje-puzzle');
+const btnReiniciar = document.createElement('button');
+btnReiniciar.textContent = "REINICIAR";
+btnReiniciar.style.marginTop = "12px";
+btnReiniciar.style.background = "linear-gradient(90deg,#af7ead 0%,#ffb6b9 100%)";
+btnReiniciar.style.color = "#fff";
+btnReiniciar.style.border = "none";
+btnReiniciar.style.borderRadius = "12px";
+btnReiniciar.style.padding = "8px 22px";
+btnReiniciar.style.fontFamily = "'Pacifico', cursive, Arial, sans-serif";
+btnReiniciar.style.fontSize = "1em";
+btnReiniciar.style.cursor = "pointer";
+btnReiniciar.onclick = ()=>{
+    resuelto = false;
+    crearPiezas();
+    mezclarPiezas();
+    renderizarPuzzle();
+    mensajeDiv.innerText = "";
+};
+mensajeDiv.parentNode.insertBefore(btnReiniciar, mensajeDiv.nextSibling);
 
-        function esResuelto() {
-            for(let i=0; i<piezas.length-1; i++) {
-                let f = Math.floor(i/columnas), c = i%columnas;
-                let pieza = piezas[i];
-                if(!pieza || pieza.fila!==f || pieza.col!==c) return false;
-            }
-            return true;
-        }
-
-        // Inicializar puzzle
-        crearPiezas();
-        mezclarPiezas();
-        renderizarPuzzle();
-    </script>
+// Inicializar puzzle
+crearPiezas();
+mezclarPiezas();
+renderizarPuzzle();
+</script>
 </body>
 </html>
