@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruleta de Salidas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe9f3 0%, #b63971 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      font-family: 'Pacifico', cursive, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      color: #b63971;
+      margin-top: 32px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 8px #fff, 0 1px 0 #ffe9f3;
+      font-size: 2em;
+    }
+    .inputs-ruleta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .inputs-ruleta input {
+      border: none;
+      border-radius: 12px;
+      padding: 8px 16px;
+      font-size: 1em;
+      background: #fff;
+      box-shadow: 0 2px 8px #b6397133;
+      outline: none;
+      width: 160px;
+      font-family: 'Pacifico', cursive, Arial, sans-serif;
+      color: #b63971;
+      transition: box-shadow 0.2s;
+      text-align: center;
+    }
+    .inputs-ruleta input:focus {
+      box-shadow: 0 4px 16px #b6397155;
+    }
+    .boton-girar {
+      background: linear-gradient(90deg, #af7ead 0%, #ffe9f3 100%);
+      color: #000000;
+      font-family: 'Pacifico', cursive, Arial, sans-serif;
+      font-size: 1.1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 18px;
+      padding: 12px 32px;
+      box-shadow: 0 4px 18px #af7ead44, 0 1px 0 #fff;
+      cursor: pointer;
+      transition: background 0.4s, transform 0.2s, box-shadow 0.2s;
+      outline: none;
+      margin-bottom: 18px;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      animation: pulseColor 2.2s infinite alternate, jump 2.8s infinite;
+    }
+    .boton-girar:hover {
+      background: linear-gradient(90deg, #ffe9f3 0%, #af7ead 100%);
+      color: #af7ead;
+      transform: scale(1.09) rotate(-2deg);
+      box-shadow: 0 8px 32px #af7ead55;
+    }
+    @keyframes pulseColor {
+      0% { box-shadow: 0 0 0 0 #af7ead44; background-position: 0% 50%; }
+      100% { box-shadow: 0 0 24px 8px #ffe9f355; background-position: 100% 50%; }
+    }
+    @keyframes jump {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-8px);}
+    }
+    .ruleta-container {
+      margin: 0 auto 18px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+    }
+    #ruleta {
+      margin: 0 auto;
+      display: block;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 24px #b6397133;
+      width: 340px;
+      height: 340px;
+      max-width: 90vw;
+      max-height: 90vw;
+      touch-action: none;
+    }
+    .flecha {
+  width: 0; height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 32px solid #b63971;
+  position: absolute;
+  left: 50%;
+  top: -38px;
+  bottom: auto;
+  transform: translateX(-50%) rotate(180deg);
+  filter: drop-shadow(0 2px 8px #fff);
+  z-index: 2;
+}
+    .resultado-ruleta {
+      margin-top: 18px;
+      font-size: 1.3em;
+      color: #000000;
+      text-shadow: 0 2px 8px #fff, 0 1px 0 #ffe9f3;
+      min-height: 2em;
+      transition: color 0.3s;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    @media (max-width: 600px) {
+  .flecha {
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    border-top: 20px solid #b63971;
+    top: -24px;
+    bottom: auto;
+  }
+}
+    /* Responsive */
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.3em;
+        margin-top: 18px;
+      }
+      .inputs-ruleta input {
+        width: 100px;
+        font-size: 0.95em;
+        padding: 7px 8px;
+      }
+      .ruleta-container {
+        max-width: 98vw;
+      }
+      #ruleta {
+        width: 92vw;
+        height: 92vw;
+        max-width: 92vw;
+        max-height: 92vw;
+        min-width: 220px;
+        min-height: 220px;
+      }
+      .flecha {
+        border-left: 11px solid transparent;
+        border-right: 11px solid transparent;
+        border-bottom: 20px solid #b63971;
+        bottom: -24px;
+      }
+      .boton-girar {
+        font-size: 1em;
+        padding: 10px 18px;
+      }
+      .resultado-ruleta {
+        font-size: 1.05em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Ruleta de salidas de ositos</h2>
+  <div class="inputs-ruleta">
+    <input type="text" placeholder="Opción 1" id="op1" maxlength="24">
+    <input type="text" placeholder="Opción 2" id="op2" maxlength="24">
+    <input type="text" placeholder="Opción 3" id="op3" maxlength="24">
+    <input type="text" placeholder="Opción 4" id="op4" maxlength="24">
+    <input type="text" placeholder="Opción 5" id="op5" maxlength="24">
+    <input type="text" placeholder="Opción 6" id="op6" maxlength="24">
+  </div>
+  <button class="boton-girar" onclick="girarRuleta()">INICIAR</button>
+  <div class="ruleta-container">
+    <canvas id="ruleta" width="340" height="340"></canvas>
+    <div class="flecha"></div>
+    <div class="resultado-ruleta" id="resultadoRuleta"></div>
+  </div>
+  <script>
+    const colores = [
+      "#ff70a6", "#70d6ff", "#ff9770", "#f9d923", "#af7ead", "#b63971"
+    ];
+    const ruleta = document.getElementById('ruleta');
+    const ctx = ruleta.getContext('2d');
+    let opciones = [];
+    let anguloActual = 0;
+    let girando = false;
+
+    function resizeCanvas() {
+      // Ajusta el canvas para móvil y PC
+      let size = Math.min(window.innerWidth * 0.9, 340);
+      if(window.innerWidth < 600) size = Math.max(size, 220);
+      ruleta.width = size;
+      ruleta.height = size;
+      dibujarRuleta(opciones.length ? opciones : ["Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5", "Opción 6"], anguloActual);
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    function dibujarRuleta(opciones, angulo = 0) {
+      ctx.clearRect(0, 0, ruleta.width, ruleta.height);
+      const radio = ruleta.width / 2;
+      const cx = radio, cy = radio;
+      const n = opciones.length;
+      for (let i = 0; i < n; i++) {
+        const angIni = angulo + (i * 2 * Math.PI / n);
+        const angFin = angulo + ((i + 1) * 2 * Math.PI / n);
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, radio, angIni, angFin);
+        ctx.closePath();
+        ctx.fillStyle = colores[i % colores.length];
+        ctx.fill();
+        // Texto
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate((angIni + angFin) / 2);
+        ctx.textAlign = "right";
+        ctx.font = (ruleta.width > 300 ? "bold 1.1em Pacifico, cursive" : "bold 0.9em Pacifico, cursive");
+        ctx.fillStyle = "#fff";
+        ctx.shadowColor = "#b63971";
+        ctx.shadowBlur = 4;
+        ctx.fillText(opciones[i], radio - 18, 8);
+        ctx.restore();
+      }
+    }
+
+    function girarRuleta() {
+      if (girando) return;
+      opciones = [];
+      for (let i = 1; i <= 6; i++) {
+        const val = document.getElementById('op' + i).value.trim();
+        if (val) opciones.push(val);
+      }
+      if (opciones.length < 2) {
+        document.getElementById('resultadoRuleta').textContent = "Agrega 2 opciones";
+        return;
+      }
+      girando = true;
+      document.getElementById('resultadoRuleta').textContent = "";
+      let vueltas = Math.floor(Math.random() * 6) + 12; // Ahora gira entre 12 y 17 vueltas
+      let anguloFinal = Math.random() * 2 * Math.PI;
+      let totalGiro = vueltas * 2 * Math.PI + anguloFinal;
+      let duracion = 4200 + Math.random() * 1200;
+      let start = null;
+      let anguloInicio = anguloActual;
+
+      function animarRuleta(ts) {
+        if (!start) start = ts;
+        let progreso = (ts - start) / duracion;
+        if (progreso > 1) progreso = 1;
+        let ease = 1 - Math.pow(1 - progreso, 3); // ease out
+        anguloActual = anguloInicio + (totalGiro - anguloInicio) * ease;
+        dibujarRuleta(opciones, anguloActual);
+        if (progreso < 1) {
+          requestAnimationFrame(animarRuleta);
+        } else {
+          girando = false;
+          mostrarResultado();
+        }
+      }
+      requestAnimationFrame(animarRuleta);
+    }
+
+    function mostrarResultado() {
+      const n = opciones.length;
+      // Ahora la flecha está abajo, así que usamos -Math.PI/2
+      let anguloFlecha = (3 * Math.PI / 2 - anguloActual) % (2 * Math.PI);
+      if (anguloFlecha < 0) anguloFlecha += 2 * Math.PI;
+      let idx = Math.floor(n * anguloFlecha / (2 * Math.PI)) % n;
+      document.getElementById('resultadoRuleta').innerHTML =
+        `✨ <b>${opciones[idx]}</b> ✨<br><span style="font-size:0.9em;color:#af7ead;">Iremos para alla osita hermosa</span>`;
+    }
+
+    // Dibuja ruleta vacía al cargar y ajusta tamaño
+    opciones = ["Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5", "Opción 6"];
+    resizeCanvas();
+  </script>
+  <div id="loader-bg">
+  <div class="loader-content">
+    <div class="loader-circle"></div>
+    <div class="loader-text-bg">
+      <span class="loader-text">Cargando...</span>
+    </div>
+  </div>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.getElementById('loader-bg').classList.add('hide');
+        setTimeout(function() {
+            document.getElementById('loader-bg').style.display = 'none';
+        }, 700);
+    }, 1000);
+});
+</script>
+<style>
+    #loader-bg {
+    position: fixed;
+    z-index: 99999;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(135deg, #af7ead 60%, #e07bb7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s;
+}
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+.loader-circle {
+    border: 6px solid #fff6fa55;
+    border-top: 6px solid #fff;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 16px #fff6fa55;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+.loader-text {
+    color: #fff;
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    font-size: 1.5em;
+    text-shadow: 0 2px 12px #af7ead88;
+    letter-spacing: 1px;
+}
+#loader-bg.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+</style>
+</body>
+</html>
