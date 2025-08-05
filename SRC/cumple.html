@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>¡Feliz Cumpleaños, mi amor!</title>
+  <title>Feliz Cumpleaños mi amor</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
     body {
@@ -86,7 +86,7 @@
       0%, 100% { transform: translateY(0);}
       50% { transform: translateY(-8px);}
     }
-    /* Globos */
+
     .globo {
       position: fixed;
       bottom: -120px;
@@ -99,7 +99,7 @@
       0% { transform: translateY(0) scale(1);}
       100% { transform: translateY(-110vh) scale(1.1);}
     }
-    /* Confeti */
+
     .confeti {
       position: fixed;
       left: 0; top: 0;
@@ -112,23 +112,22 @@
 <body>
   <canvas class="confeti"></canvas>
   <div class="tarjeta-cumple">
-    <div class="titulo-cumple">¡Feliz cumpleaños, mi vida! 🎂</div>
+    <div class="titulo-cumple">❤️ Feliz cumpleaños mi osita hermosa ❤️</div>
     <div class="mensaje-cumple">
-      Hoy celebramos el día en que nació la persona más maravillosa del mundo.<br>
-      Gracias por existir, por tu dulzura, tu alegría y tu amor infinito.<br>
-      Deseo que cada uno de tus sueños se haga realidad y que la vida te regale momentos tan hermosos como tú.<br>
-      <span style="color:#b63971;font-size:1.1em;">¡Te amo más de lo que las palabras pueden decir!</span>
+      Hoy celebramos el día en que nació la persona más maravillosa del mundo....<br>
+      Gracias por existir, por tu dulzura, tu alegría y tu amor infinito e incondicional....<br>
+      Deseo que cada uno de tus sueños se haga realidad y que la vida te regale momentos tan hermosos como tú mi osita hermosa<br>
+      <span style="color:#b63971;font-size:1.1em;">Te amo más de lo que te puedes llegar a imaginar</span>
     </div>
     <div class="firma-cumple">
-      Con todo mi corazón,<br>
+      Con todo mi corazón<br>
       Tu Osito 🐻
     </div>
-    <button class="boton-sorpresa" onclick="mostrarSorpresa()">
-      🎁 Sorpresa especial
-    </button>
+    <button class="boton-sorpresa" onclick="mostrarSorpresa()">Sorpresa especial</button>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    // Globos animados
+
     function lanzarGlobo() {
       const colores = ['#ff70a6','#ff9770','#f9d923','#70d6ff','#b63971','#af7ead','#ffe9f3','#3a86ff'];
       const globo = document.createElement('div');
@@ -147,7 +146,6 @@
     setInterval(lanzarGlobo, 600);
     for(let i=0;i<8;i++) setTimeout(lanzarGlobo, i*400);
 
-    // Confeti animado
     const canvas = document.querySelector('.confeti');
     const ctx = canvas.getContext('2d');
     let W = window.innerWidth, H = window.innerHeight;
@@ -192,19 +190,29 @@
         W = window.innerWidth; H = window.innerHeight;
         canvas.width = W; canvas.height = H;
     });
-
-    // Sorpresa especial
     function mostrarSorpresa() {
-      const mensajes = [
-        "¡Hoy solo deseo que seas inmensamente feliz! 🎉",
-        "Eres la razón de muchas de mis sonrisas. ¡Feliz cumpleaños, amor! 💖",
-        "Gracias por existir y por ser tú. ¡Te amo infinito! 🌟",
-        "¡Que la vida te regale tantos momentos hermosos como tú me regalas a mí! 🎂"
-      ];
-      const idx = Math.floor(Math.random()*mensajes.length);
-      alert(mensajes[idx]);
+      Swal.fire({
+        title: 'Mi universo, mi galaxia, mi diosa ',
+        html: `
+          <div style="font-family:'Pacifico',cursive,Arial,sans-serif;font-size:1.15em;color:#b63971;">
+            <b>Mi osita hermosa</b>, eres el amor de mi vida.<br><br>
+            Cada día contigo es como descubrir una nueva estrella en mi galaxia.<br>
+            Me siento el ser más orgulloso del universo por tenerte a mi lado.<br>
+            Eres mi diosa, mi razón de sonreír, mi inspiración y mi sueño cumplido.<br><br>
+            <span style="color:#af7ead;">Gracias por existir y por regalarme tu amor infinito.<br>
+            Te amo más allá de las palabras, más allá del tiempo y del espacio.<br>
+            Siempre juntos, hasta el último rincón del universo.</span>
+          </div>
+        `,
+        background: 'linear-gradient(135deg, #ffe9f3 0%, #af7ead 100%)',
+        color: '#5a3d5c',
+        confirmButtonColor: '#b63971',
+        confirmButtonText: 'Te amo infinito',
+        customClass: {
+          popup: 'swal2-border-radius'
+        }
+      });
     }
   </script>
-
 </body>
-</html>
+  

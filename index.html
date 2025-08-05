@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,137 +11,138 @@
     <script src="JavaScript/java.js"></script>
     <title>Recuerdos_Sentimientos</title>
 </head>
+
 <body>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    const fechaObjetivo = new Date(2025, 6, 23);
-    const hoy = new Date();
-    const diferencia = Math.ceil((fechaObjetivo - hoy) / (1000 * 60 * 60 * 24));
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const fechaObjetivo = new Date(2025, 6, 23);
+        const hoy = new Date();
+        const diferencia = Math.ceil((fechaObjetivo - hoy) / (1000 * 60 * 60 * 24));
 
-    if (diferencia > 0) {
-        Swal.fire({
-            title: '❤️ Faltan ' + diferencia + ' días ❤️',
-            html: '<div style="font-size:1.3em;color:#af7ead;font-family:\'Pacifico\',cursive,Arial,sans-serif;">para nuestro día especial<br><b>23 / 07 / 2025</b></div>',
-            background: 'linear-gradient(135deg, #ffe9f3 0%, #af7ead 100%)',
-            color: '#5a3d5c',
-            confirmButtonColor: '#af7ead',
-            confirmButtonText: 'ACEPTAR',
-            customClass: {
-                popup: 'swal2-border-radius'
-            },
-            didClose: () => {
-                lluviaCorazones3sLento();
-            }
-        });
-    }
-
-    function lluviaCorazones3sLento() {
-        let lanzados = 0;
-        const total = 24; 
-        const intervalo = setInterval(() => {
-            lanzarCorazonLento();
-            lanzados++;
-            if (lanzados >= total) clearInterval(intervalo);
-        }, 125); 
-
- 
-        setTimeout(() => clearInterval(intervalo), 3000);
-    }
-
-    function lanzarCorazonLento() {
-        const corazon = document.createElement('div');
-        corazon.textContent = '❤️';
-        corazon.style.position = 'fixed';
-        corazon.style.left = (Math.random() * 100) + 'vw';
-        corazon.style.bottom = '-40px';
-        corazon.style.fontSize = (Math.random() * 32 + 24) + 'px';
-        corazon.style.opacity = Math.random() * 0.5 + 0.5;
-        corazon.style.zIndex = 9999;
-        corazon.style.pointerEvents = 'none';
-        corazon.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
-
-        document.body.appendChild(corazon);
-
- 
-        const desplazamiento = (Math.random() - 0.5) * 30; // -15vw a +15vw
-        setTimeout(() => {
-            corazon.style.transform = `translateY(-110vh) translateX(${desplazamiento}vw) rotate(${Math.random() > 0.5 ? '-' : ''}${Math.random()*60}deg)`;
-            corazon.style.opacity = 0;
-        }, 30);
-
-        setTimeout(() => {
-            corazon.remove();
-        }, 1800 + Math.random()*200);
-    }
-</script>
-<script>
-const fechaCumple = new Date(2025, 7, 6); // Mes 7 = Agosto (0-indexed)
-const hoyCumple = new Date();
-const diferenciaCumple = Math.ceil((fechaCumple - hoyCumple) / (1000 * 60 * 60 * 24));
-
-if (diferenciaCumple > 0) {
-    Swal.fire({
-        title: ' 💗Faltan ' + diferenciaCumple + ' días💗',
-        html: '<div style="font-size:1.3em;color:#b63971;font-family:\'Pacifico\',cursive,Arial,sans-serif;">Para un dia tan importante<br>Mi osita<br><b>06 / 08 / 2025</b></div>',
-        background: 'linear-gradient(135deg, #ffe9f3 0%, #b63971 100%)',
-        color: '#5a3d5c',
-        confirmButtonColor: '#b63971',
-        confirmButtonText: 'ACEPTAR',
-        customClass: {
-            popup: 'swal2-border-radius'
-        },
-        didClose: () => {
-            lluviaConfetiCumple();
+        if (diferencia > 0) {
+            Swal.fire({
+                title: '❤️ Faltan ' + diferencia + ' días ❤️',
+                html: '<div style="font-size:1.3em;color:#af7ead;font-family:\'Pacifico\',cursive,Arial,sans-serif;">para nuestro día especial<br><b>23 / 07 / 2025</b></div>',
+                background: 'linear-gradient(135deg, #ffe9f3 0%, #af7ead 100%)',
+                color: '#5a3d5c',
+                confirmButtonColor: '#af7ead',
+                confirmButtonText: 'ACEPTAR',
+                customClass: {
+                    popup: 'swal2-border-radius'
+                },
+                didClose: () => {
+                    lluviaCorazones3sLento();
+                }
+            });
         }
-    });
-}
 
-function lluviaConfetiCumple() {
-    let lanzados = 0;
-    const total = 30;
-    const intervalo = setInterval(() => {
-        lanzarConfeti();
-        lanzados++;
-        if (lanzados >= total) clearInterval(intervalo);
-    }, 80);
+        function lluviaCorazones3sLento() {
+            let lanzados = 0;
+            const total = 24;
+            const intervalo = setInterval(() => {
+                lanzarCorazonLento();
+                lanzados++;
+                if (lanzados >= total) clearInterval(intervalo);
+            }, 125);
 
-    setTimeout(() => clearInterval(intervalo), 3000);
-}
 
-function lanzarConfeti() {
-    const colores = ['#f9d923', '#f93943', '#3ec300', '#3a86ff', '#ff70a6', '#ff9770', '#70d6ff', '#b63971'];
-    const confeti = document.createElement('div');
-    confeti.textContent = '🎉';
-    confeti.style.position = 'fixed';
-    confeti.style.left = (Math.random() * 100) + 'vw';
-    confeti.style.bottom = '-40px';
-    confeti.style.fontSize = (Math.random() * 32 + 24) + 'px';
-    confeti.style.opacity = Math.random() * 0.5 + 0.5;
-    confeti.style.zIndex = 9999;
-    confeti.style.pointerEvents = 'none';
-    confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
-    confeti.style.color = colores[Math.floor(Math.random() * colores.length)];
+            setTimeout(() => clearInterval(intervalo), 3000);
+        }
 
-    document.body.appendChild(confeti);
+        function lanzarCorazonLento() {
+            const corazon = document.createElement('div');
+            corazon.textContent = '❤️';
+            corazon.style.position = 'fixed';
+            corazon.style.left = (Math.random() * 100) + 'vw';
+            corazon.style.bottom = '-40px';
+            corazon.style.fontSize = (Math.random() * 32 + 24) + 'px';
+            corazon.style.opacity = Math.random() * 0.5 + 0.5;
+            corazon.style.zIndex = 9999;
+            corazon.style.pointerEvents = 'none';
+            corazon.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
 
-    const desplazamiento = (Math.random() - 0.5) * 30;
-    setTimeout(() => {
-        confeti.style.transform = `translateY(-110vh) translateX(${desplazamiento}vw) rotate(${Math.random() > 0.5 ? '-' : ''}${Math.random()*60}deg)`;
-        confeti.style.opacity = 0;
-    }, 30);
+            document.body.appendChild(corazon);
 
-    setTimeout(() => {
-        confeti.remove();
-    }, 1800 + Math.random()*200);
-}
-</script>
-<style>
-.swal2-border-radius {
-    border-radius: 32px !important;
-    box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
-    border: 2px dashed #af7ead33;
-}
-</style>
+
+            const desplazamiento = (Math.random() - 0.5) * 30; // -15vw a +15vw
+            setTimeout(() => {
+                corazon.style.transform = `translateY(-110vh) translateX(${desplazamiento}vw) rotate(${Math.random() > 0.5 ? '-' : ''}${Math.random() * 60}deg)`;
+                corazon.style.opacity = 0;
+            }, 30);
+
+            setTimeout(() => {
+                corazon.remove();
+            }, 1800 + Math.random() * 200);
+        }
+    </script>
+    <script>
+        const fechaCumple = new Date(2025, 7, 6); // Mes 7 = Agosto (0-indexed)
+        const hoyCumple = new Date();
+        const diferenciaCumple = Math.ceil((fechaCumple - hoyCumple) / (1000 * 60 * 60 * 24));
+
+        if (diferenciaCumple > 0) {
+            Swal.fire({
+                title: ' 💗Faltan ' + diferenciaCumple + ' días💗',
+                html: '<div style="font-size:1.3em;color:#b63971;font-family:\'Pacifico\',cursive,Arial,sans-serif;">Para un dia tan importante<br>Mi osita<br><b>06 / 08 / 2025</b></div>',
+                background: 'linear-gradient(135deg, #ffe9f3 0%, #b63971 100%)',
+                color: '#5a3d5c',
+                confirmButtonColor: '#b63971',
+                confirmButtonText: 'ACEPTAR',
+                customClass: {
+                    popup: 'swal2-border-radius'
+                },
+                didClose: () => {
+                    lluviaConfetiCumple();
+                }
+            });
+        }
+
+        function lluviaConfetiCumple() {
+            let lanzados = 0;
+            const total = 30;
+            const intervalo = setInterval(() => {
+                lanzarConfeti();
+                lanzados++;
+                if (lanzados >= total) clearInterval(intervalo);
+            }, 80);
+
+            setTimeout(() => clearInterval(intervalo), 3000);
+        }
+
+        function lanzarConfeti() {
+            const colores = ['#f9d923', '#f93943', '#3ec300', '#3a86ff', '#ff70a6', '#ff9770', '#70d6ff', '#b63971'];
+            const confeti = document.createElement('div');
+            confeti.textContent = '🎉';
+            confeti.style.position = 'fixed';
+            confeti.style.left = (Math.random() * 100) + 'vw';
+            confeti.style.bottom = '-40px';
+            confeti.style.fontSize = (Math.random() * 32 + 24) + 'px';
+            confeti.style.opacity = Math.random() * 0.5 + 0.5;
+            confeti.style.zIndex = 9999;
+            confeti.style.pointerEvents = 'none';
+            confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
+            confeti.style.color = colores[Math.floor(Math.random() * colores.length)];
+
+            document.body.appendChild(confeti);
+
+            const desplazamiento = (Math.random() - 0.5) * 30;
+            setTimeout(() => {
+                confeti.style.transform = `translateY(-110vh) translateX(${desplazamiento}vw) rotate(${Math.random() > 0.5 ? '-' : ''}${Math.random() * 60}deg)`;
+                confeti.style.opacity = 0;
+            }, 30);
+
+            setTimeout(() => {
+                confeti.remove();
+            }, 1800 + Math.random() * 200);
+        }
+    </script>
+    <style>
+        .swal2-border-radius {
+            border-radius: 32px !important;
+            box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
+            border: 2px dashed #af7ead33;
+        }
+    </style>
     <div class="nave">
         <nav>
             <a href="index.html"><i class="fas fa-home"></i> INICIO</a>
@@ -150,295 +152,340 @@ function lanzarConfeti() {
         </nav>
     </div>
     <br>
-<center>
-    <h1 style="text-align:center; margin-top:0;">
-        <marquee>Feliz 14 de Febrero mi amor</marquee>
-    </h1>
-    <div class="player">
-        <div class="track-details">
-            <h3>Catorce</h3>
-            <p>Sebastian - Romero</p>
-        </div>
-        <audio controls autoplay>
-            <source src="Recursos/Musica/musi.mp3" type="audio/mpeg">
-        </audio>
-        <div class="separador"></div>
-        <h2>Te la dediqué una vez... Pero acá la tienes nuevamente en tus manos princesa hermosa... Recuerda que te amo con todo mi corazón mi vida</h2>
-    </div>
     <center>
-
-
-<div style="display:flex;justify-content:center;margin:32px 0;">
-    <a id="boton-cumple" class="boton-cumple" href="SRC/cumple.html" onclick="return false;">
-        <span id="contador-cumple">00:00:00</span>
-    </a>
-</div>
-<style>
-.boton-cumple {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(90deg, #b63971 0%, #ffe9f3 100%);
-    color: black;
-    font-family: 'Pacifico', cursive, Arial, sans-serif;
-    font-size: 1.18em;
-    font-weight: bold;
-    border: none;
-    border-radius: 18px;
-    padding: 14px 38px;
-    box-shadow: 0 4px 18px #b6397144, 0 1px 0 #fff;
-    cursor: pointer;
-    transition: background 0.4s, transform 0.2s, box-shadow 0.2s, color 0.3s;
-    outline: none;
-    animation: pulseColorCumple 2.2s infinite alternate, jumpCumple 2.8s infinite;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 8px #fff, 0 1px 0 #ffe9f3;
-    position: relative;
-    overflow: hidden;
-    min-width: 180px;
-    justify-content: center;
-}
-.boton-cumple:hover {
-    background: linear-gradient(90deg, #ffe9f3 0%, #b63971 100%);
-    color: #b63971;
-    transform: scale(1.09) rotate(-2deg);
-    box-shadow: 0 8px 32px #b6397155;
-}
-@keyframes pulseColorCumple {
-    0% { box-shadow: 0 0 0 0 #b6397144; background-position: 0% 50%; }
-    100% { box-shadow: 0 0 24px 8px #ffe9f355; background-position: 100% 50%; }
-}
-@keyframes jumpCumple {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-8px);}
-}
-.icono-cumple {
-    font-size: 1.5em;
-    filter: drop-shadow(0 0 4px #ffe9f3);
-    animation: glowIconoCumple 2.5s infinite alternate;
-}
-@keyframes glowIconoCumple {
-    0% { filter: drop-shadow(0 0 4px #ffe9f3);}
-    100% { filter: drop-shadow(0 0 12px #b63971);}
-}
-#contador-cumple {
-    font-size: 1.25em;
-    font-family: 'Pacifico', cursive, Arial, sans-serif;
-    letter-spacing: 2px;
-    min-width: 110px;
-    display: inline-block;
-}
-</style>
-<script>
-const fechaCumpleBtn = new Date(2025, 7, 6, 0, 0, 0); // 06/08/2025 (mes 7 = agosto)
-const botonCumple = document.getElementById("boton-cumple");
-const contadorCumple = document.getElementById("contador-cumple");
-
-function actualizarContadorCumple() {
-    const ahora = new Date();
-    let diferencia = fechaCumpleBtn - ahora;
-    if (diferencia > 0) {
-        const horas = String(Math.floor((diferencia / (1000 * 60 * 60)))).padStart(2, '0');
-        const minutos = String(Math.floor((diferencia / (1000 * 60)) % 60)).padStart(2, '0');
-        const segundos = String(Math.floor((diferencia / 1000) % 60)).padStart(2, '0');
-        contadorCumple.textContent = `${horas}:${minutos}:${segundos}`;
-        botonCumple.style.pointerEvents = "none";
-        botonCumple.title = "Faltan horas y minutos para su cumpleaños";
-    } else {
-        contadorCumple.textContent = "¡ES SU CUMPLE! 🎉";
-        botonCumple.style.pointerEvents = "auto";
-        botonCumple.title = "¡Haz click para ver la sorpresa!";
-        botonCumple.href = "SRC/cumple.html";
-        botonCumple.onclick = null;
-        // Efecto de confeti al llegar la fecha
-        lanzarConfetiCumpleBtn();
-    }
-}
-actualizarContadorCumple();
-let intervaloCumple = setInterval(actualizarContadorCumple, 1000);
-
-// Confeti animado al llegar la fecha
-function lanzarConfetiCumpleBtn() {
-    for(let i=0;i<30;i++) {
-        setTimeout(()=>{
-            const confeti = document.createElement('div');
-            confeti.textContent = '🎉';
-            confeti.style.position = 'fixed';
-            confeti.style.left = (Math.random()*100)+'vw';
-            confeti.style.top = '-40px';
-            confeti.style.fontSize = (Math.random()*24+24)+'px';
-            confeti.style.opacity = Math.random()*0.5+0.5;
-            confeti.style.zIndex = 9999;
-            confeti.style.pointerEvents = 'none';
-            confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
-            document.body.appendChild(confeti);
-            setTimeout(()=>{
-                confeti.style.transform = `translateY(110vh) rotate(${Math.random()*360}deg)`;
-                confeti.style.opacity = 0;
-            },30);
-            setTimeout(()=>confeti.remove(),1800+Math.random()*200);
-        }, i*60);
-    }
-}
-</script> 
-
-    <div class="separador2"></div>
-    <a href="CARTA/index.html">
-        <h2 style="text-align:center;">HAZ CLICK ACA MI AMOR<br>CON TODO MI AMOR PARA TI</h2>
-    </a>
-    </center>
-    <div class="separador2"></div>
-    <div class="cora" style="text-align:center;">
-        <h1>TOCA NUESTRO CORAZON</h1>
-        <br>
-        <a href="SRC/CORA.html"><img src="Recursos/GIF/cora.gif" width="90" height="90" alt=""></a>
-    </div>
-    <div class="separador2"></div>
-    <div class="uni" style="text-align:center;">
-        <h1>
-            <div class="DD">EL UNIVERSO A TUS MANOS... Y YO?, UN MORTAL QUE TE AMA ALOCADAMENTE...<BR> TE AMO MI UNIVERSO</div> Gracias, por aceptar a este mortal
+        <h1 style="text-align:center; margin-top:0;">
+            <marquee>Feliz 14 de Febrero mi amor</marquee>
         </h1>
+        <div class="player">
+            <div class="track-details">
+                <h3>Catorce</h3>
+                <p>Sebastian - Romero</p>
+            </div>
+            <audio controls autoplay>
+                <source src="Recursos/Musica/musi.mp3" type="audio/mpeg">
+            </audio>
+            <div class="separador"></div>
+            <h2>Te la dediqué una vez... Pero acá la tienes nuevamente en tus manos princesa hermosa... Recuerda que te
+                amo con todo mi corazón mi vida</h2>
+        </div>
+        <center>
+
+
+            <div style="display:flex;justify-content:center;margin:32px 0;">
+                <a id="boton-cumple" class="boton-cumple" href="SRC/cumple.html" onclick="return false;">
+                    <span id="contador-cumple">06/08/2025</span>
+                </a>
+            </div>
+            <style>
+                .boton-cumple {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 12px;
+                    background: linear-gradient(90deg, #b63971 0%, #ffe9f3 100%);
+                    color: black;
+                    font-family: 'Pacifico', cursive, Arial, sans-serif;
+                    font-size: 1.18em;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 18px;
+                    padding: 14px 38px;
+                    box-shadow: 0 4px 18px #b6397144, 0 1px 0 #fff;
+                    cursor: pointer;
+                    transition: background 0.4s, transform 0.2s, box-shadow 0.2s, color 0.3s;
+                    outline: none;
+                    animation: pulseColorCumple 2.2s infinite alternate, jumpCumple 2.8s infinite;
+                    letter-spacing: 1px;
+                    margin-bottom: 8px;
+                    text-shadow: 0 2px 8px #fff, 0 1px 0 #ffe9f3;
+                    position: relative;
+                    overflow: hidden;
+                    min-width: 180px;
+                    justify-content: center;
+                }
+
+                .boton-cumple:hover {
+                    background: linear-gradient(90deg, #ffe9f3 0%, #b63971 100%);
+                    color: #b63971;
+                    transform: scale(1.09) rotate(-2deg);
+                    box-shadow: 0 8px 32px #b6397155;
+                }
+
+                @keyframes pulseColorCumple {
+                    0% {
+                        box-shadow: 0 0 0 0 #b6397144;
+                        background-position: 0% 50%;
+                    }
+
+                    100% {
+                        box-shadow: 0 0 24px 8px #ffe9f355;
+                        background-position: 100% 50%;
+                    }
+                }
+
+                @keyframes jumpCumple {
+
+                    0%,
+                    100% {
+                        transform: translateY(0);
+                    }
+
+                    50% {
+                        transform: translateY(-8px);
+                    }
+                }
+
+                .icono-cumple {
+                    font-size: 1.5em;
+                    filter: drop-shadow(0 0 4px #ffe9f3);
+                    animation: glowIconoCumple 2.5s infinite alternate;
+                }
+
+                @keyframes glowIconoCumple {
+                    0% {
+                        filter: drop-shadow(0 0 4px #ffe9f3);
+                    }
+
+                    100% {
+                        filter: drop-shadow(0 0 12px #b63971);
+                    }
+                }
+
+                #contador-cumple {
+                    font-size: 1.25em;
+                    font-family: 'Pacifico', cursive, Arial, sans-serif;
+                    letter-spacing: 2px;
+                    min-width: 110px;
+                    display: inline-block;
+                }
+            </style>
+            <script>
+                const fechaCumpleBtn = new Date(2025, 7, 6, 0, 0, 0); // 06/08/2025 (mes 7 = agosto)
+                const botonCumple = document.getElementById("boton-cumple");
+                const contadorCumple = document.getElementById("contador-cumple");
+
+                function actualizarContadorCumple() {
+                    const ahora = new Date();
+                    let diferencia = fechaCumpleBtn - ahora;
+                    if (diferencia > 0) {
+                        const horas = String(Math.floor((diferencia / (1000 * 60 * 60)))).padStart(2, '0');
+                        const minutos = String(Math.floor((diferencia / (1000 * 60)) % 60)).padStart(2, '0');
+                        const segundos = String(Math.floor((diferencia / 1000) % 60)).padStart(2, '0');
+                        contadorCumple.textContent = `${horas}:${minutos}:${segundos}`;
+                        botonCumple.style.pointerEvents = "none";
+                        botonCumple.title = "Faltan horas y minutos para su cumpleaños";
+                    } else {
+                        contadorCumple.textContent = "¡ES SU CUMPLE! 🎉";
+                        botonCumple.style.pointerEvents = "auto";
+                        botonCumple.title = "¡Haz click para ver la sorpresa!";
+                        botonCumple.href = "SRC/cumple.html";
+                        botonCumple.onclick = null;
+                        // Efecto de confeti al llegar la fecha
+                        lanzarConfetiCumpleBtn();
+                    }
+                }
+                actualizarContadorCumple();
+                let intervaloCumple = setInterval(actualizarContadorCumple, 1000);
+
+                // Confeti animado al llegar la fecha
+                function lanzarConfetiCumpleBtn() {
+                    for (let i = 0; i < 30; i++) {
+                        setTimeout(() => {
+                            const confeti = document.createElement('div');
+                            confeti.textContent = '🎉';
+                            confeti.style.position = 'fixed';
+                            confeti.style.left = (Math.random() * 100) + 'vw';
+                            confeti.style.top = '-40px';
+                            confeti.style.fontSize = (Math.random() * 24 + 24) + 'px';
+                            confeti.style.opacity = Math.random() * 0.5 + 0.5;
+                            confeti.style.zIndex = 9999;
+                            confeti.style.pointerEvents = 'none';
+                            confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
+                            document.body.appendChild(confeti);
+                            setTimeout(() => {
+                                confeti.style.transform = `translateY(110vh) rotate(${Math.random() * 360}deg)`;
+                                confeti.style.opacity = 0;
+                            }, 30);
+                            setTimeout(() => confeti.remove(), 1800 + Math.random() * 200);
+                        }, i * 60);
+                    }
+                }
+            </script>
+
+            <div class="separador2"></div>
+            <a href="CARTA/index.html">
+                <h2 style="text-align:center;">HAZ CLICK ACA MI AMOR<br>CON TODO MI AMOR PARA TI</h2>
+            </a>
+        </center>
+        <div class="separador2"></div>
+        <div class="cora" style="text-align:center;">
+            <h1>TOCA NUESTRO CORAZON</h1>
+            <br>
+            <a href="SRC/CORA.html"><img src="Recursos/GIF/cora.gif" width="90" height="90" alt=""></a>
+        </div>
+        <div class="separador2"></div>
+        <div class="uni" style="text-align:center;">
+            <h1>
+                <div class="DD">EL UNIVERSO A TUS MANOS... Y YO?, UN MORTAL QUE TE AMA ALOCADAMENTE...<BR> TE AMO MI
+                    UNIVERSO</div> Gracias, por aceptar a este mortal
+            </h1>
+            <br>
+            <a href="GALAXIA/index.html"><img src="GALAXIA/IrE.gif" width="90" height="90" alt=""></a>
+        </div>
+        <div class="separador2"></div>
+        <h2 style="text-align:center;">Mi amor.... te preguntarás qué es esto?, te explico... Recuerdas que te dije que
+            quería hacer un libro donde iba a guardar cosas importantes de nosotros donde tengamos todos nuestros
+            recuerdos y momentos felices bonitos y divertidos... No?, bueno eso es esto o algo así... Aca voy a guardar
+            nuestras cosas y datos de nosotros mi corazoncito hermoso ❤️</h2>
         <br>
-        <a href="GALAXIA/index.html"><img src="GALAXIA/IrE.gif" width="90" height="90" alt=""></a>
-    </div>
-    <div class="separador2"></div>
-    <h2 style="text-align:center;">Mi amor.... te preguntarás qué es esto?, te explico... Recuerdas que te dije que quería hacer un libro donde iba a guardar cosas importantes de nosotros donde tengamos todos nuestros recuerdos y momentos felices bonitos y divertidos... No?, bueno eso es esto o algo así... Aca voy a guardar nuestras cosas y datos de nosotros mi corazoncito hermoso ❤️</h2>
-    <br>
-    <div class="separador2"></div>
-    <h4 style="text-align:center;">Mi vida recuerda que te amo con cada parte de mi corazón y también...</h4>
-    <div class="image-frame">
-        <img src="Recursos/ositos/9c7bebe58d2c3d220d543008051d5020.jpg" height="300" width="300" alt="">
-    </div>
-    <h4 style="text-align:center;">Te convertiste en eso que siempre quise y voy a querer mi amor, tu llegada a mi vida fue lo mejor que me ha podido llegar a pasar, recuerda que yo...</h4>
-    <div class="container">
-        <img src="Recursos/ositos/images.jpg" alt="" height="90" width="90">
-    </div>
-    <h4 style="text-align:center;">❤️Gracias por ser tú, por ser como eres mi princesa hermosa❤️</h4>
-    <div class="separador2"></div>
-    <h4 style="text-align:center;">
-        Recuerda que tú y yo siempre seremos.....
-    </h4>
-    <div class="container">
-        <img src="Recursos/GIF/220b18ae2e8f2a8e66d1cf729c2c1c8c.gif" height="300" width="300" alt="">
-    </div>
-    <div class="container">
-        <img src="Recursos/GIF/234b79f7662cf05e82b1f28a15d3e663.gif" height="300" width="300" alt="">
-    </div>
-    <div class="container">
-        <img src="Recursos/GIF/3b97b9e0baf69f137b786d2d98b1a7c0.gif" height="300" width="300" alt="">
-    </div>
-    <div class="container">
-        <img src="Recursos/GIF/66f920fdd54c519f98af3a8a24fd14a7.gif" height="300" width="300" alt="">
-    </div>
-    <div class="container">
-        <img src="Recursos/GIF/83e2a104d404d885af6a46f1b4ac435a.gif" height="300" width="300" alt="">
-    </div>
-    <div class="container">
-        <img src="Recursos/GIF/a53054639df3a2e59520ba089a8544fd.gif" height="300" width="300" alt="">
-    </div>
-    <div class="container">
-        <img src="Recursos/GIF/f1757b781e4f12ced48ab8038b2146bd.gif" height="300" width="300" alt="">
-    </div>
-    <div class="container">
-        <img src="Recursos/GIF/fc64bc2c19be7cf31dd55e1c1dfb7b5a.gif" height="300" width="300" alt="">
-    </div>
-    <h4 style="text-align:center;">Gracias por ser tan hermosa mi amor... Realmente te amo muchísimo mi vida, TI AMUUUUUUU</h4>
-    <div class="separador2"></div>
-    <br>
-    <a href="SRC/Ruleta.html">
-        <div class="fixed-image">
-            <img src="Recursos/Imagenes/NV/rule.gif" alt="">
+        <div class="separador2"></div>
+        <h4 style="text-align:center;">Mi vida recuerda que te amo con cada parte de mi corazón y también...</h4>
+        <div class="image-frame">
+            <img src="Recursos/ositos/9c7bebe58d2c3d220d543008051d5020.jpg" height="300" width="300" alt="">
         </div>
-    </a>
-    <a href="SRC/ABEJA.html">
-        <div class="fixed-image2">
-            <img src="Recursos/GIF/abeja.gif" alt="">
+        <h4 style="text-align:center;">Te convertiste en eso que siempre quise y voy a querer mi amor, tu llegada a mi
+            vida fue lo mejor que me ha podido llegar a pasar, recuerda que yo...</h4>
+        <div class="container">
+            <img src="Recursos/ositos/images.jpg" alt="" height="90" width="90">
         </div>
-    </a>
-    <ul class="menu">
-    <li><a href="SRC/music.html"><i class="fas fa-music"></i> MUSICA</a></li>
-    <li><a href="SRC/confesiones.html"><i class="fas fa-comment-dots"></i> CONFESIONES</a></li>
-    <li><a href="SRC/Promesas.html"><i class="fas fa-hand-holding-heart"></i> PROMESAS</a></li>
-    <li><a href="SRC/esposa.html"><i class="fas fa-heart"></i> I LOVE</a></li>
-    <li><a href="SRC/año.html"><i class="fas fa-calendar-alt"></i> CUENTA</a></li>
-    <li><a href="SRC/poema.html"><i class="fas fa-feather-alt"></i> POEMA</a></li>
-    <li><a href="SRC/notas.html"><i class="fas fa-sticky-note"></i> NOTAS</a></li>
-    <li><a href="SRC/preguntas.html"><i class="fas fa-question"></i> JUEGO 1</a></li>
-    <li><a href="SRC/CART.html"><i class="fas fa-envelope"></i> CARTA DAY</a></li>
-    <li><a href="SRC/sorpresas.html"><i class="fas fa-gift"></i> SORPRESA</a></li>
-    <li><a href="SRC/llevamos.html"><i class="fas fa-hourglass-half"></i> LLEVAMOS</a></li>
-    <li><a href="SRC/retos.html"><i class="fas fa-fire"></i> RETOS</a></li>
-    <li><a href="SRC/puzzle.html"><i class="fas fa-puzzle-piece"></i> PUZZLE</a></li>
-    <li><a href="SRC/galaxiamas.html"><i class="fas fa-star"></i> J+R</a></li>
-    <li><a href="SRC/BOT.html"><i class="fas fa-robot"></i> BOT ROMÁNTICO</a></li>
-    <li><a href="SRC/CORA.html"><i class="fas fa-heartbeat"></i> CARTA ESPECIAL</a></li>
-    <li><a href="SRC/corazon.html"><i class="fas fa-heart"></i> ME SIENTO</a></li>
-    <li><a href="SRC/ABEJA.html"><i class="fas fa-bug"></i> ABEJITA</a></li>
-    <li><a href="SRC/Ruleta.html"><i class="fas fa-random"></i> RULETA</a></li>
-</ul>
-</center>
-<div id="loader-bg">
-  <div class="loader-content">
-    <div class="loader-circle"></div>
-    <div class="loader-text-bg">
-      <span class="loader-text">Cargando...</span>
+        <h4 style="text-align:center;">❤️Gracias por ser tú, por ser como eres mi princesa hermosa❤️</h4>
+        <div class="separador2"></div>
+        <h4 style="text-align:center;">
+            Recuerda que tú y yo siempre seremos.....
+        </h4>
+        <div class="container">
+            <img src="Recursos/GIF/220b18ae2e8f2a8e66d1cf729c2c1c8c.gif" height="300" width="300" alt="">
+        </div>
+        <div class="container">
+            <img src="Recursos/GIF/234b79f7662cf05e82b1f28a15d3e663.gif" height="300" width="300" alt="">
+        </div>
+        <div class="container">
+            <img src="Recursos/GIF/3b97b9e0baf69f137b786d2d98b1a7c0.gif" height="300" width="300" alt="">
+        </div>
+        <div class="container">
+            <img src="Recursos/GIF/66f920fdd54c519f98af3a8a24fd14a7.gif" height="300" width="300" alt="">
+        </div>
+        <div class="container">
+            <img src="Recursos/GIF/83e2a104d404d885af6a46f1b4ac435a.gif" height="300" width="300" alt="">
+        </div>
+        <div class="container">
+            <img src="Recursos/GIF/a53054639df3a2e59520ba089a8544fd.gif" height="300" width="300" alt="">
+        </div>
+        <div class="container">
+            <img src="Recursos/GIF/f1757b781e4f12ced48ab8038b2146bd.gif" height="300" width="300" alt="">
+        </div>
+        <div class="container">
+            <img src="Recursos/GIF/fc64bc2c19be7cf31dd55e1c1dfb7b5a.gif" height="300" width="300" alt="">
+        </div>
+        <h4 style="text-align:center;">Gracias por ser tan hermosa mi amor... Realmente te amo muchísimo mi vida, TI
+            AMUUUUUUU</h4>
+        <div class="separador2"></div>
+        <br>
+        <a href="SRC/Ruleta.html">
+            <div class="fixed-image">
+                <img src="Recursos/Imagenes/NV/rule.gif" alt="">
+            </div>
+        </a>
+        <a href="SRC/ABEJA.html">
+            <div class="fixed-image2">
+                <img src="Recursos/GIF/abeja.gif" alt="">
+            </div>
+        </a>
+        <ul class="menu">
+            <li><a href="SRC/music.html"><i class="fas fa-music"></i> MUSICA</a></li>
+            <li><a href="SRC/confesiones.html"><i class="fas fa-comment-dots"></i> CONFESIONES</a></li>
+            <li><a href="SRC/Promesas.html"><i class="fas fa-hand-holding-heart"></i> PROMESAS</a></li>
+            <li><a href="SRC/esposa.html"><i class="fas fa-heart"></i> I LOVE</a></li>
+            <li><a href="SRC/año.html"><i class="fas fa-calendar-alt"></i> CUENTA</a></li>
+            <li><a href="SRC/poema.html"><i class="fas fa-feather-alt"></i> POEMA</a></li>
+            <li><a href="SRC/notas.html"><i class="fas fa-sticky-note"></i> NOTAS</a></li>
+            <li><a href="SRC/preguntas.html"><i class="fas fa-question"></i> JUEGO 1</a></li>
+            <li><a href="SRC/CART.html"><i class="fas fa-envelope"></i> CARTA DAY</a></li>
+            <li><a href="SRC/sorpresas.html"><i class="fas fa-gift"></i> SORPRESA</a></li>
+            <li><a href="SRC/llevamos.html"><i class="fas fa-hourglass-half"></i> LLEVAMOS</a></li>
+            <li><a href="SRC/retos.html"><i class="fas fa-fire"></i> RETOS</a></li>
+            <li><a href="SRC/puzzle.html"><i class="fas fa-puzzle-piece"></i> PUZZLE</a></li>
+            <li><a href="SRC/galaxiamas.html"><i class="fas fa-star"></i> J+R</a></li>
+            <li><a href="SRC/BOT.html"><i class="fas fa-robot"></i> BOT ROMÁNTICO</a></li>
+            <li><a href="SRC/CORA.html"><i class="fas fa-heartbeat"></i> CARTA ESPECIAL</a></li>
+            <li><a href="SRC/corazon.html"><i class="fas fa-heart"></i> ME SIENTO</a></li>
+            <li><a href="SRC/ABEJA.html"><i class="fas fa-bug"></i> ABEJITA</a></li>
+            <li><a href="SRC/Ruleta.html"><i class="fas fa-random"></i> RULETA</a></li>
+        </ul>
+    </center>
+    <div id="loader-bg">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text-bg">
+                <span class="loader-text">Cargando...</span>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<script>
-window.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        document.getElementById('loader-bg').classList.add('hide');
-        setTimeout(function() {
-            document.getElementById('loader-bg').style.display = 'none';
-        }, 700);
-    }, 1000);
-});
-</script>
-<style>
-    #loader-bg {
-    position: fixed;
-    z-index: 99999;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: linear-gradient(135deg, #af7ead 60%, #e07bb7 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.6s;
-}
-.loader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-}
-.loader-circle {
-    border: 6px solid #fff6fa55;
-    border-top: 6px solid #fff;
-    border-radius: 50%;
-    width: 54px;
-    height: 54px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 16px #fff6fa55;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
-}
-.loader-text {
-    color: #fff;
-    font-family: 'Pacifico', cursive, Arial, sans-serif;
-    font-size: 1.5em;
-    text-shadow: 0 2px 12px #af7ead88;
-    letter-spacing: 1px;
-}
-#loader-bg.hide {
-    opacity: 0;
-    pointer-events: none;
-}
-</style>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                document.getElementById('loader-bg').classList.add('hide');
+                setTimeout(function () {
+                    document.getElementById('loader-bg').style.display = 'none';
+                }, 700);
+            }, 1000);
+        });
+    </script>
+    <style>
+        #loader-bg {
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #af7ead 60%, #e07bb7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .loader-circle {
+            border: 6px solid #fff6fa55;
+            border-top: 6px solid #fff;
+            border-radius: 50%;
+            width: 54px;
+            height: 54px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 16px #fff6fa55;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            color: #fff;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            font-size: 1.5em;
+            text-shadow: 0 2px 12px #af7ead88;
+            letter-spacing: 1px;
+        }
+
+        #loader-bg.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
 
 
 
@@ -452,9 +499,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
 
-<div class="version-indicador">
-    v8.5.02.2
-</div>
+    <div class="version-indicador">
+        v9.0.11.1
+    </div>
 
 
 
@@ -469,39 +516,46 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
 
-<style>
-.version-indicador {
-    position: fixed;
-    left: 8px;
-    bottom: 4px;
-    background: rgba(30, 30, 30, 0.85);
-    color: #fff;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 0.82em;
-    letter-spacing: 1px;
-    padding: 3px 10px 3px 8px;
-    border-radius: 12px 16px 12px 6px;
-    box-shadow: 0 1px 6px #0003, 0 1px 0 #fff1 inset;
-    opacity: 0.85;
-    z-index: 99999;
-    transition: opacity 0.3s;
-    user-select: none;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.version-indicador::before {
-    font-size: 1em;
-    margin-right: 2px;
-    filter: drop-shadow(0 0 2px #ffe9f3);
-    animation: versionGlow 2.5s infinite alternate;
-}
-@keyframes versionGlow {
-    0% { filter: drop-shadow(0 0 2px #ffe9f3); }
-    100% { filter: drop-shadow(0 0 8px #af7ead);
-    }
-}
-</style>
+    <style>
+        .version-indicador {
+            position: fixed;
+            left: 8px;
+            bottom: 4px;
+            background: rgba(30, 30, 30, 0.85);
+            color: #fff;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 0.82em;
+            letter-spacing: 1px;
+            padding: 3px 10px 3px 8px;
+            border-radius: 12px 16px 12px 6px;
+            box-shadow: 0 1px 6px #0003, 0 1px 0 #fff1 inset;
+            opacity: 0.85;
+            z-index: 99999;
+            transition: opacity 0.3s;
+            user-select: none;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .version-indicador::before {
+            font-size: 1em;
+            margin-right: 2px;
+            filter: drop-shadow(0 0 2px #ffe9f3);
+            animation: versionGlow 2.5s infinite alternate;
+        }
+
+        @keyframes versionGlow {
+            0% {
+                filter: drop-shadow(0 0 2px #ffe9f3);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 8px #af7ead);
+            }
+        }
+    </style>
 </body>
+
 </html>
