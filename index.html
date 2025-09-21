@@ -13,129 +13,6 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        const fechaObjetivo = new Date(2025, 6, 23);
-        const hoy = new Date();
-        const diferencia = Math.ceil((fechaObjetivo - hoy) / (1000 * 60 * 60 * 24));
-
-        if (diferencia > 0) {
-            Swal.fire({
-                title: '❤️ Faltan ' + diferencia + ' días ❤️',
-                html: '<div style="font-size:1.3em;color:#af7ead;font-family:\'Pacifico\',cursive,Arial,sans-serif;">para nuestro día especial<br><b>23 / 07 / 2025</b></div>',
-                background: 'linear-gradient(135deg, #ffe9f3 0%, #af7ead 100%)',
-                color: '#5a3d5c',
-                confirmButtonColor: '#af7ead',
-                confirmButtonText: 'ACEPTAR',
-                customClass: {
-                    popup: 'swal2-border-radius'
-                },
-                didClose: () => {
-                    lluviaCorazones3sLento();
-                }
-            });
-        }
-
-        function lluviaCorazones3sLento() {
-            let lanzados = 0;
-            const total = 24;
-            const intervalo = setInterval(() => {
-                lanzarCorazonLento();
-                lanzados++;
-                if (lanzados >= total) clearInterval(intervalo);
-            }, 125);
-
-
-            setTimeout(() => clearInterval(intervalo), 3000);
-        }
-
-        function lanzarCorazonLento() {
-            const corazon = document.createElement('div');
-            corazon.textContent = '❤️';
-            corazon.style.position = 'fixed';
-            corazon.style.left = (Math.random() * 100) + 'vw';
-            corazon.style.bottom = '-40px';
-            corazon.style.fontSize = (Math.random() * 32 + 24) + 'px';
-            corazon.style.opacity = Math.random() * 0.5 + 0.5;
-            corazon.style.zIndex = 9999;
-            corazon.style.pointerEvents = 'none';
-            corazon.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
-
-            document.body.appendChild(corazon);
-
-
-            const desplazamiento = (Math.random() - 0.5) * 30; // -15vw a +15vw
-            setTimeout(() => {
-                corazon.style.transform = `translateY(-110vh) translateX(${desplazamiento}vw) rotate(${Math.random() > 0.5 ? '-' : ''}${Math.random() * 60}deg)`;
-                corazon.style.opacity = 0;
-            }, 30);
-
-            setTimeout(() => {
-                corazon.remove();
-            }, 1800 + Math.random() * 200);
-        }
-    </script>
-    <script>
-        const fechaCumple = new Date(2025, 7, 6); // Mes 7 = Agosto (0-indexed)
-        const hoyCumple = new Date();
-        const diferenciaCumple = Math.ceil((fechaCumple - hoyCumple) / (1000 * 60 * 60 * 24));
-
-        if (diferenciaCumple > 0) {
-            Swal.fire({
-                title: ' 💗Faltan ' + diferenciaCumple + ' días💗',
-                html: '<div style="font-size:1.3em;color:#b63971;font-family:\'Pacifico\',cursive,Arial,sans-serif;">Para un dia tan importante<br>Mi osita<br><b>06 / 08 / 2025</b></div>',
-                background: 'linear-gradient(135deg, #ffe9f3 0%, #b63971 100%)',
-                color: '#5a3d5c',
-                confirmButtonColor: '#b63971',
-                confirmButtonText: 'ACEPTAR',
-                customClass: {
-                    popup: 'swal2-border-radius'
-                },
-                didClose: () => {
-                    lluviaConfetiCumple();
-                }
-            });
-        }
-
-        function lluviaConfetiCumple() {
-            let lanzados = 0;
-            const total = 30;
-            const intervalo = setInterval(() => {
-                lanzarConfeti();
-                lanzados++;
-                if (lanzados >= total) clearInterval(intervalo);
-            }, 80);
-
-            setTimeout(() => clearInterval(intervalo), 3000);
-        }
-
-        function lanzarConfeti() {
-            const colores = ['#f9d923', '#f93943', '#3ec300', '#3a86ff', '#ff70a6', '#ff9770', '#70d6ff', '#b63971'];
-            const confeti = document.createElement('div');
-            confeti.textContent = '🎉';
-            confeti.style.position = 'fixed';
-            confeti.style.left = (Math.random() * 100) + 'vw';
-            confeti.style.bottom = '-40px';
-            confeti.style.fontSize = (Math.random() * 32 + 24) + 'px';
-            confeti.style.opacity = Math.random() * 0.5 + 0.5;
-            confeti.style.zIndex = 9999;
-            confeti.style.pointerEvents = 'none';
-            confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
-            confeti.style.color = colores[Math.floor(Math.random() * colores.length)];
-
-            document.body.appendChild(confeti);
-
-            const desplazamiento = (Math.random() - 0.5) * 30;
-            setTimeout(() => {
-                confeti.style.transform = `translateY(-110vh) translateX(${desplazamiento}vw) rotate(${Math.random() > 0.5 ? '-' : ''}${Math.random() * 60}deg)`;
-                confeti.style.opacity = 0;
-            }, 30);
-
-            setTimeout(() => {
-                confeti.remove();
-            }, 1800 + Math.random() * 200);
-        }
-    </script>
     <style>
         .swal2-border-radius {
             border-radius: 32px !important;
@@ -168,9 +45,8 @@
             <h2>Te la dediqué una vez... Pero acá la tienes nuevamente en tus manos princesa hermosa... Recuerda que te
                 amo con todo mi corazón mi vida</h2>
         </div>
+        
         <center>
-
-
             <div style="display:flex;justify-content:center;margin:32px 0;">
                 <a id="boton-cumple" class="boton-cumple" href="SRC/cumple.html" onclick="return false;">
                     <span id="contador-cumple">06/08/2025</span>
@@ -259,7 +135,7 @@
                 }
             </style>
             <script>
-                const fechaCumpleBtn = new Date(2025, 7, 6, 0, 0, 0); // 06/08/2025 (mes 7 = agosto)
+                const fechaCumpleBtn = new Date(2025, 7, 6, 0, 0, 0);
                 const botonCumple = document.getElementById("boton-cumple");
                 const contadorCumple = document.getElementById("contador-cumple");
 
@@ -285,30 +161,6 @@
                 }
                 actualizarContadorCumple();
                 let intervaloCumple = setInterval(actualizarContadorCumple, 1000);
-
-                // Confeti animado al llegar la fecha
-                function lanzarConfetiCumpleBtn() {
-                    for (let i = 0; i < 30; i++) {
-                        setTimeout(() => {
-                            const confeti = document.createElement('div');
-                            confeti.textContent = '🎉';
-                            confeti.style.position = 'fixed';
-                            confeti.style.left = (Math.random() * 100) + 'vw';
-                            confeti.style.top = '-40px';
-                            confeti.style.fontSize = (Math.random() * 24 + 24) + 'px';
-                            confeti.style.opacity = Math.random() * 0.5 + 0.5;
-                            confeti.style.zIndex = 9999;
-                            confeti.style.pointerEvents = 'none';
-                            confeti.style.transition = 'transform 1.6s linear, opacity 1.6s linear';
-                            document.body.appendChild(confeti);
-                            setTimeout(() => {
-                                confeti.style.transform = `translateY(110vh) rotate(${Math.random() * 360}deg)`;
-                                confeti.style.opacity = 0;
-                            }, 30);
-                            setTimeout(() => confeti.remove(), 1800 + Math.random() * 200);
-                        }, i * 60);
-                    }
-                }
             </script>
 
             <div class="separador2"></div>
@@ -410,6 +262,7 @@
             <li><a href="SRC/corazon.html"><i class="fas fa-heart"></i> ME SIENTO</a></li>
             <li><a href="SRC/ABEJA.html"><i class="fas fa-bug"></i> ABEJITA</a></li>
             <li><a href="SRC/Ruleta.html"><i class="fas fa-random"></i> RULETA</a></li>
+            <li><a href="SRC/flores.html"><i class="fas fa-seedling"></i> FLORES AMARILLAS</a></li>
         </ul>
     </center>
     <div id="loader-bg">
@@ -500,7 +353,7 @@
 
 
     <div class="version-indicador">
-        v9.0.11.1
+        v9.2.11.1
     </div>
 
 

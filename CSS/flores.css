@@ -1,0 +1,106 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 60% 20%, #fffde7 0%, #fff9c4 30%, #fff59d 60%, #fffde7 80%, #fffde7 100%),
+              linear-gradient(120deg, #fffde7 0%, #fff9c4 40%, #fff59d 70%, #fffde7 100%),
+              repeating-linear-gradient(135deg, #fffde7 0px, #fffde7 40px, #fff9c4 80px, #fff59d 120px, #fffde7 160px);
+  box-shadow: 0 0 120px 0 #fffde7 inset, 0 0 180px 0 #fff9c4 inset;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.mensaje-flores p {
+  font-family: 'Segoe Script', 'Segoe UI', 'Arial', cursive, sans-serif;
+  color: #3d2c00;
+  font-size: 1.25em;
+  margin: 0 0 0.5em 0;
+  padding: 0.3em 8vw;
+  text-shadow: 0 1px 8px #fffde7;
+  letter-spacing: 0.5px;
+  background: rgba(255, 253, 231, 0.7);
+  border-radius: 10px;
+  display: inline-block;
+}
+.mensaje-flores h1 {
+  font-family: 'Segoe Script', 'Comic Sans MS', cursive;
+  color: #ffd600;
+  font-size: 2.2em;
+  margin: 0 0 0.2em 0;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #fff176;
+}
+.mensaje-flores h1 {
+  font-family: 'Segoe Script', 'Comic Sans MS', cursive;
+  color: #ffd600;
+  font-size: 2.2em;
+  margin: 0 0 0.2em 0;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #222;
+  background: #111;
+  border-radius: 12px;
+  padding: 0.2em 1em;
+  display: inline-block;
+}
+
+.flores-svg {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flor-svg {
+  width: 30vw;
+  height: 90vh;
+  min-width: 120px;
+  min-height: 300px;
+  max-width: 350px;
+  max-height: 700px;
+  animation: florAnimada 7s infinite ease-in-out;
+  will-change: transform;
+  pointer-events: auto;
+}
+@keyframes florAnimada {
+  0% { transform: scaleY(1) scaleX(1) rotate(-2deg); }
+  20% { transform: scaleY(1.04) scaleX(0.98) rotate(2deg); }
+  40% { transform: scaleY(1.08) scaleX(1.02) rotate(-2deg); }
+  60% { transform: scaleY(1.04) scaleX(0.98) rotate(2deg); }
+  80% { transform: scaleY(1) scaleX(1) rotate(-2deg); }
+  100% { transform: scaleY(1) scaleX(1) rotate(-2deg); }
+}
+
+@media (max-width: 600px) {
+  body {
+    align-items: flex-end;
+  }
+  .mensaje-flores {
+    font-size: 0.9em;
+    padding: 4vw 0 0 0;
+  }
+  .flores-svg {
+    height: 100vh;
+    gap: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
+  .flor-svg {
+    width: 80vw;
+    height: 80vh;
+    min-width: 100px;
+    min-height: 180px;
+    max-width: 220px;
+    max-height: 400px;
+  }
+}

@@ -541,3 +541,24 @@ img{
     0%, 100% { transform: translateY(0);}
     50% { transform: translateY(-8px);}
 }
+.boton-flores {
+                    display: inline-block;
+                    background: linear-gradient(90deg, #fffde7 0%, #ffe066 100%);
+                    color: #a67c00;
+                    font-family: 'Pacifico', cursive, Arial, sans-serif;
+                    font-size: 1.18em;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 18px;
+                    padding: 14px 38px;
+                    box-shadow: 0 4px 18px #ffe06644, 0 1px 0 #fff;
+                    cursor: pointer;
+                    transition: background 0.4s, transform 0.2s, box-shadow 0.2s, color 0.3s;
+                    outline: none;
+                    letter-spacing: 1px;
+                    margin-bottom: 8px;
+                    text-shadow: 0 2px 8px #fffde7, 0 1px 0 #ffe066;
+                    position: relative;
+                    overflow: hidden;
+                    min-width: 180px;
+                }
