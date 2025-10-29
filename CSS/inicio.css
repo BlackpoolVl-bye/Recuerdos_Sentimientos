@@ -260,3 +260,88 @@ body {
     color: #fff;
     background: #e07bb7;
 }
+.boton-cumple {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 12px;
+                    background: linear-gradient(90deg, #b63971 0%, #ffe9f3 100%);
+                    color: black;
+                    font-family: 'Pacifico', cursive, Arial, sans-serif;
+                    font-size: 1.18em;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 18px;
+                    padding: 14px 38px;
+                    box-shadow: 0 4px 18px #b6397144, 0 1px 0 #fff;
+                    cursor: pointer;
+                    transition: background 0.4s, transform 0.2s, box-shadow 0.2s, color 0.3s;
+                    outline: none;
+                    animation: pulseColorCumple 2.2s infinite alternate, jumpCumple 2.8s infinite;
+                    letter-spacing: 1px;
+                    margin-bottom: 8px;
+                    text-shadow: 0 2px 8px #fff, 0 1px 0 #ffe9f3;
+                    position: relative;
+                    overflow: hidden;
+                    min-width: 180px;
+                    justify-content: center;
+                }
+
+                .boton-cumple:hover {
+                    background: linear-gradient(90deg, #ffe9f3 0%, #b63971 100%);
+                    color: #b63971;
+                    transform: scale(1.09) rotate(-2deg);
+                    box-shadow: 0 8px 32px #b6397155;
+                }
+
+                @keyframes pulseColorCumple {
+                    0% {
+                        box-shadow: 0 0 0 0 #b6397144;
+                        background-position: 0% 50%;
+                    }
+
+                    100% {
+                        box-shadow: 0 0 24px 8px #ffe9f355;
+                        background-position: 100% 50%;
+                    }
+                }
+
+                @keyframes jumpCumple {
+
+                    0%,
+                    100% {
+                        transform: translateY(0);
+                    }
+
+                    50% {
+                        transform: translateY(-8px);
+                    }
+                }
+
+                .icono-cumple {
+                    font-size: 1.5em;
+                    filter: drop-shadow(0 0 4px #ffe9f3);
+                    animation: glowIconoCumple 2.5s infinite alternate;
+                }
+
+                @keyframes glowIconoCumple {
+                    0% {
+                        filter: drop-shadow(0 0 4px #ffe9f3);
+                    }
+
+                    100% {
+                        filter: drop-shadow(0 0 12px #b63971);
+                    }
+                }
+
+                #contador-cumple {
+                    font-size: 1.25em;
+                    font-family: 'Pacifico', cursive, Arial, sans-serif;
+                    letter-spacing: 2px;
+                    min-width: 110px;
+                    display: inline-block;
+                }
+                .swal2-border-radius {
+            border-radius: 32px !important;
+            box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
+            border: 2px dashed #af7ead33;
+        }
