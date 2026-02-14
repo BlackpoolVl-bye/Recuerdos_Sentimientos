@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/sportylove.css">
+    <title>SpotifyLove</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+
+</head>
+<body>
+    <div class="spotify-container">
+        <div class="player-header">
+            
+            <div class="player-header">
+    <img src="/Recursos/Sportify/logo.jpg" class="spotify-logo" alt="Logo">
+    <h2>SportifyLove</h2>
+</div>
+        </div>
+        <div class="cover">
+            <img id="cover-img" src="" alt="Portada">
+        </div>
+        <div class="info">
+            <h2 id="song-title">Canción</h2>
+            <p id="artist">Artista</p>
+        </div>
+        <div class="progress-container">
+            <input type="range" id="progress-bar" value="0">
+            <div class="time">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="prev-btn">⏮</button>
+            <button id="play-btn">▶</button>
+            <button id="next-btn">⏭</button>
+        </div>
+        <div class="playlist" id="playlist">
+
+        </div>
+        <audio id="audio"></audio>
+    </div>
+    <div id="toast-next" class="toast-next"></div>
+<script src="/JavaScript/Sportylove.js"></script>
+
+<link rel="stylesheet" href="/CSS/carga.css">
+    <script src="/JavaScript/Carga.js"></script>
+    <div id="loader-bg">
+  <div class="loader-content">
+    <div class="loader-circle"></div>
+    <div class="loader-text-bg">
+      <span class="loader-text">Cargando...</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

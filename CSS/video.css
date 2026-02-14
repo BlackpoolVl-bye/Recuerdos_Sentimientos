@@ -72,3 +72,70 @@
         font-size: 1.2em;
     }
 }
+.container {
+            background: rgba(255,255,255,0.65);
+            border-radius: 22px;
+            box-shadow: 0 4px 24px #af7ead22;
+            padding: 24px 18px 18px 18px;
+            margin: 32px auto 18px auto;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeInUp 1.2s;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .container:hover {
+            box-shadow: 0 8px 32px #ffb6b9aa;
+            transform: scale(1.03) rotate(-1deg);
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-container video {
+            border-radius: 18px;
+            box-shadow: 0 2px 16px #af7ead44;
+            border: 3px solid #ffe9f3;
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+        .video-container video:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 8px 32px #ffb6b9cc;
+            border-color: #ffb6b9;
+        }
+        h4 {
+            background: rgba(255,255,255,0.85);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px #af7ead22;
+            color: #af7ead;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            font-size: 1.08em;
+            letter-spacing: 0.5px;
+            padding: 16px 18px;
+            margin: 18px auto 10px auto;
+            max-width: 420px;
+            text-align: center;
+            animation: fadeInUp 1.2s;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @media (max-width: 600px) {
+            .container, .separador2 {
+                max-width: 98vw;
+                padding: 8px 2vw;
+            }
+            .video-container video {
+                max-width: 98vw;
+            }
+            h4 {
+                font-size: 1em;
+                padding: 12px 6px;
+                max-width: 98vw;
+            }
+        }

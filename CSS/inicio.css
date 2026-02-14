@@ -345,3 +345,96 @@ body {
             box-shadow: 0 8px 32px #af7ead44, 0 0 0 8px #fff2 inset;
             border: 2px dashed #af7ead33;
         }
+
+        #loader-bg {
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #af7ead 60%, #e07bb7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .loader-circle {
+            border: 6px solid #fff6fa55;
+            border-top: 6px solid #fff;
+            border-radius: 50%;
+            width: 54px;
+            height: 54px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 16px #fff6fa55;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            color: #fff;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            font-size: 1.5em;
+            text-shadow: 0 2px 12px #af7ead88;
+            letter-spacing: 1px;
+        }
+
+        #loader-bg.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .version-indicador {
+            position: fixed;
+            left: 8px;
+            bottom: 4px;
+            background: rgba(30, 30, 30, 0.85);
+            color: #fff;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 0.82em;
+            letter-spacing: 1px;
+            padding: 3px 10px 3px 8px;
+            border-radius: 12px 16px 12px 6px;
+            box-shadow: 0 1px 6px #0003, 0 1px 0 #fff1 inset;
+            opacity: 0.85;
+            z-index: 99999;
+            transition: opacity 0.3s;
+            user-select: none;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .version-indicador::before {
+            font-size: 1em;
+            margin-right: 2px;
+            filter: drop-shadow(0 0 2px #ffe9f3);
+            animation: versionGlow 2.5s infinite alternate;
+        }
+
+        @keyframes versionGlow {
+            0% {
+                filter: drop-shadow(0 0 2px #ffe9f3);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 8px #af7ead);
+            }
+        }

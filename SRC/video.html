@@ -4,89 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/Logo/ICONO.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/Recursos/Imagenes/Logo/ICONO.png" type="image/x-icon">
     <link rel="stylesheet" href="/CSS/estilo2.css">
     <link rel="stylesheet" href="/CSS/video.css">
     <script src="/JavaScript/java.js"></script>
     <title>VIDEO</title>
-    <style>
-        .container {
-            background: rgba(255,255,255,0.65);
-            border-radius: 22px;
-            box-shadow: 0 4px 24px #af7ead22;
-            padding: 24px 18px 18px 18px;
-            margin: 32px auto 18px auto;
-            max-width: 400px;
-            text-align: center;
-            animation: fadeInUp 1.2s;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .container:hover {
-            box-shadow: 0 8px 32px #ffb6b9aa;
-            transform: scale(1.03) rotate(-1deg);
-        }
-        .video-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .video-container video {
-            border-radius: 18px;
-            box-shadow: 0 2px 16px #af7ead44;
-            border: 3px solid #ffe9f3;
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background: #fff;
-        }
-        .video-container video:hover {
-            transform: scale(1.04) rotate(-2deg);
-            box-shadow: 0 8px 32px #ffb6b9cc;
-            border-color: #ffb6b9;
-        }
-        h4 {
-            background: rgba(255,255,255,0.85);
-            border-radius: 16px;
-            box-shadow: 0 2px 12px #af7ead22;
-            color: #af7ead;
-            font-family: 'Pacifico', cursive, Arial, sans-serif;
-            font-size: 1.08em;
-            letter-spacing: 0.5px;
-            padding: 16px 18px;
-            margin: 18px auto 10px auto;
-            max-width: 420px;
-            text-align: center;
-            animation: fadeInUp 1.2s;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-        @media (max-width: 600px) {
-            .container, .separador2 {
-                max-width: 98vw;
-                padding: 8px 2vw;
-            }
-            .video-container video {
-                max-width: 98vw;
-            }
-            h4 {
-                font-size: 1em;
-                padding: 12px 6px;
-                max-width: 98vw;
-            }
-        }
-    </style>
 </head>
 <center>
 <body>
     <div class="nave">
         <nav>
             <a href="/index.html"><i class="fas fa-home"></i> INICIO</a>
-            <a href="/SRC/recuerdos.html"><i class="fas fa-images"></i> RECUERDOS</a>
-            <a href="/SRC/video.html"><i class="fas fa-video"></i> VIDEOS</a>
-            <a href="/SRC/mas.html"><i class="fas fa-heart"></i> MAS</a>
+            <a href="/SRC/Recuerdos1.html"><i class="fas fa-images"></i> RECUERDOS</a>
+            <a href="/SRC/Video.html"><i class="fas fa-video"></i> VIDEOS</a>
+            <a href="/SRC/Mas.html"><i class="fas fa-heart"></i> MAS</a>
         </nav>
     </div>
     <h4>Estos son recuerdos de oro que tengo de ti y de nosotros juntos... Me gustaría dejarlos inmortalizados acá en esta página para ti.</h4>
@@ -154,6 +85,8 @@
     </div>
     <h4>MASSSSS PRUEBAS PARA DENUNCIARTE MI AMOR</h4>
     </center>
+    <link rel="stylesheet" href="/CSS/carga.css">
+    <script src="/JavaScript/Carga.js"></script>
     <div id="loader-bg">
   <div class="loader-content">
     <div class="loader-circle"></div>
@@ -162,58 +95,5 @@
     </div>
   </div>
 </div>
-<script>
-window.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        document.getElementById('loader-bg').classList.add('hide');
-        setTimeout(function() {
-            document.getElementById('loader-bg').style.display = 'none';
-        }, 700);
-    }, 2000);
-});
-</script>
-<style>
-    #loader-bg {
-    position: fixed;
-    z-index: 99999;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: linear-gradient(135deg, #af7ead 60%, #e07bb7 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.6s;
-}
-.loader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-}
-.loader-circle {
-    border: 6px solid #fff6fa55;
-    border-top: 6px solid #fff;
-    border-radius: 50%;
-    width: 54px;
-    height: 54px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 16px #fff6fa55;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
-}
-.loader-text {
-    color: #fff;
-    font-family: 'Pacifico', cursive, Arial, sans-serif;
-    font-size: 1.5em;
-    text-shadow: 0 2px 12px #af7ead88;
-    letter-spacing: 1px;
-}
-#loader-bg.hide {
-    opacity: 0;
-    pointer-events: none;
-}
-</style>
 </body>
 </html>

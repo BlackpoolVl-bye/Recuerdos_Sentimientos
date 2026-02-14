@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Logo/ICONO.png" type="image/x-icon">
+    <link rel="shortcut icon" href="Recursos/Imagenes/Logo/ICONO.png" type="image/x-icon">
     <link rel="stylesheet" href="CSS/estilo.css">
     <link rel="stylesheet" href="CSS/inicio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,9 +16,9 @@
     <div class="nave">
         <nav>
             <a href="index.html"><i class="fas fa-home"></i> INICIO</a>
-            <a href="SRC/recuerdos.html"><i class="fas fa-images"></i> RECUERDOS</a>
-            <a href="SRC/video.html"><i class="fas fa-video"></i> VIDEOS</a>
-            <a href="SRC/mas.html"><i class="fas fa-heart"></i> MAS</a>
+            <a href="SRC/Recuerdos1.html"><i class="fas fa-images"></i> RECUERDOS</a>
+            <a href="SRC/Video.html"><i class="fas fa-video"></i> VIDEOS</a>
+            <a href="SRC/Mas.html"><i class="fas fa-heart"></i> MAS</a>
         </nav>
     </div>
     <br>
@@ -40,42 +40,54 @@
         </div>
         
         <center>
-            <div style="display:flex;justify-content:center;margin:32px 0;">
-                <a id="boton-cumple" class="boton-cumple" href="SRC/cumple.html" onclick="return false;">
-                    <span id="contador-cumple">06/08/2025</span>
-                </a>
-            </div>
-            <script>
-                const fechaCumpleBtn = new Date(2025, 7, 6, 0, 0, 0);
-                const botonCumple = document.getElementById("boton-cumple");
-                const contadorCumple = document.getElementById("contador-cumple");
+        
+    <div style="display:flex;justify-content:center;margin:32px 0;">
+    <a id="boton-cumple" class="boton-cumple" href="SRC/EXTRAS_MAS/cumple.html">
+        <span id="contador-cumple">Cargando...</span>
+    </a>
+</div>
 
-                function actualizarContadorCumple() {
-                    const ahora = new Date();
-                    let diferencia = fechaCumpleBtn - ahora;
-                    if (diferencia > 0) {
-                        const horas = String(Math.floor((diferencia / (1000 * 60 * 60)))).padStart(2, '0');
-                        const minutos = String(Math.floor((diferencia / (1000 * 60)) % 60)).padStart(2, '0');
-                        const segundos = String(Math.floor((diferencia / 1000) % 60)).padStart(2, '0');
-                        contadorCumple.textContent = `${horas}:${minutos}:${segundos}`;
-                        botonCumple.style.pointerEvents = "none";
-                        botonCumple.title = "Faltan horas y minutos para su cumpleaños";
-                    } else {
-                        contadorCumple.textContent = "06/08/2025";
-                        botonCumple.style.pointerEvents = "auto";
-                        botonCumple.title = "¡Haz click para ver la sorpresa!";
-                        botonCumple.href = "SRC/cumple.html";
-                        botonCumple.onclick = null;
-                        // Efecto de confeti al llegar la fecha
-                        lanzarConfetiCumpleBtn();
-                    }
-                }
-                actualizarContadorCumple();
-                let intervaloCumple = setInterval(actualizarContadorCumple, 1000);
-            </script>
+<script>
+    const fechaCumpleBtn = new Date(2025, 7, 6, 0, 0, 0);
+    const botonCumple = document.getElementById("boton-cumple");
+    const contadorCumple = document.getElementById("contador-cumple");
+    let intervaloCumple;
+
+    function actualizarContadorCumple() {
+        const ahora = new Date();
+        const diferencia = fechaCumpleBtn - ahora;
+
+        if (diferencia > 0) {
+            const horas = String(Math.floor((diferencia / (1000 * 60 * 60)))).padStart(2, '0');
+            const minutos = String(Math.floor((diferencia / (1000 * 60)) % 60)).padStart(2, '0');
+            const segundos = String(Math.floor((diferencia / 1000) % 60)).padStart(2, '0');
+            
+            contadorCumple.textContent = `${horas}:${minutos}:${segundos}`;
+            botonCumple.style.pointerEvents = "none";
+            botonCumple.style.opacity = "0.7";
+            botonCumple.title = "Faltan horas y minutos para su cumpleaños";
+            botonCumple.onclick = (e) => e.preventDefault();
+        } else {
+            clearInterval(intervaloCumple);
+            contadorCumple.textContent = "1er Cumple";
+            botonCumple.style.pointerEvents = "auto";
+            botonCumple.style.opacity = "1";
+            botonCumple.title = "¡Haz click para ver la sorpresa!";
+            botonCumple.onclick = null;
+            
+            if (typeof lanzarConfetiCumpleBtn === "function") {
+                lanzarConfetiCumpleBtn();
+            }
+        }
+    }
+
+    intervaloCumple = setInterval(actualizarContadorCumple, 1000);
+    actualizarContadorCumple();
+</script>
+
 
             <div class="separador2"></div>
-            <a href="CARTA/index.html">
+            <a href="EXTENCIONES/CARTA/index.html">
                 <h2 style="text-align:center;">HAZ CLICK ACA MI AMOR<br>CON TODO MI AMOR PARA TI</h2>
             </a>
         </center>
@@ -83,7 +95,7 @@
         <div class="cora" style="text-align:center;">
             <h1>TOCA NUESTRO CORAZON</h1>
             <br>
-            <a href="SRC/CORA.html"><img src="Recursos/GIF/cora.gif" width="90" height="90" alt=""></a>
+            <a href="SRC/EXTRAS_MAS/CORA.html"><img src="Recursos/GIF/cora.gif" width="90" height="90" alt=""></a>
         </div>
         <div class="separador2"></div>
         <div class="uni" style="text-align:center;">
@@ -92,7 +104,7 @@
                     UNIVERSO</div> Gracias, por aceptar a este mortal
             </h1>
             <br>
-            <a href="GALAXIA/index.html"><img src="GALAXIA/IrE.gif" width="90" height="90" alt=""></a>
+            <a href="EXTENCIONES/GALAXIA/index.html"><img src="EXTENCIONES/GALAXIA/IrE.gif" width="90" height="90" alt=""></a>
         </div>
         <div class="separador2"></div>
         <h2 style="text-align:center;">Mi amor.... te preguntarás qué es esto?, te explico... Recuerdas que te dije que
@@ -143,39 +155,41 @@
             AMUUUUUUU</h4>
         <div class="separador2"></div>
         <br>
-        <a href="SRC/Ruleta.html">
+        <a href="SRC/EXTRAS_MAS/Ruleta.html">
             <div class="fixed-image">
                 <img src="Recursos/Imagenes/NV/rule.gif" alt="">
             </div>
         </a>
-        <a href="SRC/ABEJA.html">
+        <a href="/SRC/EXTRAS_MAS/ABEJA.html">
             <div class="fixed-image2">
                 <img src="Recursos/GIF/abeja.gif" alt="">
             </div>
         </a>
         <ul class="menu">
-            <li><a href="SRC/music.html"><i class="fas fa-music"></i> MUSICA</a></li>
-            <li><a href="SRC/confesiones.html"><i class="fas fa-comment-dots"></i> CONFESIONES</a></li>
-            <li><a href="SRC/Promesas.html"><i class="fas fa-hand-holding-heart"></i> PROMESAS</a></li>
-            <li><a href="SRC/esposa.html"><i class="fas fa-heart"></i> I LOVE</a></li>
-            <li><a href="SRC/año.html"><i class="fas fa-calendar-alt"></i> CUENTA</a></li>
-            <li><a href="SRC/poema.html"><i class="fas fa-feather-alt"></i> POEMA</a></li>
-            <li><a href="SRC/notas.html"><i class="fas fa-sticky-note"></i> NOTAS</a></li>
-            <li><a href="SRC/preguntas.html"><i class="fas fa-question"></i> JUEGO 1</a></li>
-            <li><a href="SRC/CART.html"><i class="fas fa-envelope"></i> CARTA DAY</a></li>
-            <li><a href="SRC/sorpresas.html"><i class="fas fa-gift"></i> SORPRESA</a></li>
-            <li><a href="SRC/llevamos.html"><i class="fas fa-hourglass-half"></i> LLEVAMOS</a></li>
-            <li><a href="SRC/retos.html"><i class="fas fa-fire"></i> RETOS</a></li>
-            <li><a href="SRC/puzzle.html"><i class="fas fa-puzzle-piece"></i> PUZZLE</a></li>
-            <li><a href="SRC/galaxiamas.html"><i class="fas fa-star"></i> J+R</a></li>
-            <li><a href="SRC/BOT.html"><i class="fas fa-robot"></i> BOT ROMÁNTICO</a></li>
-            <li><a href="SRC/CORA.html"><i class="fas fa-heartbeat"></i> CARTA ESPECIAL</a></li>
-            <li><a href="SRC/corazon.html"><i class="fas fa-heart"></i> ME SIENTO</a></li>
-            <li><a href="SRC/ABEJA.html"><i class="fas fa-bug"></i> ABEJITA</a></li>
-            <li><a href="SRC/Ruleta.html"><i class="fas fa-random"></i> RULETA</a></li>
-            <li><a href="SRC/flores.html"><i class="fas fa-seedling"></i> FLORES AMARILLAS</a></li>
+            <li><a href="SRC/EXTRAS_MAS/music.html"><i class="fas fa-music"></i> MUSICA</a></li>
+            <li><a href="SRC/EXTRAS_MAS/confesiones.html"><i class="fas fa-comment-dots"></i> CONFESIONES</a></li>
+            <li><a href="SRC/EXTRAS_MAS/Promesas.html"><i class="fas fa-hand-holding-heart"></i> PROMESAS</a></li>
+            <li><a href="SRC/EXTRAS_MAS/esposa.html"><i class="fas fa-heart"></i> I LOVE</a></li>
+            <li><a href="SRC/EXTRAS_MAS/año.html"><i class="fas fa-calendar-alt"></i> CUENTA</a></li>
+            <li><a href="SRC/EXTRAS_MAS/poema.html"><i class="fas fa-feather-alt"></i> POEMA</a></li>
+            <li><a href="SRC/EXTRAS_MAS/notas.html"><i class="fas fa-sticky-note"></i> NOTAS</a></li>
+            <li><a href="SRC/EXTRAS_MAS/preguntas.html"><i class="fas fa-question"></i> JUEGO 1</a></li>
+            <li><a href="SRC/EXTRAS_MAS/CART.html"><i class="fas fa-envelope"></i> CARTA DAY</a></li>
+            <li><a href="SRC/EXTRAS_MAS/sorpresas.html"><i class="fas fa-gift"></i> SORPRESA</a></li>
+            <li><a href="SRC/EXTRAS_MAS/llevamos.html"><i class="fas fa-hourglass-half"></i> LLEVAMOS</a></li>
+            <li><a href="SRC/EXTRAS_MAS/retos.html"><i class="fas fa-fire"></i> RETOS</a></li>
+            <li><a href="SRC/EXTRAS_MAS/puzzle.html"><i class="fas fa-puzzle-piece"></i> PUZZLE</a></li>
+            <li><a href="SRC/EXTRAS_MAS/galaxiamas.html"><i class="fas fa-star"></i> J+R</a></li>
+            <li><a href="SRC/EXTRAS_MAS/BOT.html"><i class="fas fa-robot"></i> BOT ROMÁNTICO</a></li>
+            <li><a href="SRC/EXTRAS_MAS/CORA.html"><i class="fas fa-heartbeat"></i> CARTA ESPECIAL</a></li>
+            <li><a href="SRC/EXTRAS_MAS/corazon.html"><i class="fas fa-heart"></i> ME SIENTO</a></li>
+            <li><a href="SRC/EXTRAS_MAS/ABEJA.html"><i class="fas fa-bug"></i> ABEJITA</a></li>
+            <li><a href="SRC/EXTRAS_MAS/Ruleta.html"><i class="fas fa-random"></i> RULETA</a></li>
+            <li><a href="SRC/EXTRAS_MAS/flores.html"><i class="fas fa-seedling"></i> FLORES AMARILLAS</a></li>
         </ul>
     </center>
+    <link rel="stylesheet" href="/CSS/carga.css">
+    <script src="/JavaScript/Carga.js"></script>
     <div id="loader-bg">
         <div class="loader-content">
             <div class="loader-circle"></div>
@@ -184,142 +198,9 @@
             </div>
         </div>
     </div>
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
-                document.getElementById('loader-bg').classList.add('hide');
-                setTimeout(function () {
-                    document.getElementById('loader-bg').style.display = 'none';
-                }, 700);
-            }, 1000);
-        });
-    </script>
-    <style>
-        #loader-bg {
-            position: fixed;
-            z-index: 99999;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #af7ead 60%, #e07bb7 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s;
-        }
-
-        .loader-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 22px;
-        }
-
-        .loader-circle {
-            border: 6px solid #fff6fa55;
-            border-top: 6px solid #fff;
-            border-radius: 50%;
-            width: 54px;
-            height: 54px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 16px #fff6fa55;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .loader-text {
-            color: #fff;
-            font-family: 'Pacifico', cursive, Arial, sans-serif;
-            font-size: 1.5em;
-            text-shadow: 0 2px 12px #af7ead88;
-            letter-spacing: 1px;
-        }
-
-        #loader-bg.hide {
-            opacity: 0;
-            pointer-events: none;
-        }
-    </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="version-indicador">
         v9.2.11.1
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <style>
-        .version-indicador {
-            position: fixed;
-            left: 8px;
-            bottom: 4px;
-            background: rgba(30, 30, 30, 0.85);
-            color: #fff;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 0.82em;
-            letter-spacing: 1px;
-            padding: 3px 10px 3px 8px;
-            border-radius: 12px 16px 12px 6px;
-            box-shadow: 0 1px 6px #0003, 0 1px 0 #fff1 inset;
-            opacity: 0.85;
-            z-index: 99999;
-            transition: opacity 0.3s;
-            user-select: none;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .version-indicador::before {
-            font-size: 1em;
-            margin-right: 2px;
-            filter: drop-shadow(0 0 2px #ffe9f3);
-            animation: versionGlow 2.5s infinite alternate;
-        }
-
-        @keyframes versionGlow {
-            0% {
-                filter: drop-shadow(0 0 2px #ffe9f3);
-            }
-
-            100% {
-                filter: drop-shadow(0 0 8px #af7ead);
-            }
-        }
-    </style>
 </body>
 
 </html>
