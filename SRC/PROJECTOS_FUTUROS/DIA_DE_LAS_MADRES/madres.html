@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Mujer, Mi Amor</title>
+    <style>
+        :root {
+            --color-principal: #f8d7da; /* Rosa pálido muy suave */
+            --color-secundario: #fff5f0; /* Crema muy claro */
+            --color-acento: #e2e3e5; /* Gris muy suave para contraste */
+            --color-texto: #495057; /* Gris oscuro para el texto */
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-texto: 'Montserrat', sans-serif;
+        }
+
+        /* Importar fuentes de Google */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente-texto);
+            background-color: var(--color-secundario);
+            color: var(--color-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Estilos Generales --- */
+        section {
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fuente-titulos);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 3rem; color: #5a3e36; }
+        h2 { font-size: 2.5rem; color: #5a3e36; }
+        p { font-size: 1.1rem; max-width: 700px; margin-bottom: 20px; }
+
+        /* --- Hero Section (Inicio) --- */
+        #inicio {
+            background-color: var(--color-principal);
+            color: white;
+            padding-top: 120px;
+        }
+
+        #inicio h1 {
+            color: white;
+            font-style: italic;
+        }
+
+        .heart {
+            font-size: 3rem;
+            animation: heartBeat 1.5s infinite;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Sección: Galería de Recuerdos --- */
+        #recuerdos {
+            background-color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* --- Sección: Razones por las que te Amo --- */
+        #razones {
+            background-color: var(--color-secundario);
+        }
+
+        .razones-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin-top: 40px;
+        }
+
+        .razon-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .razon-card:hover {
+            transform: scale(1.03);
+        }
+
+        .razon-card h3 {
+            font-size: 1.5rem;
+            color: #5a3e36;
+        }
+
+        /* --- Sección: Un Mensaje Especial (Interactiva) --- */
+        #interactivo {
+            background-color: white;
+            position: relative;
+        }
+
+        .btn-principal {
+            background-color: #d1a7a0;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-family: var(--fuente-texto);
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 30px;
+        }
+
+        .btn-principal:hover {
+            background-color: #b08d87;
+        }
+
+        .btn-principal:active {
+            transform: scale(0.98);
+        }
+
+        #output-interactivo {
+            margin-top: 30px;
+            font-family: var(--fuente-titulos);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #7d5a50;
+            min-height: 80px; /* Evita que el contenido salte */
+        }
+
+        /* --- Sección: Mi Carta para Ti --- */
+        #carta {
+            background-color: var(--color-principal);
+            color: #5a3e36;
+        }
+
+        #carta h2 { color: #5a3e36; }
+
+        .carta-papel {
+            background-color: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            text-align: left;
+            position: relative;
+        }
+
+        .carta-papel p {
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            text-align: right;
+            margin-top: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #5a3e36;
+            color: rgba(255,255,255,0.7);
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Adaptación para Celulares */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 60px 15px; }
+            .carta-papel { padding: 30px; }
+            .gallery-item img { height: 280px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section id="inicio">
+        <div class="heart">❤️</div>
+        <h1>Para la mujer que ilumina mi vida</h1>
+        <p>Hoy celebramos tu fuerza, tu belleza y tu espíritu increíble. Pero para mí, cada día es una celebración de tenerte a mi lado. ¡Feliz Día de la Mujer, mi amor!</p>
+        <p style="font-style: italic; font-size: 1rem; opacity: 0.8;">(Desliza hacia abajo para ver tu regalo...)</p>
+    </section>
+
+    <section id="recuerdos">
+        <h2>Nuestro Pequeño Viaje en Fotos</h2>
+        <p>Cada una de estas fotos es un recuerdo precioso que atesoro. Tu sonrisa es mi parte favorita de cada día.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="foto0.jpg" alt="Nosotros juntos en la tienda">
+                <div class="gallery-caption">
+                    <h3>Nuestro momento</h3>
+                    <p>Me encanta esta foto de los dos. ¡Un día divertido de compras!</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="foto1.jpg" alt="Tu hermosa sonrisa con la cadena">
+                <div class="gallery-caption">
+                    <h3>Tu Brillo</h3>
+                    <p>Esa mirada... me enamora cada vez que la veo.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="foto2.jpg" alt="Divirtiéndonos con filtros">
+                <div class="gallery-caption">
+                    <h3>Tu lado divertido</h3>
+                    <p>Siempre me haces sonreír, incluso con las tonterías.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="foto3.jpg" alt="Esa sonrisa increíble">
+                <div class="gallery-caption">
+                    <h3>Tu Alegría</h3>
+                    <p>Verte sonreír así es todo lo que necesito.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="foto4.jpg" alt="Tirando un beso">
+                <div class="gallery-caption">
+                    <h3>Un Beso para Mí</h3>
+                    <p>¡El beso más dulce del mundo!</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="foto5.jpg" alt="Estilo y un beso">
+                <div class="gallery-caption">
+                    <h3>Tu Estilo</h3>
+                    <p>Hermosa y con toda la actitud. ¡Me encantas!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="razones">
+        <h2>Lo Que Te Hace Tan Especial</h2>
+        <p>Hay infinitas razones por las que te admiro y te amo. Aquí hay solo algunas de ellas...</p>
+        
+        <div class="razones-container">
+            <div class="razon-card">
+                <h3>Tu Fuerza</h3>
+                <p>Admiro cómo enfrentas cada día con valentía y determinación. Eres una mujer increíblemente poderosa.</p>
+            </div>
+            <div class="razon-card">
+                <h3>Tu Corazón</h3>
+                <p>Tu bondad y tu capacidad de amar no tienen límites. Tienes el corazón más puro que conozco.</p>
+            </div>
+            <div class="razon-card">
+                <h3>Tu Sonrisa</h3>
+                <p>Es literalmente mi luz. Tienes el poder de cambiar mi día entero solo con sonreír.</p>
+            </div>
+            <div class="razon-card">
+                <h3>Tu Inteligencia</h3>
+                <p>Me encanta tu forma de pensar y cómo ves el mundo. Siempre aprendo algo nuevo de ti.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="interactivo">
+        <h2>Un Pensamiento para Ti</h2>
+        <p>¿Qué estoy pensando ahora mismo cuando te veo? Haz clic en el botón para saberlo.</p>
+        
+        <button class="btn-principal" onclick="generarPensamiento()">Ver mi Pensamiento</button>
+        
+        <div id="output-interactivo"></div>
+    </section>
+
+    <section id="carta">
+        <div class="carta-papel">
+            <h2>Mi Carta para Ti</h2>
+            <p>Mi Amor,</p>
+            <p>En este Día de la Mujer, quería tomarme un momento para decirte cuánto significas para mí. Eres mucho más que mi novia; eres mi compañera, mi confidente y la persona que me inspira a ser mejor cada día.</p>
+            <p>Admiro tu pasión, tu resiliencia y la forma en que cuidas de las personas que amas. Eres una mujer excepcional y me siento increíblemente afortunado de que me hayas elegido para caminar a tu lado.</p>
+            <p>Gracias por todos los recuerdos que hemos creado (¡como los de la galería!) y por todos los que vendrán. Que este día esté lleno de todo el amor y la felicidad que te mereces.</p>
+            <p>Te amo más de lo que las palabras pueden decir.</p>
+            <p class="signature">Tu Novio</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Hecho con amor para la mujer de mi vida • Feliz Día de la Mujer osita • 2026</p>
+    </footer>
+
+    <script>
+        // Array con pensamientos o adjetivos lindos
+        const pensamientos = [
+            "Eres el pensamiento más hermoso de mi día.",
+            "Cada recuerdo contigo es mi tesoro favorito.",
+            "Me encanta cómo tu sonrisa ilumina todo a tu alrededor.",
+            "No solo eres hermosa, eres una mujer increíblemente fuerte.",
+            "Estar contigo es la mejor aventura de mi vida.",
+            "¡Me siento tan afortunado de tenerte!",
+            "Admiro todo lo que eres y todo lo que haces.",
+            "Eres mi razón para sonreír.",
+            "Nuestros recuerdos juntos son mi 'lugar feliz'."
+        ];
+
+        function generarPensamiento() {
+            // Seleccionar el elemento donde mostraremos el texto
+            const outputElement = document.getElementById('output-interactivo');
+            
+            // Generar un índice aleatorio
+            const indiceAleatorio = Math.floor(Math.random() * pensamientos.length);
+            
+            // Obtener el pensamiento aleatorio
+            const pensamientoSeleccionado = pensamientos[indiceAleatorio];
+            
+            // Mostrar el pensamiento con una pequeña animación (opcional, fade in simple)
+            outputElement.style.opacity = 0; // Ocultar
+            outputElement.innerHTML = `"${pensamientoSeleccionado}"`;
+            
+            // Pequeño delay para el efecto
+            setTimeout(() => {
+                outputElement.style.transition = 'opacity 0.5s ease';
+                outputElement.style.opacity = 1; // Mostrar
+            }, 100);
+        }
+    </script>
+</body>
+</html>
