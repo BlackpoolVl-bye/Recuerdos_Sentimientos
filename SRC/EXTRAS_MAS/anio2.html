@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/Recursos/Imagenes/Logo/ICONO.png" type="image/x-icon">
+    <title>Nuestra Constelación 2do Año </title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --space-bg: radial-gradient(circle, #1a0b2e 0%, #07020d 100%);
+            --gold: #ffd700;
+            --gold-glow: rgba(255, 215, 0, 0.6);
+            --purple-glow: rgba(157, 78, 221, 0.4);
+            --text-color: #f1f1f1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--space-bg);
+            color: var(--text-color);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Fondo de Estrellas Animado */
+        .stars-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .twinkle-star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration, 3s) infinite ease-in-out;
+            opacity: 0.3;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px #fff; }
+        }
+
+        /* Contenedor Principal de Diapositivas */
+        .presentation-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            background: rgba(15, 7, 30, 0.75);
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 40px 80px 40px; /* Espacio extra abajo para los botones */
+            text-align: center;
+            pointer-events: none;
+            overflow-y: auto; /* Permite scroll si el texto es muy largo */
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+
+        /* Tipografías y Textos */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ffd700, #ff85a2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            flex-shrink: 0;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* Botones de Navegación */
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 10;
+        }
+
+        .nav-btn {
+            background: rgba(157, 78, 221, 0.2);
+            border: 1px solid rgba(157, 78, 221, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--gold);
+            color: #07020d;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: transparent;
+            border-color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Slide 4: El Mapa Constelación */
+        .constellation-map {
+            position: relative;
+            width: 100%;
+            height: 70%;
+            border: 1px dashed rgba(255, 215, 0, 0.15);
+            border-radius: 15px;
+            background: radial-gradient(circle, rgba(30,15,60,0.4) 0%, rgba(5,2,15,0.4) 100%);
+            margin-top: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Conexiones de Constelación (Líneas SVG) */
+        .constellation-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .constellation-lines line {
+            stroke: rgba(255, 215, 0, 0.15);
+            stroke-width: 1.5;
+            stroke-dasharray: 4;
+        }
+
+        /* Estrellas Interactivas */
+        .interactive-star {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, #fff 20%, var(--gold) 100%);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px var(--gold-glow);
+            transform: translate(-50%, -50%);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .interactive-star:hover {
+            transform: translate(-50%, -50%) scale(1.4);
+            box-shadow: 0 0 25px #fff, 0 0 35px var(--gold-glow);
+        }
+
+        .star-label {
+            position: absolute;
+            bottom: -25px;
+            white-space: nowrap;
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Panel Lateral/Modal de Recuerdos */
+        .memory-display {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 85%;
+            background: rgba(10, 3, 20, 0.95);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 25px 15px 15px 15px; /* Espacio extra arriba para la X */
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            z-index: 5;
+        }
+
+        .memory-display.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: all;
+        }
+
+        .memory-display h3 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .memory-display p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: #ddd;
+        }
+
+        /* Botón de cerrar (X) para el recuerdo */
+        .close-memory-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .close-memory-btn:hover {
+            transform: scale(1.2);
+            color: #fff;
+        }
+
+        /* Slide Especial: Carta */
+        .love-letter {
+            max-height: 60%;
+            overflow-y: auto;
+            padding: 10px 15px;
+            border-left: 2px solid var(--gold);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+        }
+
+        /* Scrollbar Personalizado */
+        .love-letter::-webkit-scrollbar,
+        .slide::-webkit-scrollbar {
+            width: 6px;
+        }
+        .love-letter::-webkit-scrollbar-thumb,
+        .slide::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
+        /* ====== ADAPTACIÓN PARA MÓVILES (RESPONSIVE) ====== */
+        @media (max-width: 768px) {
+            .presentation-container {
+                width: 95%;
+                height: 85vh;
+            }
+            
+            .slide {
+                padding: 30px 20px 80px 20px;
+                justify-content: flex-start; /* Para que el texto largo empiece desde arriba */
+            }
+
+            /* Añade margen auto para centrar contenido corto en móviles */
+            .slide::after {
+                content: '';
+                margin-top: auto;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .controls {
+                padding: 0 20px;
+                bottom: 15px;
+            }
+
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .constellation-map {
+                height: 60%;
+                margin-top: 15px;
+            }
+
+            .love-letter {
+                max-height: unset; /* Deja que el slide entero haga scroll en celular */
+                overflow-y: visible;
+            }
+            
+            .memory-display {
+                width: 95%;
+                padding: 30px 15px 15px 15px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Capa de Estrellas de Fondo -->
+    <div class="stars-container" id="starsBg"></div>
+
+    <!-- Contenedor del Especial -->
+    <div class="presentation-container">
+        
+        <!-- DIAPOSITIVA 1: INTRODUCCIÓN -->
+        <div class="slide active" id="slide1">
+            <h1>Nuestro Segundo Año</h1>
+            <p>El universo entero sigue girando, y entre millones de estrellas y galaxias, yo sigo eligiendo perdermente en tu órbita.... Bienvenida a un nuevo nivel de nuestra galxia infinita.... Me pregunto, que nos tendra el destino mi osita....</p>
+            <p style="color: var(--gold); font-weight: 600;">Haz clic en Siguiente para desplegar el mapa de nuestro amor osita linda...</p>
+        </div>
+
+        <!-- DIAPOSITIVA 2: EL MENSAJE CÓSMICO -->
+        <div class="slide" id="slide2">
+            <h1>Dos Años de Renacimiento</h1>
+            <div class="love-letter">
+                <p>Mi amor, parece mentira que ya estemos sumando dos hermosos años desde aquel mágico 23 de julio de 2024, esa noche tan radiente.... Este segundo año ha sido de pura complicidad, risas infinitas, discusiones, problemas, miedos... Pero sobre todo crecimiento...</p>
+                <p>Afrontamos retos, construimos puentes, planteamos promesas, dimos final a discusiones y sobre todo, nos volvimos más fuertes juntos... Eres mi hogar en medio de la inmensidad... mi casita de toda esa oscuridad y agotamiento del dia a dia... Hoy quiero celebrarte en nuestro rincón secreto de internet de la forma más mágica posible... Mostrandote nuestra galaxia.... Y todo mi amor</p>
+            </div>
+        </div>
+
+        <!-- DIAPOSITIVA 3: LA CONSTELACIÓN INTERACTIVA -->
+        <div class="slide" id="slide3">
+            <h1>Nuestra Constelación de amor</h1>
+            <p style="font-size: 0.9rem; margin-bottom: 10px;">Haz clic sobre cada una de las 5 estrellas para ver esos hermosos mensajes que trae nuestro 2do Año ✨</p>
+            
+            <div class="constellation-map">
+                <!-- SVG para dibujar las conexiones de las estrellas -->
+                <svg class="constellation-lines">
+                    <line x1="20%" y1="30%" x2="40%" y2="65%"></line>
+                    <line x1="40%" y1="65%" x2="60%" y2="25%"></line>
+                    <line x1="60%" y1="25%" x2="80%" y2="70%"></line>
+                    <line x1="80%" y1="70%" x2="50%" y2="45%"></line>
+                    <line x1="50%" y1="45%" x2="20%" y2="30%"></line>
+                </svg>
+
+                <!-- Estrellas (Coordenadas en % relativas) -->
+                <div class="interactive-star" style="top: 30%; left: 20%;" onclick="revealMemory(0)">
+                    <span>⭐</span>
+                    <div class="star-label">METAS</div>
+                </div>
+                <div class="interactive-star" style="top: 65%; left: 40%;" onclick="revealMemory(1)">
+                    <span>⭐</span>
+                    <div class="star-label">RISAS</div>
+                </div>
+                <div class="interactive-star" style="top: 25%; left: 60%;" onclick="revealMemory(2)">
+                    <span>⭐</span>
+                    <div class="star-label">CÓMPLICES</div>
+                </div>
+                <div class="interactive-star" style="top: 70%; left: 80%;" onclick="revealMemory(3)">
+                    <span>⭐</span>
+                    <div class="star-label">APOYO</div>
+                </div>
+                <div class="interactive-star" style="top: 45%; left: 50%;" onclick="revealMemory(4)">
+                    <span>⭐</span>
+                    <div class="star-label">FUTURO</div>
+                </div>
+
+                <!-- Desplegable del Recuerdo (Añadido el Botón X) -->
+                <div class="memory-display" id="memoryDisplay">
+                    <button class="close-memory-btn" onclick="closeMemory()">✖</button>
+                    <h3 id="memoryTitle">Título</h3>
+                    <p id="memoryText">Contenido del recuerdo</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIAPOSITIVA 4: DESPEDIDA / SECCIÓN EXTRA -->
+        <div class="slide" id="slide4">
+            <h1>Gracias por existir y seguir aca fuerte a mi lado</h1>
+            <p>Este es solo el capítulo dos de un libro que no tiene final... el 2do capítulo de nuestro universo... nos queda un basto camino por recorrer... Gracias por ser mi novia, mi mejor amiga y mi compañera en esta loca aventura en esta galaxia... NO CAMBIARIA NADA... TI amo</p>
+            <p style="font-size: 1.5rem; color: var(--gold); font-weight: 800;">Ti amo al infinito y más allá ❤️... mira que el universo es demasiado grande para que no te ame, nos queda un gran camino por recorrer... Juntos </p>
+        </div>
+
+        <!-- Controles de navegación -->
+        <div class="controls">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>Anterior</button>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        // Generador de estrellas de fondo
+        const starsContainer = document.getElementById('starsBg');
+        const starCount = 60;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('twinkle-star');
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            starsContainer.appendChild(star);
+        }
+
+        // Lógica de cambio de diapositivas
+        let currentSlide = 1;
+        const totalSlides = 4;
+
+        function changeSlide(direction) {
+            const activeSlide = document.getElementById(`slide${currentSlide}`);
+            activeSlide.classList.remove('active');
+
+            currentSlide += direction;
+
+            const nextSlide = document.getElementById(`slide${currentSlide}`);
+            nextSlide.classList.add('active');
+
+            // Habilitar/Deshabilitar botones
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+            
+            // Cerrar el recuerdo abierto si cambia de slide
+            closeMemory();
+        }
+
+        // Base de Datos de los Recuerdos de la Constelación
+        const memories = [
+            {
+                title: "Las Metas Conquistadas",
+                text: "Durante este segundo año hemos madurado juntos, para fortalecer y mejorar nuestra relacion, oye.... Yo te apoyo, no estas sola... Siempre sere tu complice en cada momento, cada decision y cada meta que nos propongamos... Gracias por ser mi compañera de vida, YO no me ire de tu lado mi vida, eres mi galaxia entera y mi universo completo... Ti amo infinitamente mi osita linda"
+            },
+            {
+                title: "Risas en plenma oscuridad, para nustros corazones",
+                text: "Desde nuestros chistes bobos en mi casa, esos juegos tiernos y loquitos que hacemos tu y yo.... Hasta los momentos divertidos viendo series o jugando.... La vida a tu lado es infinitamente más divertida, no cambiaria nada de eso..."
+            },
+            {
+                title: "Tu complice de por vida",
+                text: "Nuestras conversaciones profundas por las noches, los secretos compartidos, tu apoyo incondicional ante cualquier prueba... Somos tu y yo mi vida, y eso es lo que nos hace invencibles..... Gracias por ser mi confidente y mi compañera de aventuras osita."
+            },
+            {
+                title: "Apoyo Incondicional",
+                text: "En los días difíciles, tus palabras han sido mi cable a tierra... Esa voaz calida y dulce que alegra toda mi alma... Gracias por ser esa mano segura que nunca me deja caer.... Espero llegar a tu altura siempre mi princesa hermosa, y que nunca dudes de mi amor por ti... Ti amo infinitamente mi osita linda"
+            },
+            {
+                title: "Hacia el 3er Año",
+                text: "Este mapa es solo el inicio... Aun nos falta mucho camino amor, estas preparada?... Para este gran reto en nuestro 3er año, Prepárate para todo lo que viene, mi vida... Recuerda que yo estare para tomar tu mano en cada dia de dudas o preocupaciones"
+            }
+        ];
+
+        // Función para mostrar los detalles del recuerdo al clickear estrellas
+        function revealMemory(index) {
+            const display = document.getElementById('memoryDisplay');
+            const title = document.getElementById('memoryTitle');
+            const text = document.getElementById('memoryText');
+
+            // Aplicar efecto de transición sutil
+            display.classList.remove('active');
+            
+            setTimeout(() => {
+                title.innerText = memories[index].title;
+                text.innerText = memories[index].text;
+                display.classList.add('active');
+            }, 200);
+        }
+
+        // NUEVA FUNCIÓN: Para cerrar el recuerdo tocando la "X"
+        function closeMemory() {
+            const display = document.getElementById('memoryDisplay');
+            display.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
